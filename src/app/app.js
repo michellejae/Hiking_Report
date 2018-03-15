@@ -18,6 +18,7 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
+
 angular.module(MODULE_NAME, [])
   .directive('app', app)
   .controller('AppCtrl', AppCtrl);
