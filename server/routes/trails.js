@@ -12,10 +12,9 @@ router.get('/',(req,res) => {
       return new Trail ({
         objectid_1: element.properties.OBJECTID_1,
         objectid: element.properties.OBJECTID,
-        // trail_num: element.properties.TRAIL_NUM,
         quad: element.properties.QUAD,
         district: element.properties.DISTRICT,
-        // yrcreated: element.properties.YRCREATED,
+        yrcreated: element.properties.YRCREATED,
         length_m: element.properties.LENGTH_M,
         elev_range: element.properties.ELEV_RANGE,
         st_access: element.properties.ST_ACCESS,
@@ -33,7 +32,8 @@ router.get('/',(req,res) => {
         web_link: element.properties.Web_Link,
         nah: element.properties.NAH,
         trail_url: element.properties.Trail_URL,
-        coordinates: JSON.stringify(element.geometry.coordinates)
+        coordinates: JSON.stringify(element.geometry.coordinates),
+        trail_num: element.properties.TRAIL_NUM
       })
       .save()
       .then(result => {
