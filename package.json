@@ -25,7 +25,8 @@
     "bookshelf": "^0.12.1",
     "express": "^4.16.3",
     "knex": "^0.14.4",
-    "pg": "^7.4.1"
+    "pg": "^7.4.1",
+    "request": "^2.85.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0",
