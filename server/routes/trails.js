@@ -9,13 +9,37 @@ router.get('/',(req,res) => {
     let data = JSON.parse(body)
     // console.log(test.features)
     data.features.map(element => {
-      console.log(element.properties)
+      console.log(element.geometry.coordinates)
+      return new Hike ({
+        objectid_1: element.properties.OBJECTID_1,
+        objectid: element.properties.OBJECTID,
+        trail_num: element.properties.TRAIL_NUM,
+        quad: element.properties.QUAD,
+        district: element.properties.DISTRICT,
+        yrcreated: element.properties.YRCREATED,
+        length_m: element.properties.LENGTH_M,
+        elev_range: element.properties.ELEV_RANGE,
+        st_access: element.properties.ST_ACCESS,
+        start_pt: element.properties.START_PT,
+        end_pt: element.properties.END_PT,
+        standard: element.properties.STANDARD,
+        climat: element.properties.CLIMAT,
+        tspt_type: element.properties.TSPT_TYPE,
+        feature: element.properties.FEATURE,
+        amenitie: element.properties.AMENITIE,
+        use_rest: element.properties.USE_REST,
+        hazard: element.properties.HAZARD,
+        comment: element.properties.COMMENT,
+        trailname: element.properties.Trailname,
+        web_link: element.properties.Web_Link,
+        nah: element.properties.NAH,
+        trail_url: element.properties.Trail_URL,
+        coordinates: element.geometry.coordinates
+      })
     })
   })
 });
 
-router.get('/',(req,res) => {
-  
-})
+
 
 module.exports = router;

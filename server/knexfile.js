@@ -6,12 +6,13 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      user : config.database.user,
-      password : config.database.password,
-      database : config.database.database,
+      host: '127.0.0.1',
+      user: config.database.user,
+      password: config.database.password,
+      database: config.database.database,
       charset: 'utf8'
-    },
+    }
+  },
 
   staging: {
     client: 'postgresql',
