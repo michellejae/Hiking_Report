@@ -10,7 +10,7 @@ router.get('/',(req,res) => {
     // console.log(test.features)
     data.features.map(element => {
       console.log(element.geometry.coordinates)
-      return new Hike ({
+      return new Trail ({
         objectid_1: element.properties.OBJECTID_1,
         objectid: element.properties.OBJECTID,
         trail_num: element.properties.TRAIL_NUM,
