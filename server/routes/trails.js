@@ -40,12 +40,22 @@ router.get('/',(req,res) => {
         return res.json(result)
       })
       .catch(err => {
-        console.log(err)
+        return res.json({message: err.message})
       })
     })
   })
 });
 
+router.get('/:id',(req,res) => {
+  return new Trail({'id': req.params.id})
+  .fetch()
+  .then(trail => {
+    console.log('eeeeeee',trail.attributes.trailname)
+  })
+  .catch(err => {
+    return res.json({message: err.message})
+  })
+})
 
 
 module.exports = router;
