@@ -1,22 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
+const Trail = require('../db/models/Trails');
 
 const hikingAPI = 'https://opendata.arcgis.com/datasets/f78c7f66f5c54872840044cf4310cd2d_0.geojson';
 
 router.get('/',(req,res) => {
   request(hikingAPI, (error,response,body) => {
     let data = JSON.parse(body)
-    // console.log(test.features)
     data.features.map(element => {
-      console.log(element.geometry.coordinates)
       return new Trail ({
         objectid_1: element.properties.OBJECTID_1,
         objectid: element.properties.OBJECTID,
-        trail_num: element.properties.TRAIL_NUM,
+        // trail_num: element.properties.TRAIL_NUM,
         quad: element.properties.QUAD,
         district: element.properties.DISTRICT,
-        yrcreated: element.properties.YRCREATED,
+        // yrcreated: element.properties.YRCREATED,
         length_m: element.properties.LENGTH_M,
         elev_range: element.properties.ELEV_RANGE,
         st_access: element.properties.ST_ACCESS,
@@ -34,7 +33,14 @@ router.get('/',(req,res) => {
         web_link: element.properties.Web_Link,
         nah: element.properties.NAH,
         trail_url: element.properties.Trail_URL,
-        coordinates: element.geometry.coordinates
+        coordinates: JSON.stringify(element.geometry.coordinates)
+      })
+      .save()
+      .then(result => {
+        return res.json(result)
+      })
+      .catch(err => {
+        console.log(err)
       })
     })
   })
