@@ -6,22 +6,16 @@ const hikingAPI = 'https://opendata.arcgis.com/datasets/f78c7f66f5c54872840044cf
 
 router.get('/',(req,res) => {
   request(hikingAPI, (error,response,body) => {
-    // console.log('error',error)
-    // console.log('statusCode',response && response.statusCode)
-    // console.log('body',body)
-    
-        console.log(body)
+    let data = JSON.parse(body)
+    // console.log(test.features)
+    data.features.map(element => {
+      console.log(element.properties)
+    })
   })
 });
 
-
-
-
-
-
-
-
-
-
+router.get('/',(req,res) => {
+  
+})
 
 module.exports = router;
