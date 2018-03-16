@@ -46,16 +46,29 @@ router.get('/',(req,res) => {
   })
 });
 
-router.get('/:id',(req,res) => {
-  return new Trail({'id': req.params.id})
-  .fetch()
-  .then(trail => {
-    console.log('eeeeeee',trail.attributes.trailname)
+router.get('/all',(req,res) => {
+  return new Trail()
+  .fetchAll({withRelated: 'coordinates'})
+  .then(result => {
+    console.log('ALLLLLLL', result)
   })
   .catch(err => {
     return res.json({message: err.message})
   })
 })
+
+router.get('/:id',(req,res) => {
+  console.log(req.params.id)
+  return new Trail({'id': req.params.id})
+  .fetch()
+  .then(trail => {
+    console.log('eeeeeee',trail.attributes.coordinates[0])
+  })
+  .catch(err => {
+    return res.json({message: err.message})
+  })
+})
+
 
 
 module.exports = router;
