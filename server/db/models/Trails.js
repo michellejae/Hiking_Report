@@ -5,4 +5,4 @@ class Trail extends bookshelf.Model {
 
 }
 
-module.exports = bookshelf.model(`Trail`, Tail);
+module.exports = Trail;
