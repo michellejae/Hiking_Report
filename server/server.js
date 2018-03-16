@@ -7,6 +7,7 @@ const trails = require('./routes/trails');
 const weather = require('./routes/weather');
 const Trail = require('./db/models/Trails');
 const rp = require('request-promise');
+const weatherKey = require('../config/config');
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -23,6 +24,7 @@ app.use(express.static('pubic'));
 let inMemTrails = {}
 
 app.get('/', (req,res) => {
+  console.log('i got fired')
   return new Trail ()
   .fetchAll()
   .then(result => {
@@ -30,12 +32,29 @@ app.get('/', (req,res) => {
       inMemTrails[element.attributes.trailname] = {
         coordinates: element.attributes.coordinates[0]}
     })
+    weatherData(inMemTrails)
+  })
+  .catch(err => {
+    return res.json({message: err.message})
   })
 })
 
-app.get('/', (req,res) => {
+let WEATHERAPIKEY = weatherKey.weather.apiKey;
 
-})
+function weatherData (obj) {
+  for(var i in obj){
+    let latitude = obj[i].coordinates[1]
+    let longitude = obj[i].coordinates[0]
+    rp(`http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/${latitude},${longitude}.json`, (err,response, body) => {
+      console.log(' yo its the weather',body)
+    })
+  }
+}
+
+
+
+
+
 
 
 
