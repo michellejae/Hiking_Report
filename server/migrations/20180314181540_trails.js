@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     table.integer('objectid');
     table.integer('quad');
     table.string('district');
-    table.integer('yrcreated');
+    table.string('yrcreated');
     table.decimal('length_m');
     table.integer('elev_range');
     table.string('st_access');
@@ -25,6 +25,9 @@ exports.up = function(knex, Promise) {
     table.string('nah');
     table.string('trail_url');
     table.json('coordinates');
+    table.string('trail_num');
+    table.string('rain');
+    table.string('weather');
   })
 };
 
