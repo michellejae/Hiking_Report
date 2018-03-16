@@ -26,6 +26,8 @@ exports.up = function(knex, Promise) {
     table.string('trail_url');
     table.json('coordinates');
     table.string('trail_num');
+    table.string('rain');
+    table.string('weather');
   })
 };
 
