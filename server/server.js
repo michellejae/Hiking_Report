@@ -77,7 +77,7 @@ function weatherData () {
 //   }) 
 // }
 
-app.get('/hikeNow/fake', (req,res) => {
+app.get('/api/hikeNow/fake', (req,res) => {
   return res.json(global.hikeNowWeather)
 })
 
