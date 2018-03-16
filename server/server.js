@@ -78,7 +78,7 @@ function weatherData () {
 // }
 
 app.get('/hikeNow/fake', (req,res) => {
-  return res.send(global.hikeNowWeather)
+  return res.json(global.hikeNowWeather)
 })
 
 
