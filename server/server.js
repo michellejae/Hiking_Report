@@ -64,7 +64,7 @@ function weatherData () {
         global.hikeNowWeather.observation_location_latitude = data.current_observation.observation_location.latitude,
         global.hikeNowWeather.observation_location_longitude = data.current_observation.observation_location.longitude,
         global.hikeNowWeather.display_location_full = data.current_observation.display_location.full
-        console.log(global.hikeNowWeather)
+        //console.log(global.hikeNowWeather)
       })
     }
 
@@ -78,7 +78,7 @@ function weatherData () {
 // }
 
 app.get('/hikeNow/fake', (req,res) => {
-  return res.send(global.hikeNowWeather)
+  return res.json(global.hikeNowWeather)
 })
 
 
