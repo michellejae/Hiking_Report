@@ -1,14 +1,9 @@
 import angular from 'angular';
+import ngRoute from 'angular-route';
+import TrailCtrl from '../public/controller/trail.controller'
 
-import '../style/app.css';
 
-let app = () => {
-  return {
-    template: require('./app.html'),
-    controller: 'AppCtrl',
-    controllerAs: 'app'
-  }
-};
+//import '../style/app.css';
 
 class AppCtrl {
   constructor() {
@@ -16,10 +11,23 @@ class AppCtrl {
   }
 }
 
+
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [])
-  .directive('app', app)
-  .controller('AppCtrl', AppCtrl);
+angular.module(MODULE_NAME, [ngRoute])
+  .controller('AppCtrl', AppCtrl)
+  .controller('TrailCtrl', TrailCtrl)
+  .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
+    $routeProvider
+      .when(`/`, {
+        templateUrl: 'views/app.html',
+        controller: 'AppCtrl'
+      })
+      .when(`/trail`, {
+      templateUrl: `views/trail.html`,
+      controller: 'TrailCtrl'
+      })
+    $locationProvider.html5Mode(true);
+  }])
 
 export default MODULE_NAME;
