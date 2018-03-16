@@ -7,9 +7,15 @@ const path = require('path');
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
 
+//ROUTES
+const rainRoutes = require(`./rain`);
+
 //APPLICATIONS
 app.use(bodyParser.json());
-app.use(express.static('pubic'));
+app.use(express.static('public'));
+
+//ENDPOINTS
+app.use(`/rain`, rainRoutes);
 
 app.get('/', (req,res) => {
   res.send('smoke')
