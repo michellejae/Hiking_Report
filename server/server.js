@@ -30,7 +30,6 @@ app.get('/', (req,res) => {
       inMemTrails[element.attributes.trailname] = {
         coordinates: element.attributes.coordinates[0]}
     })
-    console.log('inMemTrails', inMemTrails)
   })
 })
 
