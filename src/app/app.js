@@ -1,7 +1,7 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
-import TrailCtrl from '../public/controller/trail.controller'
-
+import TrailCtrl from '../controller/trail.controller'
+import trailService from '../services/trailDataService'
 
 import '../style/app.css';
 
@@ -17,6 +17,7 @@ const MODULE_NAME = 'app';
 angular.module(MODULE_NAME, [ngRoute])
   .controller('AppCtrl', AppCtrl)
   .controller('TrailCtrl', TrailCtrl)
+  .service('trailService', trailService)
   .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
     $routeProvider
       .when(`/`, {
