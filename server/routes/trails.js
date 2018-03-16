@@ -5,10 +5,12 @@ const Trail = require('../db/models/Trails');
 
 const hikingAPI = 'https://opendata.arcgis.com/datasets/f78c7f66f5c54872840044cf4310cd2d_0.geojson';
 
+
 router.get('/',(req,res) => {
   request(hikingAPI, (error,response,body) => {
     let data = JSON.parse(body)
     data.features.map(element => {
+      console.log(element.properties)
       return new Trail ({
         objectid_1: element.properties.OBJECTID_1,
         objectid: element.properties.OBJECTID,
@@ -37,9 +39,11 @@ router.get('/',(req,res) => {
       })
       .save()
       .then(result => {
+        console.log('please tell me here')
         return res.json(result)
       })
       .catch(err => {
+        console.log('am i also here')
         return res.json({message: err.message})
       })
     })
