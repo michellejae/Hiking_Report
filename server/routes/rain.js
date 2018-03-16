@@ -29,16 +29,18 @@ rp.get(rainUrl)
     result = result.split("\n")
     newResult = result.slice(53)
     newestResult = newResult.slice(0, 58)
-    newestResult.map(element => {
+    newestResult = newestResult.map(element => {
+      element = element.replace(/:*:/g, "")
+      element = element.replace(/\//g, "")
+      element = element.replace(/[" "]+/g, " ")
       element = element.split(" ")
-      // console.log(element)
-      if(element.includes(`POAH1`)){
-        console.log(element)
-      }
-      // console.log("wee", element[0])
-
+      return element;  
+    }).filter(element => {
+        return oahuRainGauges.includes(element[0])
+      })
+      console.log(newestResult)
     })
-  })
+
  
     
     // nextResult = newestResult.splice(23, 1)

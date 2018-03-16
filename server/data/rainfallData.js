@@ -1,5 +1,3 @@
-
-
 let rainfall = {}
 // console.log('smokies')
 
