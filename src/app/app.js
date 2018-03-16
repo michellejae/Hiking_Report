@@ -3,7 +3,7 @@ import ngRoute from 'angular-route';
 import TrailCtrl from '../public/controller/trail.controller'
 
 
-//import '../style/app.css';
+import '../style/app.css';
 
 class AppCtrl {
   constructor() {
