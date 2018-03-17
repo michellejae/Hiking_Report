@@ -3,6 +3,7 @@ const Trail = require('../db/models/Trails');
 
 const rp = require('request-promise');
 const weatherKey = require('../../config/config');
+const cron = require('node-schedule');
 
 module.exports = {
   getTrailHeads: getTrailHeads,
@@ -12,6 +13,7 @@ module.exports = {
 
 let WEATHERAPIKEY = weatherKey.weather.apiKey2;
 const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
+const rule = new cron.RecurrenceRule();
 
 global.hikeNow = {};
 
@@ -31,6 +33,8 @@ global.hikeNow.weather = {
   observation_location_longitude: '',
   display_location_full: ''
 }
+
+rule.second = 30;
 
 function getTrailHeads() {
   let trails = [];
