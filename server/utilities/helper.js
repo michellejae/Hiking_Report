@@ -34,6 +34,8 @@ global.hikeNow.weather = {
   display_location_full: ''
 }
 
+//See /utilities/rainData.js for global.hikeNow.rain 
+
 rule.second = 30;
 
 function getTrailHeads() {
@@ -87,7 +89,7 @@ function getWeatherData(lat,long){
         }else{
           return global.hikeNow.weather;
         }
-        console.log('GLOBAL VARIABLE hikeNow ',global.hikeNow)
+        // console.log('GLOBAL VARIABLE hikeNow ',global.hikeNow)
       })
       .catch(err => {
         console.log(err)
