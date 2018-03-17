@@ -47,8 +47,9 @@ router.get('/',(req,res) => {
 });
 
 router.get('/all',(req,res) => {
+  console.log('here')
   return new Trail()
-  .fetchAll({withRelated: 'coordinates'})
+  .fetchAll()
   .then(result => {
     console.log('ALLLLLLL', result)
   })
@@ -62,7 +63,7 @@ router.get('/:id',(req,res) => {
   return new Trail({'id': req.params.id})
   .fetch()
   .then(trail => {
-    console.log('eeeeeee',trail.attributes.coordinates[0])
+    console.log('eeeeeee',trail)
   })
   .catch(err => {
     return res.json({message: err.message})
