@@ -13,7 +13,7 @@ module.exports = {
       charset: 'utf8'
     },
 
-    debug: true
+    debug: false
     
   },
 

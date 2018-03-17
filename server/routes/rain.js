@@ -42,11 +42,11 @@ rp.get(rainUrl)
       return oahuRainGauges.includes(element[0])
       })
       .map(element => {
-        let keys = element.shift()
-        let values = element.pop()
+        let key = element.shift()
+        let value = element.pop()
         let result = {}
-        console.log('shift', keys, 'pop', values)
-        result[keys] = values
+        // console.log('shift', key, 'pop', value)
+        result[key] = value
         return result;
       })
       console.log(newestResult)
