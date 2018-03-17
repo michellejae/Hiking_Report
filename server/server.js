@@ -10,6 +10,8 @@ const weatherKey = require('../config/config');
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
+let WEATHERAPIKEY = weatherKey.weather.apiKey2;
+const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
 
 //APPLICATIONS
 app.use(bodyParser.json());
@@ -18,7 +20,9 @@ app.use(bodyParser.urlencoded({extended: false }));
 app.use('/trails', trails);
 app.use(express.static('public'));
 
-global.hikeNowWeather = {
+global.hikeNow = {};
+
+global.hikeNow.weather = {
   station_id: '',
   weather: '',
   temperature_string: '',
@@ -35,59 +39,76 @@ global.hikeNowWeather = {
   display_location_full: ''
 }
 
-let WEATHERAPIKEY = weatherKey.weather.apiKey2;
-
-function weatherData () {
-  let trails = {}
+function getTrailHeads () {
+  let trails = [];
   new Trail()
   .fetchAll()
   .then(result => {
     result.map(element => {
-      trails[element.attributes.trailname] = {
-      coordinates: element.attributes.coordinates[0]}
+      trails.push(element.attributes.coordinates[0]);
     })
+    fireWeatherAPI(trails);
   })
-  rp(`http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/21.5633764486087,-158.237758592625.json`, (err,response, body) => {
-        let data = JSON.parse(body)
-        // console.log(data.current_observation)
-        global.hikeNowWeather.station_id = data.current_observation.station_id,
-        global.hikeNowWeather.weather = data.current_observation.weather,
-        global.hikeNowWeather.temperature_string = data.current_observation.temperature_string,
-        global.hikeNowWeather.relative_humidity = data.current_observation.relative_humidity,
-        global.hikeNowWeather.wind_dir = data.current_observation.wind_dir,
-        global.hikeNowWeather.wind_mph = data.current_observation.wind_mph,
-        global.hikeNowWeather.wind_gust_mph = data.current_observation.wind_gust_mph,
-        global.hikeNowWeather.feelslike_string = data.current_observation.feelslike_string,
-        global.hikeNowWeather.visibility_mi = data.current_observation.visibility_mi,
-        global.hikeNowWeather.precip_1hr_string = data.current_observation.precip_1hr_string,
-        global.hikeNowWeather.precip_today_in = data.current_observation.precip_today_in,
-        global.hikeNowWeather.observation_location_latitude = data.current_observation.observation_location.latitude,
-        global.hikeNowWeather.observation_location_longitude = data.current_observation.observation_location.longitude,
-        global.hikeNowWeather.display_location_full = data.current_observation.display_location.full
-        //console.log(global.hikeNowWeather)
+}
+
+function fireWeatherAPI (arr) {
+  arr.map(element => {
+    let latitude = element[1];
+    let longitude = element[0];
+    getWeatherData(latitude,longitude);
+  })
+}
+
+function getWeatherData(lat,long){
+    return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
+      .then(json => {
+        return JSON.parse(json);
       })
-    }
+      .then(data => {
+        if(data.current_observation.station_id){
+          global.hikeNow[data.current_observation.station_id] = {
+            city: data.current_observation.display_location.city,
+            state: data.current_observation.display_location.city,
+            longitude: data.current_observation.display_location.longitude,
+            latitude: data.current_observation.display_location.latitude,
+            observation_time: data.current_observation.observation_time,
+            weather: data.current_observation.weather,
+            temp_f: data.current_observation.temp_f,
+            temp_c: data.current_observation.temp_c,
+            relative_humidity: data.current_observation.relative_humidity,
+            wind_dir: data.current_observation.wind_dir,
+            wind_degrees: data.current_observation.wind_degrees,
+            wind_mph: data.current_observation.wind_mph,
+            wind_gust_mph: data.current_observation.wind_gust_mph,
+            wind_gust_kph: data.current_observation.wind_gust_kph,
+            feelslike_f: data.current_observation.feelslike_f,
+            feelslike_c: data.current_observation.feelslike_c,
+            visibility_mi: data.current_observation.visibility_mi,
+            visibility_km: data.current_observation.visibility_km,
+            UV: data.current_observation.UV
+          }
+        }else{
+          return global.hikeNow.weather;
+        }
+        console.log('GLOBAL VARIABLE hikeNow ',global.hikeNow)
+      })
+      .catch(err => {
+        console.log(err)
+      });
+};
 
-//   for(var i in trails){
-//     let latitude = trails[i].coordinates[1]
-//     let longitude = trails[i].coordinates[0]
-//     rp(`http://api.wunderground.com/api/d32b00d3f891bff3/conditions/q/${latitude},${longitude}.json`, (err,response, body) => {
-//       let data = JSON.parse(body)
 
-//   }) 
-// }
+
+
+
+
 
 app.get('/api/hikeNow/fake', (req,res) => {
-  return res.json(global.hikeNowWeather)
+  return res.json(global.hikeNow)
 })
 
 
-
-
-
-
-
 app.listen(PORT, () => {
-  console.log(`SERVER IS LISTENING ON ${PORT}`)
-  weatherData()
+  console.log(`SERVER IS LISTENING ON ${PORT}`);
+  getTrailHeads();
 });

@@ -45,6 +45,7 @@ router.get('/',(req,res) => {
 });
 
 router.get('/all',(req,res) => {
+  console.log('here')
   return new Trail()
   .fetchAll()
   .then(trails => {
