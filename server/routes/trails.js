@@ -31,8 +31,8 @@ router.get('/',(req,res) => {
         coordinates: JSON.stringify(element.geometry.coordinates)
       }) //end of return newTrail
       .save()
-      .then(result => {
-        result = result.toJSON()
+      .then(finalTrails => {
+        finalTrails = finalTrails.toJSON()
       })
     })
   }).then(newResult => {
@@ -47,9 +47,9 @@ router.get('/',(req,res) => {
 router.get('/all',(req,res) => {
   return new Trail()
   .fetchAll()
-  .then(result => {
-    result = result.toJSON()
-    return res.json(result)
+  .then(trails => {
+    trails = trails.toJSON()
+    return res.json(trails)
   })
   .catch(err => {
     return res.json({message: err.message})
@@ -57,10 +57,11 @@ router.get('/all',(req,res) => {
 })
 
 router.get('/:id',(req,res) => {
-  console.log(req.params.id)
   return new Trail({'id': req.params.id})
   .fetch()
   .then(trail => {
+    trail = trail.toJSON()
+    return res.json(trail)
   })
   .catch(err => {
     return res.json({message: err.message})
