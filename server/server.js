@@ -23,20 +23,22 @@ app.use(express.static('pubic'));
 global.hikeNow = {};
 
 global.hikeNow.weather = {
-  station_id: '',
-  weather: '',
-  temperature_string: '',
-  relative_humidity: '',
-  wind_dir: '',
-  wind_mph: '',
-  wind_gust_mph: '',
-  feelslike_string: '',
-  visibility_mi: '',
-  precip_1hr_string: '',
-  precip_today_in: '',
-  observation_location_latitude: '',
-  observation_location_longitude: '',
-  display_location_full: ''
+    unknown: {
+      station_id: '',
+      weather: '',
+      temperature_string: '',
+      relative_humidity: '',
+      wind_dir: '',
+      wind_mph: '',
+      wind_gust_mph: '',
+      feelslike_string: '',
+      visibility_mi: '',
+      precip_1hr_string: '',
+      precip_today_in: '',
+      observation_location_latitude: '',
+      observation_location_longitude: '',
+      display_location_full: ''
+  }
 }
 
 function getTrailHeads () {
@@ -99,36 +101,14 @@ function getWeatherData(lat,long){
 };
 
 
-let matchedTrails = {}
-function matchTrails (obj) {
-  new Trail()
-  .fetchAll()
-  .then(result => {
-    result.map(element => {
-      console.log(element.attributes.trailname)
-      let name = element.attributes.trailname;
-      if(name === 'Wiliwilinui Access Road'){
-
-      }else{
-        console.log('no')
-      }
-    })
-  })
-}
-
-
-
-
-
-
 
 app.get('/api/hikeNow/fake', (req,res) => {
   return res.json(global.hikeNow)
 })
 
 
+
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
   getTrailHeads();
-  matchTrails(matchedTrails)
 });
