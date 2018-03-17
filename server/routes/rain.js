@@ -27,7 +27,8 @@ const oahuRainGauges = [
   `KMHH1`,
   `MNLH1`]
 
-rp.get(rainUrl)
+router.get('/', (req, res) => {
+  rp(rainUrl)
   .then(result => {
     result = result.split("\n")
     newResult = result.slice(53)
@@ -45,11 +46,15 @@ rp.get(rainUrl)
         let key = element.shift()
         let value = element.pop()
         let result = {}
-        // console.log('shift', key, 'pop', value)
         result[key] = value
         return result;
       })
-      console.log(newestResult)
+      return res.json(newestResult)
     })
+    .catch(err => {
+      console.log(err)
+      return res.json({message: err.message}) 
+    })
+  })
 
 module.exports = router;

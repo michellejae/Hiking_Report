@@ -7,6 +7,7 @@ const trails = require('./routes/trails');
 const Trail = require('./db/models/Trails');
 const rp = require('request-promise');
 const weatherKey = require('../config/config');
+const rain = require('./routes/rain');
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -18,15 +19,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false }));
 
 app.use('/trails', trails);
+app.use('/rain', rain);
 app.use(express.static('public'));
 
 global.hikeNow = {};
 
 global.hikeNow.rain = {
   unknown: {
-
+    stationId: '',
+    rainFall: ''
   }
 }
+// console.log(global.hikeNow)
 
 global.hikeNow.weather = {
     unknown: {
@@ -52,9 +56,10 @@ function getTrailHeads () {
   new Trail()
   .fetchAll()
   .then(result => {
+    result = result.toJSON()
     result.map(element => {
-      if(element.attributes.trailname !== 'Ualakaa Trail'){
-        trails.push(element.attributes.coordinates[0]);
+      if(element.trailname !== 'Ualakaa Trail'){
+        trails.push(element.coordinates[0]);
       }
     })
     fireWeatherAPI(trails);
@@ -62,9 +67,7 @@ function getTrailHeads () {
 }
 
 function fireWeatherAPI (arr) {
-  console.log(arr)
   arr.map(element => {
-
     let latitude = element[1];
     let longitude = element[0];
     getWeatherData(latitude,longitude);
@@ -72,12 +75,12 @@ function fireWeatherAPI (arr) {
 }
 
 function getWeatherData(lat,long){
-  // console.log('meow')
     return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
       .then(json => {
         return JSON.parse(json);
       })
       .then(data => {
+        // console.log(data)
         if(data.current_observation.station_id){
           global.hikeNow[data.current_observation.station_id] = {
             city: data.current_observation.display_location.city,
@@ -100,11 +103,11 @@ function getWeatherData(lat,long){
             visibility_km: data.current_observation.visibility_km,
             UV: data.current_observation.UV
           };
-          console.log('peopepoepo', global.hikeNow.weather)
         }else{
           return global.hikeNow.weather;
         }
       })
+
       .catch(err => {
         console.log(err)
       });
@@ -120,6 +123,5 @@ app.get('/api/hikeNow/fake', (req,res) => {
 
 app.listen(PORT, () => {
   getTrailHeads();
-  // console.log(global.hikeNow.weather)
   console.log(`SERVER IS LISTENING ON ${PORT}`);
 });
