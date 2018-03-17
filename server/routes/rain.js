@@ -8,7 +8,10 @@ const rp = require(`request-promise`);
 
 const { rainReport, rainGaugeStations, rainStationAndTrail } = require(`../data/rainfallData`)
 
-const rainUrl = `http://www.prh.noaa.gov/data/HFO/RRAHFO`;
+// URL for multiple readings (3hr, 6hr, 12hr, 24hr):
+// http://www.prh.noaa.gov/data/HFO/RRAHFO
+
+const rainUrl = `http://www.prh.noaa.gov/data/HFO/RR5HFO`;
 const oahuRainGauges = [
   `POAH1`,
   `KTAH1`,
@@ -36,30 +39,17 @@ rp.get(rainUrl)
       element = element.split(" ")
       return element;  
     }).filter(element => {
-        return oahuRainGauges.includes(element[0])
+      return oahuRainGauges.includes(element[0])
+      })
+      .map(element => {
+        let keys = element.shift()
+        let values = element.pop()
+        let result = {}
+        console.log('shift', keys, 'pop', values)
+        result[keys] = values
+        return result;
       })
       console.log(newestResult)
     })
-
- 
-    
-    // nextResult = newestResult.splice(23, 1)
-    // console.log(newestResult)
-  // .then(result => {
-  //   for (i = 0; i < result.length; i++) {
-  //     if oahuRainGauges 
-  //   }
-  // })
-
-
-
-
-
-// router.get(`/`, (req, res) => {
-//   console.log('raain', rainReport)
-// })
-
-
-
 
 module.exports = router;
