@@ -23,20 +23,22 @@ app.use(express.static('public'));
 global.hikeNow = {};
 
 global.hikeNow.weather = {
-  station_id: '',
-  weather: '',
-  temperature_string: '',
-  relative_humidity: '',
-  wind_dir: '',
-  wind_mph: '',
-  wind_gust_mph: '',
-  feelslike_string: '',
-  visibility_mi: '',
-  precip_1hr_string: '',
-  precip_today_in: '',
-  observation_location_latitude: '',
-  observation_location_longitude: '',
-  display_location_full: ''
+    unknown: {
+      station_id: '',
+      weather: '',
+      temperature_string: '',
+      relative_humidity: '',
+      wind_dir: '',
+      wind_mph: '',
+      wind_gust_mph: '',
+      feelslike_string: '',
+      visibility_mi: '',
+      precip_1hr_string: '',
+      precip_today_in: '',
+      observation_location_latitude: '',
+      observation_location_longitude: '',
+      display_location_full: ''
+  }
 }
 
 function getTrailHeads () {
@@ -45,7 +47,9 @@ function getTrailHeads () {
   .fetchAll()
   .then(result => {
     result.map(element => {
-      trails.push(element.attributes.coordinates[0]);
+      if(element.attributes.trailname !== 'Ualakaa Trail'){
+        trails.push(element.attributes.coordinates[0]);
+      }
     })
     fireWeatherAPI(trails);
   })
@@ -86,11 +90,10 @@ function getWeatherData(lat,long){
             visibility_mi: data.current_observation.visibility_mi,
             visibility_km: data.current_observation.visibility_km,
             UV: data.current_observation.UV
-          }
+          };
         }else{
           return global.hikeNow.weather;
         }
-        console.log('GLOBAL VARIABLE hikeNow ',global.hikeNow)
       })
       .catch(err => {
         console.log(err)
@@ -99,13 +102,10 @@ function getWeatherData(lat,long){
 
 
 
-
-
-
-
 app.get('/api/hikeNow/fake', (req,res) => {
   return res.json(global.hikeNow)
 })
+
 
 
 app.listen(PORT, () => {
