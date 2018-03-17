@@ -36,7 +36,7 @@ router.get('/',(req,res) => {
       })
     })
   }).then(newResult => {
-    return res.json({message: 'heeeere'})
+    return res.json({message: 'succesfully saved to database'})
   })
   .catch(err => {
     console.log(err)
