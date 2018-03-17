@@ -45,7 +45,9 @@ function getTrailHeads () {
   .fetchAll()
   .then(result => {
     result.map(element => {
-      trails.push(element.attributes.coordinates[0]);
+      if(element.attributes.trailname !== 'Ualakaa Trail'){
+        trails.push(element.attributes.coordinates[0]);
+      }
     })
     fireWeatherAPI(trails);
   })
@@ -86,16 +88,16 @@ function getWeatherData(lat,long){
             visibility_mi: data.current_observation.visibility_mi,
             visibility_km: data.current_observation.visibility_km,
             UV: data.current_observation.UV
-          }
+          };
         }else{
           return global.hikeNow.weather;
         }
-        console.log('GLOBAL VARIABLE hikeNow ',global.hikeNow)
       })
       .catch(err => {
         console.log(err)
       });
 };
+
 
 
 
