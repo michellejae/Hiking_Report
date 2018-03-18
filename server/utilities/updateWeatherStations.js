@@ -67,7 +67,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Nahuina Trail'}).update({weather: 'KHIHONOL111'})
+  knex('trails').where({trailname: 'Nahuina Trail'}).update({weather: 'KHIHONOL111', rain : 'MNLH1'})
   .then(result => {
     return result
   }),
@@ -87,7 +87,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Kanealole Trail'}).update({weather: 'KHIHONOL158'})
+  knex('trails').where({trailname: 'Kanealole Trail'}).update({weather: 'KHIHONOL158', rain: 'MNLH1'})
   .then(result => {
     return result
   }),
@@ -103,7 +103,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Lower Waimano Trail'}).update({weather: 'KHIAIEA8'})
+  knex('trails').where({trailname: 'Lower Waimano Trail'}).update({weather: 'KHIAIEA8', rain: 'PACH1'})
   .then(result => {
     return result
   }),
@@ -123,7 +123,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Manoa Falls Trail'}).update({weather: 'KHIHONOL111'})
+  knex('trails').where({trailname: 'Manoa Falls Trail'}).update({weather: 'KHIHONOL111', rain: 'MNLH1'})
   .then(result => {
     return result
   }),
@@ -147,16 +147,16 @@ function updateWeatherStations () {
     return result
   })
   ,
-  knex('trails').where({trailname: 'Wiliwilinui Access Road'}).update({weather: 'KHIHONOL14'})
+  knex('trails').where({trailname: 'Wiliwilinui Access Road'}).update({weather: 'KHIHONOL14', rain: 'NIUH1'})
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Wiliwilinui Trail'}).update({weather: 'KHIHONOL14'})
+  knex('trails').where({trailname: 'Wiliwilinui Trail'}).update({weather: 'KHIHONOL14', rain: 'NIUH1'})
   .then(result => {
     return result
   })
   ,
-  knex('trails').where({trailname: 'Poamoho Access Road'}).update({weather: 'KHIWAHIA5'})
+  knex('trails').where({trailname: 'Poamoho Access Road'}).update({weather: 'KHIWAHIA5', rain: 'OFRH1'})
   .then(result => {
     return result
   }),
@@ -164,7 +164,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Mokuleia-Kuaokala Firebreak Access Road'}).update({weather: 'KHIWAIAN3'})
+  knex('trails').where({trailname: 'Mokuleia-Kuaokala Firebreak Access Road'}).update({weather: 'KHIWAIAN3', rain: 'POAH1'})
   .then(result => {
     return result
   }),
@@ -200,7 +200,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Kolowalu Trail'}).update({weather: 'KHIHONOL140'})
+  knex('trails').where({trailname: 'Kolowalu Trail'}).update({weather: 'KHIHONOL140', rain: 'MNLH1'})
   .then(result => {
     return result
   }),
@@ -216,7 +216,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Ualakaa Trail'}).update({weather: 'KHIHONOL111'})
+  knex('trails').where({trailname: 'Ualakaa Trail'}).update({weather: 'KHIHONOL111', rain: 'MNLH1'})
   .then(result => {
     return result
   }),
@@ -224,7 +224,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Kuliouou Valley Trail'}).update({weather: 'KHIHONOL135'})
+  knex('trails').where({trailname: 'Kuliouou Valley Trail'}).update({weather: 'KHIHONOL135', rain: 'NIUH1'})
   .then(result => {
     return result
   }),
