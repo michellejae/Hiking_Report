@@ -31,8 +31,11 @@ angular.module(MODULE_NAME, [ngRoute])
         controller: 'HomeCtrl'
       })
       .when(`/trail`, {
-      templateUrl: `views/trail.html`,
-      controller: 'TrailCtrl'
+        templateUrl: `views/trail.html`,
+        controller: 'TrailCtrl'
+      })
+      .otherwise({
+        templateUrl: `views/notFound.html`
       })
     $locationProvider.html5Mode(true);
   }])
