@@ -6,7 +6,10 @@
   </header>
   
   <div class="map-container">
-    [ Map goes here ]
+    <div map-lazy-load="https://maps.googleapis.com/maps/api/geocode/json"
+    map-lazy-load-params="{{googleMap}}">
+    <ng-map center="41,-87" zoom="3">MAAAAPPPPP!!!!</ng-map>
+  </div>
   </div>
 
   <div class="hike-report-container">
