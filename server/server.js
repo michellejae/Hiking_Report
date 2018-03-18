@@ -5,9 +5,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const trails = require('./routes/trails');
 const { timedCalls } = require('./utilities/helper');
-const { getTrailHeads } = require('./utilities/helper');
-const { fireWeatherApi } = require('./utilities/helper');
-const { getWeatherData } = require('./utilities/helper');
 const { updateWeatherStations } = require('./utilities/updateWeatherStations');
 
 //CONSTANTS
@@ -27,7 +24,6 @@ app.get('/api/hikeNow/fake', (req,res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  timedCalls();
-   //getTrailHeads();
+  //timedCalls(); 
   // updateWeatherStations();
 });

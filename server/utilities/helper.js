@@ -1,18 +1,19 @@
 const express = require('express');
-const Trail = require('../db/models/Trails');
-
 const rp = require('request-promise');
-const weatherKey = require('../../config/config');
 const cron = require('node-schedule');
+
+const Trail = require('../db/models/Trails');
+const weatherKey = require('../../config/config');
+
+let WEATHERAPIKEY = weatherKey.weather.apiKey2;
+const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
+const rule = new cron.RecurrenceRule();
 
 module.exports = {
   timedCalls: timedCalls
-  // getTrailHeads: getTrailHeads,
-  // fireWeatherApi: fireWeatherAPI,
-  // getWeatherData: getWeatherData
 };
-global.hikeNow = {};
 
+global.hikeNow = {};
 global.hikeNow.weather = {
   station_id: '',
   weather: '',
@@ -28,38 +29,32 @@ global.hikeNow.weather = {
   observation_location_latitude: '',
   observation_location_longitude: '',
   display_location_full: ''
-}
-
-let WEATHERAPIKEY = weatherKey.weather.apiKey2;
-const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
-const rule = new cron.RecurrenceRule();
+};
 
 function timedCalls() {
-cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},  function getTrailHeads() {   
-    // let trails = [];
-    // new Trail()
-    // .fetchAll()
-    // .then(result => {
-    //   result.map(element => {
-    //     trails.push(element.attributes.coordinates[0]);
-    //   })      
-      fireWeatherAPI(/*trails*/);
-    // })
+  cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},  
+  function getTrailHeads() {   
+    let trails = [];
+    new Trail()
+    .fetchAll()
+    .then(result => {
+      result.map(element => {
+        trails.push(element.attributes.coordinates[0]);
+      })      
+     fireWeatherAPI(/*trails*/);
+    })
     }
   )
-}
+};
 
-
-   function fireWeatherAPI (/*arr*/) {
-    console.log('weather timer working')
-    // arr.map(element => {
-    //   let latitude = element[1];
-    //   let longitude = element[0];
-    //   getWeatherData(latitude,longitude);
-    // })
-  }
-
-
+function fireWeatherAPI (arr) {
+  console.log('weather timer working')
+  arr.map(element => {
+    let latitude = element[1];
+    let longitude = element[0];
+    getWeatherData(latitude,longitude);
+  });
+};
 
 function getWeatherData(lat,long){
     return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
@@ -98,8 +93,6 @@ function getWeatherData(lat,long){
         console.log(err)
       });
 };
-
-
 
 // app.get('/api/hikeNow/fake', (req,res) => {
 //   return res.json(global.hikeNow)
