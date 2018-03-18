@@ -49,8 +49,6 @@ app.get('/api/hikeNow/fake', (req,res) => {
   }).then(result =>{
     return res.json(resultObj)
   })
-  // end of connectedData
-  //return res.json(global.hikeNow)
 })
 
 app.listen(PORT, () => {
