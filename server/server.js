@@ -4,16 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const trails = require('./routes/trails');
-<<<<<<< HEAD
 const { timedCalls } = require('./utilities/helper');
-=======
-const Trail = require('./db/models/Trails');
-const rp = require('request-promise');
-const weatherKey = require('../config/config');
-const { getTrailHeads } = require('./utilities/helper');
-const { fireWeatherApi } = require('./utilities/helper');
-const { getWeatherData } = require('./utilities/helper');
->>>>>>> f6503810f611cf70672a1609f3dfaf611bb03977
 const { updateWeatherStations } = require('./utilities/updateWeatherStations');
 const { getRainData } = require ('./utilities/rainData.js')
 
@@ -33,15 +24,8 @@ app.get('/api/hikeNow/fake', (req,res) => {
 })
 
 app.listen(PORT, () => {
-<<<<<<< HEAD
   console.log(`SERVER IS LISTENING ON ${PORT}`);
   //timedCalls(); 
   // updateWeatherStations();
-=======
-  console.log(`SERVER IS LISTENING ON ${PORT}`);  
-  // getTrailHeads();
-  // updateWeatherStations();
   // getRainData();
-
->>>>>>> f6503810f611cf70672a1609f3dfaf611bb03977
 });
