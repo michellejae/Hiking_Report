@@ -10,7 +10,8 @@ const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/c
 const rule = new cron.RecurrenceRule();
 
 module.exports = {
-  timedCalls: timedCalls
+  getTrailHeads
+  //timedCalls: timedCalls
 };
 
 global.hikeNow = {};
@@ -31,8 +32,8 @@ global.hikeNow.weather = {
   display_location_full: ''
 };
 
-function timedCalls() {
-  cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
+//function timedCalls() {
+ // cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
   function getTrailHeads() {   
     let trails = [];
     new Trail()
@@ -43,12 +44,10 @@ function timedCalls() {
       })      
      fireWeatherAPI(trails);
     })
-    console.log('still working')
-  })
-};
+   }
+// };
 
 function fireWeatherAPI (arr) {
-  console.log('weather timer working')
   arr.map(element => {
     let latitude = element[1];
     let longitude = element[0];
@@ -62,8 +61,8 @@ function getWeatherData(lat,long){
     return JSON.parse(json);
   })
   .then(data => {
-    if(data.current_observation.station_id){
-      global.hikeNow[data.current_observation.station_id] = {
+    if (data.current_observation && data.current_observation.station_id){
+      global.hikeNow.weather[data.current_observation.station_id] = {
         city: data.current_observation.display_location.city,
         state: data.current_observation.display_location.city,
         longitude: data.current_observation.display_location.longitude,
