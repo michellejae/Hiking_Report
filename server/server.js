@@ -32,6 +32,6 @@ app.get('/api/hikeNow/fake', (req,res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);  
-   getTrailHeads();
+   //getTrailHeads();
    updateWeatherStations();
 });
