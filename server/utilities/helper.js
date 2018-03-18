@@ -6,15 +6,11 @@ const weatherKey = require('../../config/config');
 const cron = require('node-schedule');
 
 module.exports = {
-  getTrailHeads: getTrailHeads,
-  fireWeatherApi: fireWeatherAPI,
-  getWeatherData: getWeatherData
+  timedCalls: timedCalls
+  // getTrailHeads: getTrailHeads,
+  // fireWeatherApi: fireWeatherAPI,
+  // getWeatherData: getWeatherData
 };
-
-let WEATHERAPIKEY = weatherKey.weather.apiKey2;
-const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
-const rule = new cron.RecurrenceRule();
-
 global.hikeNow = {};
 
 global.hikeNow.weather = {
@@ -34,27 +30,36 @@ global.hikeNow.weather = {
   display_location_full: ''
 }
 
-rule.second = 30;
+let WEATHERAPIKEY = weatherKey.weather.apiKey2;
+const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
+const rule = new cron.RecurrenceRule();
 
-function getTrailHeads() {
-  let trails = [];
-  new Trail()
-  .fetchAll()
-  .then(result => {
-    result.map(element => {
-      trails.push(element.attributes.coordinates[0]);
-    })
-    fireWeatherAPI(trails);
-  })
+function timedCalls() {
+cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},  function getTrailHeads() {   
+    // let trails = [];
+    // new Trail()
+    // .fetchAll()
+    // .then(result => {
+    //   result.map(element => {
+    //     trails.push(element.attributes.coordinates[0]);
+    //   })      
+      fireWeatherAPI(/*trails*/);
+    // })
+    }
+  )
 }
 
-function fireWeatherAPI (arr) {
-  arr.map(element => {
-    let latitude = element[1];
-    let longitude = element[0];
-    getWeatherData(latitude,longitude);
-  })
-}
+
+   function fireWeatherAPI (/*arr*/) {
+    console.log('weather timer working')
+    // arr.map(element => {
+    //   let latitude = element[1];
+    //   let longitude = element[0];
+    //   getWeatherData(latitude,longitude);
+    // })
+  }
+
+
 
 function getWeatherData(lat,long){
     return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
@@ -87,7 +92,7 @@ function getWeatherData(lat,long){
         }else{
           return global.hikeNow.weather;
         }
-        console.log('GLOBAL VARIABLE hikeNow ',global.hikeNow)
+        //console.log('GLOBAL VARIABLE hikeNow ',global.hikeNow)
       })
       .catch(err => {
         console.log(err)
