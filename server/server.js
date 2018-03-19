@@ -8,7 +8,7 @@ const { timedCalls } = require('./utilities/helper');
 const { updateWeatherStations } = require('./utilities/updateWeatherStations');
 const { getRainData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
-
+const fakeData = require('./utilities/fakeData')
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -27,14 +27,17 @@ let resultObj = {
   weatherConditions: null
 }
 
-app.get('/api/hikeNow/fake', (req,res) => {
+app.get('/api/hikeNow/fake', (req, res) =>{
+  return res.json(fakeData)
+})
+
+app.get('/api/hikeNow', (req,res) => {
   return new Trail()
   .fetchAll()
   .then(allTrails => {
     allTrails = allTrails.toJSON()
     return allTrails
   }).then(connectData => {
-    console.log(connectData[0])
     connectData.map(element => {
       if(global.hikeNow.weather[element.weather]){
        resultObj[element.trailname] = {
