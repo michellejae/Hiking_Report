@@ -20,3 +20,22 @@ footer {
   text-align: center;
   font-size: 0.8em;
 }
+
+
+.map-container {
+  height: 20rem;
+  width: 23rem;
+}
+
+.mappy {
+  border: 1px solid red;
+  height: 20rem;
+  width: 23rem;
+}
+
+
+.map-lazy-load{
+  border: 1px solid red;
+  height: 20rem;
+  width: 23rem;
+}

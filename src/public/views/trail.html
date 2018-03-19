@@ -5,12 +5,12 @@
     <div class="hike-length">[ HIKE LENGTH HERE ] </div>
   </header>
   
-  <div class="map-container">
-    <div map-lazy-load="https://maps.googleapis.com/maps/api/geocode/json"
+  
+    <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
     map-lazy-load-params="{{googleMap}}">
-    <ng-map center="41,-87" zoom="3">MAAAAPPPPP!!!!</ng-map>
+    <ng-map center="41,-87" zoom="3"></ng-map>
   </div>
-  </div>
+  
 
   <div class="hike-report-container">
 
@@ -39,7 +39,7 @@
           <div class="mud-icon"></div>
           [ Rain/Wetness/Mud condition goes here ]
         </div>
-      </div>
+      </div>  
 
       <div class="hike-temp-container">
         <div class="temp-data">
