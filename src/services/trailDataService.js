@@ -2,10 +2,14 @@ const trailService = ['$http', function ($http) {
 
   this.getTrailShit = function () {
 
-    $http.get(`/api/hikeNow/fake`)
-    .then(data => {
-      console.log(data.data)
-    })
+    return $http.get(`/api/hikeNow/fake`)
+      .then(data => {
+        console.log('oooooooooooooo',data.data)
+        return data.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }]
 
