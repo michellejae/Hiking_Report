@@ -43,12 +43,10 @@ function timedCalls() {
       })      
      fireWeatherAPI(trails);
     })
-    console.log('still working')
-  })
+   })
 };
 
 function fireWeatherAPI (arr) {
-  console.log('weather timer working')
   arr.map(element => {
     let latitude = element[1];
     let longitude = element[0];
@@ -62,8 +60,8 @@ function getWeatherData(lat,long){
     return JSON.parse(json);
   })
   .then(data => {
-    if(data.current_observation.station_id){
-      global.hikeNow[data.current_observation.station_id] = {
+    if (data.current_observation && data.current_observation.station_id){
+      global.hikeNow.weather[data.current_observation.station_id] = {
         city: data.current_observation.display_location.city,
         state: data.current_observation.display_location.city,
         longitude: data.current_observation.display_location.longitude,
@@ -87,13 +85,8 @@ function getWeatherData(lat,long){
     }else{
       return global.hikeNow.weather;
     }
-    //console.log('GLOBAL VARIABLE hikeNow ',global.hikeNow)
   })
   .catch(err => {
     console.log(err)
   });
 };
-
-// app.get('/api/hikeNow/fake', (req,res) => {
-//   return res.json(global.hikeNow)
-// })
