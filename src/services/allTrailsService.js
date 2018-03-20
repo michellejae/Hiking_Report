@@ -20,7 +20,6 @@ const allTrailService = ['$http', function ($http) {
           allTrails.push(trail);
         }
       }
-      console.log(allTrails)
       this.setTrailStatus();
       return allTrails;
     })
