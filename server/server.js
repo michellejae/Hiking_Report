@@ -24,25 +24,38 @@ app.use(express.static('public'));
 let resultObj = {
   length: '',
   elev: '',
+  standard: '',
+  climate: '',
+  features: '',
+  amenities: '',
+  hazard: '',
+  coordinates: null,
   weatherConditions: null
 }
 
-app.get('/api/hikeNow/fake', (req, res) =>{
+app.get('/api/hikeNow/', (req, res) =>{
   return res.json(fakeData)
 })
 
-app.get('/api/hikeNow', (req,res) => {
+app.get('/api/hikeNow/fake', (req,res) => {
   return new Trail()
   .fetchAll()
   .then(allTrails => {
     allTrails = allTrails.toJSON()
     return allTrails
   }).then(connectData => {
+    console.log(connectData[0])
     connectData.map(element => {
       if(global.hikeNow.weather[element.weather]){
        resultObj[element.trailname] = {
          length: element.length_m,
          elev: element.elev_range,
+         standard: element.standard,
+         climate: element.climat,
+         features: element.feature,
+         amenities: element.amenitie,
+         hazard: element.hazard,
+         coordinates: element.coordinates,
          weatherConditions: global.hikeNow.weather[element.weather]
        }
       }

@@ -44,7 +44,7 @@ function timedCalls() {
      fireWeatherAPI(trails);
     })
    })
-};
+  };
 
 function fireWeatherAPI (arr) {
   arr.map(element => {
