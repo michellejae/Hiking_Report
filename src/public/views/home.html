@@ -2,10 +2,11 @@
 
 <ul>
   <li ng-repeat="trail in trails">
-    <h2>trail: {{trail.trailname}}</h2>
+    <h2><a ng-href="/trail/{{ trail.trailname }}">trail: {{trail.trailname}}</a></h2>
     <h3>length: {{trail.weather.length}} m</h3>
     <h3>elevation: {{trail.weather.elev}} ft</h3>
     <h3>temperature: {{trail.weather.weatherConditions.temp_f}} f</h3>
     <h3>wind mph: {{trail.weather.weatherConditions.wind_mph}} mph</h3>
+    <h3>condition: {{trail.weatherStatus}}</h3>
   </li>
 </ul>

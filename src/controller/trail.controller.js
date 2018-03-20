@@ -1,10 +1,17 @@
 const MAPKEY = require('../../config/config');
-const TrailCtrl = [`$scope`, `trailService`,`NgMap`,
-function ($scope, $http, trailService, NgMap) {
+const TrailCtrl = [`$scope`,`$routeParams`, `trailService`, `NgMap`, 
+function ($scope, $routeParams, trailService, NgMap ) {
 
-  $scope.trail = 'TRAIL TAILS'
   
-  // trailService.getTrailShit();
+  let nameParams = $routeParams.name
+  console.log(nameParams)
+  
+  trailService.getSingleTrail(nameParams)
+  .then(updatedTrail => {
+    $scope.trail = updatedTrail
+    console.log($scope.trail)
+  })
+  
   $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${MAPKEY.map.key}&callback=initMap`;
 }]
 
