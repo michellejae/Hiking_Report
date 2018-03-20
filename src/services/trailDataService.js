@@ -1,14 +1,12 @@
 const trailService = ['$http', function ($http) {
 
-  this.getTrailShit = function () {
-    return $http.get(`/api/hikeNow/`)
-      .then(data => {
-        return data.data
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+this.getSingleTrail = function (name) {
+  return $http.get(`/api/hikeNow/trail/${name}`)
+  .then(singleTrail => {
+    console.log(singleTrail.data)
+  })
+}
+
 }]
 
 export default trailService

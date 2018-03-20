@@ -10,8 +10,7 @@ const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/c
 const rule = new cron.RecurrenceRule();
 
 module.exports = {
-  getTrailHeads,
-  //timedCalls: timedCalls
+  timedCalls: timedCalls
 };
 
 global.hikeNow = {};
@@ -32,8 +31,8 @@ global.hikeNow.weather = {
   display_location_full: ''
 };
 
-//function timedCalls() {
-  //cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
+function timedCalls() {
+  cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
   function getTrailHeads() {   
     let trails = [];
     new Trail()
@@ -44,8 +43,8 @@ global.hikeNow.weather = {
       })      
      fireWeatherAPI(trails);
     })
-   }
-//};
+   })
+};
 
 function fireWeatherAPI (arr) {
   arr.map(element => {
