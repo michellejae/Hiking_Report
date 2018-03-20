@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({extended: false }));
 
 app.use('/trails', trails);
 app.use(express.static('pubic'));
-app.use(express.static('public'));
 
 let allTrailsObj = {
   length: '',
