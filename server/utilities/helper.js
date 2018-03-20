@@ -83,5 +83,7 @@ function getWeatherData(lat,long){
 };
 
 function setStatus(obj) {
-  
+  for (var key in obj) {
+    console.log(key.weatherConditions)
+  }
 }
