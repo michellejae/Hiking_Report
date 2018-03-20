@@ -13,6 +13,12 @@ const allTrailService = ['$http', function ($http) {
         if(result[i]){
           let trail = {
             'trailname': i,
+            'amenities': result[i].amenities,
+            'climate': result[i].climate,
+            'coordinates': result[i].coordinates,
+            'features': result[i].features,
+            'hazards': result[i].hazard,
+            'standard': result[i].standard,
             'elevation': result[i].elev,
             'length': result[i].length,
             'weather': result[i].weatherConditions
