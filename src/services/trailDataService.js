@@ -7,6 +7,7 @@ this.getSingleTrail = function (name) {
   .then(singleTrail => {
     finalTrail.name = name,
     finalTrail.details = singleTrail.data
+    finalTrail.details.coordinates = finalTrail.details.coordinates[0]
     return singleTrail.data.weatherConditions
   }).then(result =>{
     this.setStatus(result)
