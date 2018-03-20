@@ -80,3 +80,7 @@ function getWeatherData(lat,long){
     console.log(err)
   });
 };
+
+function setStatus(obj) {
+  
+}
