@@ -32,7 +32,7 @@ const allTrailService = ['$http', function ($http) {
     allTrails.map(element => {
       let windSpeed = element.weather.wind_mph;
       if(windSpeed < 25) {
-        element.status = 'SAFE';
+        element.status = 'GOOD';
       }
       if(windSpeed >= 25 && windSpeed <= 46) {
         element.status = 'CAUTION';
@@ -44,13 +44,6 @@ const allTrailService = ['$http', function ($http) {
     })
   }
 
-
-
-
-
-
-
-
-}]
+}];
 
 export default allTrailService;
