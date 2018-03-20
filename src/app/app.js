@@ -1,5 +1,7 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
+import NgMap from 'ngmap';
+
 import TrailCtrl from '../controller/trail.controller';
 import trailService from '../services/trailDataService';
 import HomeCtrl from '../controller/home.controller'
@@ -17,7 +19,7 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [ngRoute])
+angular.module(MODULE_NAME, [ngRoute, NgMap])
   .controller('AppCtrl', AppCtrl)
   .controller('HomeCtrl', HomeCtrl)
   .controller('TrailCtrl', TrailCtrl)
@@ -30,7 +32,7 @@ angular.module(MODULE_NAME, [ngRoute])
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
       })
-      .when(`/trail`, {
+      .when(`/trail/:name`, {
         templateUrl: `views/trail.html`,
         controller: 'TrailCtrl'
       })

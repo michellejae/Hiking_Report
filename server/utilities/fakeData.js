@@ -1,6 +1,5 @@
 
 module.exports = {
-    "length": "",
     "elev": "",
     "standard": "",
     "climate": "",
