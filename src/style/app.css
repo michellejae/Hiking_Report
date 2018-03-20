@@ -29,7 +29,6 @@ ul {
   margin: 50px;
   display: inline-block;
   position: relative;
-  float: right;
   padding: 0;
   position: relative; }
 
@@ -66,8 +65,6 @@ input[type="submit"] {
   width: 63px;
   display: inline-block;
   color: red;
-  float: right;
-  background: url("searchicon.png");
   text-indent: -1000px;
   border: none;
   position: absolute;
