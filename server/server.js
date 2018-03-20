@@ -9,6 +9,7 @@ const { updateWeatherStations } = require('./utilities/updateWeatherStations');
 const { getRainData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
 const fakeData = require('./utilities/fakeData')
+const fakeSingleTrail = require('./utilities/fakeSingleTrail')
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -27,12 +28,26 @@ let allTrailsObj = {
   weatherConditions: null,
 }
 
-let singleTrail = {
-  
+let singleTrailObj = {
+  length: '',
+  elev: '',
+  standard: '',
+  climate: '',
+  features: '',
+  amenities: '',
+  hazard: '',
+  coordinates: null,
+  weatherConditions: null
 }
+
 
 app.get('/api/hikeNow/fake', (req, res) =>{
   return res.json(fakeData)
+})
+
+app.get('/api/hikeNow/trail/fake/:name', (req, res) => {
+  let name = req.params.name
+  return res.json(fakeSingleTrail[name])
 })
 
 app.get('/api/hikeNow/trail/:name', (req, res) => {
@@ -41,9 +56,23 @@ app.get('/api/hikeNow/trail/:name', (req, res) => {
   .fetch({trailname: name})
   .then(singleTrail => {
     singleTrail = singleTrail.toJSON()
-    console.log(singleTrail)
+    return singleTrail
+  }).then(result => {
+    singleTrailObj.length = singleTrail.length_m,
+    singleTrailObj.elev = singleTrail.evel_range,
+    singleTrailObj.standard = singleTrail.standard,
+    singleTrailObj.climate = singleTrail.climat,
+    singleTrailObj.features = singleTrail.feature,
+    singleTrailObj.amenities = singleTrail.amenitie,
+    singleTrailObj.coordinates = singleTrail.coordinates[0]
+    return singleTrail
+  }).then(connectWeather => {
+    if(global.hikeNow.weather[name]) {
+      singleTrailObj.weatherConditions = global.hikeNow.weather[name]
+    }
+    return res.json(singleTrailObj)
   })
-  
+
 })
 
 app.get('/api/hikeNow/', (req,res) => {
