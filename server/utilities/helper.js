@@ -17,18 +17,16 @@ global.hikeNow = {};
 global.hikeNow.weather = {
   station_id: '',
   weather: '',
-  temperature_string: '',
+  temp_f: '',
+  temp_c: '',
   relative_humidity: '',
+  wind_str: '',
   wind_dir: '',
   wind_mph: '',
   wind_gust_mph: '',
-  feelslike_string: '',
-  visibility_mi: '',
+  wind_gust_kph: '',
   precip_1hr_string: '',
-  precip_today_in: '',
-  observation_location_latitude: '',
-  observation_location_longitude: '',
-  display_location_full: ''
+  icon_url: ''
 };
 
 function timedCalls() {
@@ -62,25 +60,17 @@ function getWeatherData(lat,long){
   .then(data => {
     if (data.current_observation && data.current_observation.station_id){
       global.hikeNow.weather[data.current_observation.station_id] = {
-        city: data.current_observation.display_location.city,
-        state: data.current_observation.display_location.city,
-        longitude: data.current_observation.display_location.longitude,
-        latitude: data.current_observation.display_location.latitude,
         observation_time: data.current_observation.observation_time,
         weather: data.current_observation.weather,
         temp_f: data.current_observation.temp_f,
         temp_c: data.current_observation.temp_c,
         relative_humidity: data.current_observation.relative_humidity,
         wind_dir: data.current_observation.wind_dir,
-        wind_degrees: data.current_observation.wind_degrees,
         wind_mph: data.current_observation.wind_mph,
         wind_gust_mph: data.current_observation.wind_gust_mph,
         wind_gust_kph: data.current_observation.wind_gust_kph,
         feelslike_f: data.current_observation.feelslike_f,
-        feelslike_c: data.current_observation.feelslike_c,
-        visibility_mi: data.current_observation.visibility_mi,
-        visibility_km: data.current_observation.visibility_km,
-        UV: data.current_observation.UV
+        feelslike_c: data.current_observation.feelslike_c
       }
     }else{
       return global.hikeNow.weather;
