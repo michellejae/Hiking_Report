@@ -1,9 +1,11 @@
 <h1> Home Home Home. </h1>
 
-
 <ul>
   <li ng-repeat="trail in trails">
-
-    <a ng-href="/trail/{{trail}}">{{trail}}</a>
+    <h2>trail: {{trail.trailname}}</h2>
+    <h3>length: {{trail.weather.length}} m</h3>
+    <h3>elevation: {{trail.weather.elev}} ft</h3>
+    <h3>temperature: {{trail.weather.weatherConditions.temp_f}} f</h3>
+    <h3>wind mph: {{trail.weather.weatherConditions.wind_mph}} mph</h3>
   </li>
 </ul>

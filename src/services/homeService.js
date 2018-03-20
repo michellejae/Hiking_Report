@@ -1,26 +1,29 @@
 const homeService = [`$http`, function ($http) {
-  const trailNames = []
+  const trailsArr = [];
 
+  this.getTrails = function () {
+    return trailsArr;
+  }
 
-  this.getTrailShit = function () {
-    $http.get(`/api/hikeNow/fake`)
+  this.fetchTrails = function () {
+    return $http.get('/api/hikeNow/fake')
     .then(data => {
-      let test = data.data
-      for (var key in test) {
-        if(key !== 'length' && key !== 'weatherConditions' && key !== 'elev'){
-          trailNames.push(key)
+      let result = data.data;
+      for(var i in result){
+        let trail = {};
+        trail['trailname'] = i
+        trail['weather'] = result[i]
+        if(result[i]){
+          trailsArr.push(trail)
         }
       }
+      return trailsArr;
+    })
+    .catch(err => {
+      console.log(err)
     })
   }
 
-
-this.getTrailNames = function(){
-  return trailNames
-}
 }]
 
-
-
-
-export default homeService
+export default homeService;

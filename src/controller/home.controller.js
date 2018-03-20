@@ -1,8 +1,6 @@
 const HomeCtrl = [`$scope`, `homeService`, function ($scope, homeService){
- 
-homeService.getTrailShit()
-
-$scope.trails = homeService.getTrailNames()
+  homeService.fetchTrails();
+  $scope.trails = homeService.getTrails();
 }]
 
-export default HomeCtrl
+export default HomeCtrl;

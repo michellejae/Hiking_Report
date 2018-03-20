@@ -1329,5 +1329,14 @@ module.exports = {
       }
   }
 }
+<<<<<<< HEAD
 
 
+||||||| merged common ancestors
+
+
+module.exports = {
+  fakeData
+}
+=======
+>>>>>>> development
