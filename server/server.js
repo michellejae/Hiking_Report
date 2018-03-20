@@ -47,6 +47,7 @@ app.get('/api/hikeNow/fake', (req, res) =>{
 
 app.get('/api/hikeNow/trail/fake/:name', (req, res) => {
   let name = req.params.name
+  console.log(name)
   return res.json(fakeSingleTrail[name])
 })
 

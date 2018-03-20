@@ -5,9 +5,12 @@
     <div class="hike-length">{{trail.details.length}} </div>
   </header>
   
-  <div class="map-container">
-    [ Map goes here ]
+  
+    <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
+    map-lazy-load-params="{{googleMapsUrl}}">
+    <ng-map center="21.5,-158" zoom="9"></ng-map>
   </div>
+  
 
   <div class="hike-report-container">
 
@@ -36,7 +39,7 @@
           <div class="mud-icon"></div>
           [ Rain/Wetness/Mud condition goes here ]
         </div>
-      </div>
+      </div>  
 
       <div class="hike-temp-container">
         <div class="temp-data">
