@@ -1,8 +1,10 @@
 
-const TrailCtrl = [`$scope`, `trailService`, function ($scope, trailService) {
+const TrailCtrl = [`$scope`, `trailService`, `$routeParams`,  function ($scope, trailService, $routeParams) {
   $scope.trail = 'TRAIL TAILS'
+
+  let params = $routeParams
+  console.log(params)
   
-  trailService.getTrailShit()
 }]
 
 export default TrailCtrl

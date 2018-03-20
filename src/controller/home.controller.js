@@ -1,8 +1,8 @@
 const HomeCtrl = [`$scope`, `homeService`, function ($scope, homeService){
  
-// will call function in home service that will 
-// call front end
+homeService.getTrailShit()
 
+$scope.trails = homeService.getTrailNames()
 }]
 
 export default HomeCtrl
