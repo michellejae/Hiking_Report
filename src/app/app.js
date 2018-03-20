@@ -18,6 +18,7 @@ class AppCtrl {
 const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, [ngRoute])
+
   .controller('AppCtrl', AppCtrl)
   .controller('HomeCtrl', HomeCtrl)
   .controller('TrailCtrl', TrailCtrl)
