@@ -28,8 +28,9 @@
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "knex": "^0.14.4",
-    "nodemon": "^1.17.2",
+    "ngmap": "^1.18.4",
     "node-schedule": "^1.3.0",
+    "nodemon": "^1.17.2",
     "pg": "^7.4.1",
     "request": "^2.85.0",
     "request-promise": "^4.2.2"
