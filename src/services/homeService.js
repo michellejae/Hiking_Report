@@ -1,7 +1,5 @@
 const homeService = [`$http`, function ($http) {
   const trailsArr = [];
-  const trailsGoodCond = [];
-  const trailsBadCond = [];
 
   this.getTrails = function () {
     return trailsArr;
