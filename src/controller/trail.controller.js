@@ -1,8 +1,6 @@
 
 const TrailCtrl = [`$scope`, `trailService`, function ($scope, trailService) {
-  $scope.trail = 'TRAIL TAILS'
-  
-  trailService.getTrailShit()
+  $scope.records = trailService.getTrailShit();
 }]
 
 export default TrailCtrl

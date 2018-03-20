@@ -1,5 +1,5 @@
 
-const fakeData = {
+module.exports = {
   "length": "",
   "elev": "",
   "weatherConditions": null,
@@ -1328,9 +1328,4 @@ const fakeData = {
           "UV": "2"
       }
   }
-}
-
-
-module.exports = {
-  fakeData
 }
