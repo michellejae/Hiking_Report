@@ -30,11 +30,16 @@ const homeService = [`$http`, function ($http) {
     trailsArr.map(element => {
       let windSpeed = element.weather.weatherConditions.wind_mph;
       let windGusts = element.weather.weatherConditions.wind_gust_mph;
-      if(windSpeed > 46 || windGusts > 46){
-        element.weatherStatus = 'danger';
-      }else{
-        element.weatherStatus = 'safe';
+      if(windSpeed > 46){
+        element.weatherStatus = 'DANGER';
       }
+      if(windSpeed > 25 && windSpeed <= 46){
+        element.weatherStatus = 'CAUTION';
+      }
+      if(windSpeed <= 25){
+        element.weatherStatus = 'GOOD'
+      }
+      return true;
     })
   }
 
