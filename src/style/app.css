@@ -1,14 +1,17 @@
 /* styles in src/style directory are applied to the whole page */
 body {
-  
+  width: 100%;
 }
 
 main {
   padding: 1em;
-  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   margin-top: 50px;
-  
+}
+.main-container{
+  width: 100vw;
+  display: flex;
+  flex-direction: column; 
 }
 
 footer {
@@ -16,10 +19,15 @@ footer {
   font-size: 0.8em;
 }
 
-
 .mappy {
-  height: 40%;
-  width: 70%;
+  display: flex;
+  flex-direction: column;
 }
 
+ng-map {
+  height: 40%;
+  padding: 0;
+  width: 90%;
+  
+}
 
