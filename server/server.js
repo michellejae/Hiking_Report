@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({extended: false }));
 
 app.use('/trails', trails);
 app.use(express.static('pubic'));
-app.use(express.static('public'));
 
 let allTrailsObj = {
   length: '',
@@ -47,7 +46,6 @@ app.get('/api/hikeNow/fake', (req, res) =>{
 
 app.get('/api/hikeNow/trail/fake/:name', (req, res) => {
   let name = req.params.name
-  console.log(name)
   return res.json(fakeSingleTrail[name])
 })
 

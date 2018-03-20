@@ -1,14 +1,14 @@
 <div class="main-container">
   <header>
     <div class="menu-icon">Menu lines icon goes here</div>
-    <div class="hike-name-container"> {{trail.name}} </div>
-    <div class="hike-length">{{trail.details.length}} </div>
+    <div class="hike-name-container">trail: {{trail.name}} </div>
+    <div class="hike-length">length: {{trail.details.length}} </div>
   </header>
   
   
     <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
     map-lazy-load-params="{{googleMapsUrl}}">
-    <ng-map center="21.5,-158" zoom="9"></ng-map>
+    <ng-map center="{{trail.details.coordinates[1]}},{{trail.details.coordinates[0]}}" zoom="17"></ng-map>
   </div>
   
 
@@ -43,7 +43,7 @@
 
       <div class="hike-temp-container">
         <div class="temp-data">
-          [ Temperature goes here ]
+          {{trail.details.weatherConditions.temp_f}} f
         </div>
       </div>
 
@@ -71,10 +71,10 @@
   
   <div class="hike-details-container">
     <div class="hike-detail-length">{{trail.deatils.length}}</div>
-    <div class="hike-detail-elev"> {{trail.details.elev}} </div>
-    <div class="hike-detail-features">{{trail.details.features}}</div>
-    <div class="hike-detail-amenities">{{trail.details.amenities}}</div>
-    <div class="hike-detail-hazard">{{trail.details.hazard}}</div>
+    <div class="hike-detail-elev">elevation: {{trail.details.elev}} ft</div>
+    <div class="hike-detail-features">features: {{trail.details.features}}</div>
+    <div class="hike-detail-amenities">amenities: {{trail.details.amenities}}</div>
+    <div class="hike-detail-hazard">hazards: {{trail.details.hazard}}</div>
     
 
   </div> <!-- closing hike details container -->
