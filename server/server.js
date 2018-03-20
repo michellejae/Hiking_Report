@@ -21,11 +21,14 @@ app.use('/trails', trails);
 app.use(express.static('pubic'));
 app.use(express.static('public'));
 
-let resultObj = {
+let allTrailsObj = {
   length: '',
   elev: '',
   weatherConditions: null,
+}
 
+let singleTrail = {
+  
 }
 
 app.get('/api/hikeNow/fake', (req, res) =>{
@@ -34,7 +37,13 @@ app.get('/api/hikeNow/fake', (req, res) =>{
 
 app.get('/api/hikeNow/trail/:name', (req, res) => {
   let name = req.params.name
-  return res.json(fakeData[name])
+  return new Trail()
+  .fetch({trailname: name})
+  .then(singleTrail => {
+    singleTrail = singleTrail.toJSON()
+    console.log(singleTrail)
+  })
+  
 })
 
 app.get('/api/hikeNow/', (req,res) => {
@@ -44,10 +53,9 @@ app.get('/api/hikeNow/', (req,res) => {
     allTrails = allTrails.toJSON()
     return allTrails
   }).then(connectData => {
-    console.log(connectData[0])
     connectData.map(element => {
       if(global.hikeNow.weather[element.weather]){
-       resultObj[element.trailname] = {
+       allTrailsObj[element.trailname] = {
          length: element.length_m,
          elev: element.elev_range,
          weatherConditions: global.hikeNow.weather[element.weather]
@@ -55,7 +63,7 @@ app.get('/api/hikeNow/', (req,res) => {
       }
     }) 
   }).then(result =>{
-    return res.json(resultObj)
+    return res.json(allTrailsObj)
   })
 })
 
