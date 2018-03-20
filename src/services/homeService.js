@@ -1,14 +1,23 @@
 const homeService = [`$http`, function ($http) {
-// route to front end to get all trails. 
-/// or just top five trails
   const trailsArr = [];
 
   this.getTrails = function () {
+    return trailsArr;
+  }
+
+  this.fetchTrails = function () {
     return $http.get('/api/hikeNow/fake')
     .then(data => {
-      let result = data.data
-      console.log('faaaaaaaake',result)
-      return result
+      let result = data.data;
+      for(var i in result){
+        let trail = {};
+        trail['trailname'] = i
+        trail['weather'] = result[i]
+        if(result[i]){
+          trailsArr.push(trail)
+        }
+      }
+      return trailsArr;
     })
     .catch(err => {
       console.log(err)
@@ -16,3 +25,5 @@ const homeService = [`$http`, function ($http) {
   }
 
 }]
+
+export default homeService;
