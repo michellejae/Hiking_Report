@@ -74,7 +74,7 @@ app.get('/api/hikeNow/trail/:name', (req, res) => {
 
 })
 
-app.get('/api/hikeNow/', (req,res) => {
+app.get('/api/hikeNow/allTrails', (req,res) => {
   return new Trail()
   .fetchAll()
   .then(allTrails => {
