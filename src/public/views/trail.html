@@ -1,8 +1,8 @@
 <div class="main-container">
   <header>
     <div class="menu-icon">Menu lines icon goes here</div>
-    <div class="hike-name-container">[ HIKE NAME ] </div>
-    <div class="hike-length">[ HIKE LENGTH HERE ] </div>
+    <div class="hike-name-container"> {{trail.name}} </div>
+    <div class="hike-length">{{trail.details.length}} </div>
   </header>
   
   <div class="map-container">
@@ -12,12 +12,12 @@
   <div class="hike-report-container">
 
     <div class="hike-status-container">
-      <div class="hike-status-data"> [ Color-coded Hike Status goes here ] </div>
+      <div class="hike-status-data"> {{trail.status}}</div>
     </div> <!-- closing hike status container -->
     
     <div class="hike-summary-container">
       <div class="hike-timestamp-container">
-        <div class="hike-timestamp-data">[ Timestamp goes here ]</div>
+        <div class="hike-timestamp-data">{{trail.details.weatherConditions.observation_time}}</div>
       </div> <!-- closing timestamp container -->
     </div> <!-- closing hiking summary container -->
 
@@ -26,11 +26,11 @@
       <div class="hike-trio-conditions-row">
         <div class="weather-condition">
           <div class="weather-icon"></div>
-          [ Weather condition goes here ]
+          {{trail.details.weatherConditions.weather}}
         </div>
         <div class="wind-condition">
           <div class="wind-icon"></div>
-          [ Wind condtion goes here ]
+          {{trail.details.weatherConditions.wind_mph}}
         </div>
         <div class="rain-and-mud-condition">
           <div class="mud-icon"></div>
@@ -67,18 +67,16 @@
   </div> <!-- closing hike report container -->
   
   <div class="hike-details-container">
-    <div class="hike-detail-length">[ Hike length here ]</div>
-    <div class="hike-detail-elev"> [ Hike Elevation here] </div>
-    <div class="hike-detail-features">[ Hike Features here ]</div>
-    <div class="hike-detail-amenities">[ Hike Amenities here ]</div>
-    <div class="hike-detail-hazard">[ Hike Hazards here ]</div>
+    <div class="hike-detail-length">{{trail.deatils.length}}</div>
+    <div class="hike-detail-elev"> {{trail.details.elev}} </div>
+    <div class="hike-detail-features">{{trail.details.features}}</div>
+    <div class="hike-detail-amenities">{{trail.details.amenities}}</div>
+    <div class="hike-detail-hazard">{{trail.details.hazard}}</div>
     
 
   </div> <!-- closing hike details container -->
 
   <footer>Footerstuff</footer>
 
-  
-  <h4>{{trail}}</h4>
   
 </div> <!-- closing main -->

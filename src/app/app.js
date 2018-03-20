@@ -30,7 +30,7 @@ angular.module(MODULE_NAME, [ngRoute])
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
       })
-      .when(`/trail`, {
+      .when(`/trail/:name`, {
         templateUrl: `views/trail.html`,
         controller: 'TrailCtrl'
       })
