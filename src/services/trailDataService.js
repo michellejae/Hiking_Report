@@ -3,7 +3,7 @@ const trailService = ['$http', function ($http) {
   let finalTrail = {}
 
 this.getSingleTrail = function (name) {
-  return $http.get(`/api/hikeNow/trail/${name}`)
+  return $http.get(`/api/hikeNow/trail/fake/${name}`)
   .then(singleTrail => {
     finalTrail.name = name,
     finalTrail.details = singleTrail.data

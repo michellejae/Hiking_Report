@@ -58,14 +58,14 @@ app.get('/api/hikeNow/trail/:name', (req, res) => {
     singleTrail = singleTrail.toJSON()
     return singleTrail
   }).then(result => {
-    singleTrailObj.length = singleTrail.length_m,
-    singleTrailObj.elev = singleTrail.evel_range,
-    singleTrailObj.standard = singleTrail.standard,
-    singleTrailObj.climate = singleTrail.climat,
-    singleTrailObj.features = singleTrail.feature,
-    singleTrailObj.amenities = singleTrail.amenitie,
-    singleTrailObj.coordinates = singleTrail.coordinates[0]
-    return singleTrail
+    singleTrailObj.length = result.length_m,
+    singleTrailObj.elev = result.evel_range,
+    singleTrailObj.standard = result.standard,
+    singleTrailObj.climate = result.climat,
+    singleTrailObj.features = result.feature,
+    singleTrailObj.amenities = result.amenitie,
+    singleTrailObj.coordinates = result.coordinates[0]
+    return result
   }).then(connectWeather => {
     if(global.hikeNow.weather[name]) {
       singleTrailObj.weatherConditions = global.hikeNow.weather[name]
