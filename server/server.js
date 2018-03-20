@@ -24,7 +24,8 @@ app.use(express.static('public'));
 let resultObj = {
   length: '',
   elev: '',
-  weatherConditions: null
+  weatherConditions: null,
+
 }
 
 app.get('/api/hikeNow/fake', (req, res) =>{
@@ -43,9 +44,9 @@ app.get('/api/hikeNow/', (req,res) => {
     allTrails = allTrails.toJSON()
     return allTrails
   }).then(connectData => {
+    console.log(connectData[0])
     connectData.map(element => {
       if(global.hikeNow.weather[element.weather]){
-        console.log('FUCKFJK')
        resultObj[element.trailname] = {
          length: element.length_m,
          elev: element.elev_range,

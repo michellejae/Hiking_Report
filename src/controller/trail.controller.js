@@ -4,6 +4,10 @@ const TrailCtrl = [`$scope`, `trailService`, `$routeParams`,  function ($scope, 
 
   let nameParams = $routeParams.name
   trailService.getSingleTrail(nameParams)
+  .then(updatedTrail => {
+    $scope.trail = updatedTrail
+    console.log($scope.trail)
+  })
   
 }]
 

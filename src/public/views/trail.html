@@ -1,8 +1,8 @@
 <div class="main-container">
   <header>
     <div class="menu-icon">Menu lines icon goes here</div>
-    <div class="hike-name-container">[ HIKE NAME ] </div>
-    <div class="hike-length">[ HIKE LENGTH HERE ] </div>
+    <div class="hike-name-container"> {{trail.name}} </div>
+    <div class="hike-length">{{trail.details.length}} </div>
   </header>
   
   <div class="map-container">
@@ -12,12 +12,12 @@
   <div class="hike-report-container">
 
     <div class="hike-status-container">
-      <div class="hike-status-data"> [ Color-coded Hike Status goes here ] </div>
+      <div class="hike-status-data"> {{trail.status}}</div>
     </div> <!-- closing hike status container -->
     
     <div class="hike-summary-container">
       <div class="hike-timestamp-container">
-        <div class="hike-timestamp-data">[ Timestamp goes here ]</div>
+        <div class="hike-timestamp-data">{{trail.details.weatherConditions.observation_time}}</div>
       </div> <!-- closing timestamp container -->
     </div> <!-- closing hiking summary container -->
 
