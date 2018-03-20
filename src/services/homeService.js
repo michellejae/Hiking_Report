@@ -1,5 +1,6 @@
 const homeService = [`$http`, function ($http) {
   const trailsArr = [];
+  const goodWindTrails = [];
 
   this.getTrails = function () {
     return trailsArr;
@@ -10,17 +11,30 @@ const homeService = [`$http`, function ($http) {
     .then(data => {
       let result = data.data;
       for(var i in result){
-        let trail = {};
-        trail['trailname'] = i
-        trail['weather'] = result[i]
+        let trail = {
+        'trailname': i,
+        'weather': result[i]
+        }
         if(result[i]){
           trailsArr.push(trail)
         }
       }
+      this.goodTrails()
       return trailsArr;
     })
     .catch(err => {
       console.log(err)
+    })
+  }
+
+  this.goodTrails = function () {
+    trailsArr.map(element => {
+      let wind = element.weather.weatherConditions.wind_mph;
+      if(wind > 46){
+        console.log('caution')
+      }else{
+        console.log('safe')
+      }
     })
   }
 
