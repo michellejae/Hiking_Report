@@ -13,7 +13,8 @@ let goodArray = [];
 module.exports = {
  // setStatus,
  // timedCalls,
-  getTrailHeads
+  getTrailHeads,
+  randomGoodTrail
 };
 
 global.hikeNow = {};
@@ -85,6 +86,10 @@ function getWeatherData(lat,long){
   });
 };
 
+function randomGoodTrail (arr) {
+  let randomNumber = Math.floor(Math.random() * arr.length)
+  return randomNumber
+}
 
 
 
