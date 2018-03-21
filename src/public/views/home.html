@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/node_modules/bulma-extensions/bulma-carousel/dist/bulma-carousel.min.js"></script>
+
 
 <div class="main-container">
   <!-- <header class="header-bar">
@@ -19,19 +19,6 @@
     <!-- <div class="header-filler-column"></div> -->
 
 
-      <!-- <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
-      </p>
-    </div>
-  </section> -->
-
-
-
   
   <!-- </header> --> 
 
@@ -41,7 +28,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a href="../" class="navbar-item">
-            <strong>hikeknow</strong>
+            <strong>hike<i class="fas fa-tree"></i>know</strong>
           </a>
           <span class="navbar-burger burger" data-target="navbarMenu">
             <span></span>
@@ -89,7 +76,83 @@
         </div>
       </div>
     </div>
+
+  <div class="columns is-centered">
+    <div class="column is-6">
+      <div class="card">
+        <header class="card-header">
+          <h1 class="card-header-title is-1 is-centered">Take a Hike!</h1>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </a>
+        </header>
+          <div class="card-table">
+            <div class="content">
+              <table class="table is-fullwidth is striped">
+                <tbody>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-success" href="#">Good!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-warning" href="#">Caution!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-danger" href="#">Danger!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-black" href="#">Hurricane!</a></td>
+                  </tr>
+                  <tr ng-repeat="trail in trails | filter : test">
+                    <a ng-href="/trail/{{ trail.trailname }}"></a>
+                    <td>{{trail.trailname}}</td>
+                    <td>{{trail.weather.length}} m</td>
+                    <td>{{trail.weatherStatus}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">View All</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- closing main -->
+<!-- 
+<div>
+  <input type="text" placeholder="search trail name" ng-model="test">
+</div>
+<ul>
+  <li ng-repeat="trail in trails | filter : test">
+    <h2><a ng-href="/trail/{{ trail.trailname }}">trail: {{trail.trailname}}</a></h2>
+    <h3>length: {{trail.weather.length}} m</h3>
+    <h3>elevation: {{trail.weather.elev}} ft</h3>
+    <h3>temperature: {{trail.weather.weatherConditions.temp_f}} f</h3>
+    <h3>wind mph: {{trail.weather.weatherConditions.wind_mph}} mph</h3>
+    <h3>condition: {{trail.weatherStatus}}</h3>
+  </li>
+</ul> -->
+
     
+
+
+
+
 
 
   <!-- <div class="slideshow-wrapper">
@@ -126,32 +189,3 @@
       </div>
     </div><!-- closing slideshow container -->
   <!-- </div>  --> 
-
-
-
-
-
-  <ul class="good-condition-trails">
-    <li ng-repeat="trails in trails">
-      <a href="/trails/good">{{ trail.name }}</a>
-      <!--change this later !-->
-      : {{ trail.length }}
-    </li>
-  </ul>
-
-</div>
-<!-- closing main -->
-<h1> Home Home Home. </h1>
-<div>
-  <input type="text" placeholder="search trail name" ng-model="test">
-</div>
-<ul>
-  <li ng-repeat="trail in trails | filter : test">
-    <h2><a ng-href="/trail/{{ trail.trailname }}">trail: {{trail.trailname}}</a></h2>
-    <h3>length: {{trail.weather.length}} m</h3>
-    <h3>elevation: {{trail.weather.elev}} ft</h3>
-    <h3>temperature: {{trail.weather.weatherConditions.temp_f}} f</h3>
-    <h3>wind mph: {{trail.weather.weatherConditions.wind_mph}} mph</h3>
-    <h3>condition: {{trail.weatherStatus}}</h3>
-  </li>
-</ul>

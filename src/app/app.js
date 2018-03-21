@@ -9,7 +9,7 @@ import trailService from '../services/trailDataService';
 import HomeCtrl from '../controller/home.controller'
 import homeService from '../services/homeService'
 
-
+import '../../node_modules/bulma/css/bulma.css'
 import '../style/app.css';
 
 class AppCtrl {
