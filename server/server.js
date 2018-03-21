@@ -10,7 +10,7 @@ const { getRainData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
 const fakeData = require('./utilities/fakeData')
 const fakeSingleTrail = require('./utilities/fakeSingleTrail')
-const {getTrailHeads} = require('./utilities/helper');
+const { getTrailHeads } = require('./utilities/helper');
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -74,38 +74,27 @@ app.get('/api/hikeNow/trail/:name', (req, res) => {
   })
 })
 
-app.get('/api/hikeNow/', (req, res) => {
+app.get('/api/hikeNow/all', (req, res) => {
   return new Trail()
   .fetchAll()
   .then(allTrails => {
     allTrails = allTrails.toJSON()
     return allTrails
-  }).then(connectData => {
-    connectData.map(element => {
-      if(global.hikeNow.weather[element.weather]){
-       allTrailsObj[element.trailname] = {
-         length: element.length_m,
-         elev: element.elev_range,
-         standard: element.standard,
-         climate: element.climat,
-         features: element.feature,
-         amenities: element.amenitie,
-         hazard: element.hazard,
-         coordinates: element.coordinates[0],
-         weatherConditions: global.hikeNow.weather[element.weather]
-       }
-      }
-      console.log(global.hikeNow.weather[element.weather])
-    }) 
-  }).then(result =>{
-    console.log(allTrailsObj)
-    return res.json(allTrailsObj)
+  }).then(trails => {
+   return trails.map(trail => {
+    const trailweather = global.hikeNow.weather[trail.weather]
+    trail.weather = trailweather
+    return trail
+    })
+  }).then(allTrails => {
+    console.log(allTrails)
+    return res.json(allTrails)
   })
 })
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  getTrailHeads()
+  // getTrailHeads()
   // timedCalls(); 
   // updateWeatherStations();
   // getRainData();

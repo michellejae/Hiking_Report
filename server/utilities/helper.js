@@ -33,15 +33,16 @@ global.hikeNow.weather = {
 // function timedCalls() {
   // cron.scheduleJob({ rule:' 0 0,41 6,9,12,15 * * *'},
   function getTrailHeads() {   
-    console.log('fiiiiiiiiiiire')
     let trails = [];
     new Trail()
     .fetchAll()
     .then(result => {
       result.map(element => {
-        trails.push(element.attributes.coordinates[0]);
-      })      
-     fireWeatherAPI(trails);
+        if(element.attributes.trailname !== 'Ualakaa Trail'){
+          trails.push(element.attributes.coordinates[0]);
+        }
+      })
+      fireWeatherAPI(trails);
     })
    }
   // )
@@ -58,6 +59,7 @@ function fireWeatherAPI (arr) {
 function getWeatherData(lat,long){
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
   .then(json => {
+    console.log('API GOT FEUGO D')
     return JSON.parse(json);
   })
   .then(data => {
@@ -83,7 +85,3 @@ function getWeatherData(lat,long){
     console.log(err)
   });
 };
-
-function setStatus(obj) {
-  
-}

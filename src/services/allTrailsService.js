@@ -1,5 +1,5 @@
 const allTrailService = ['$http', function ($http) {
-  const allTrails = [];
+  const tempAllTrails = [];
   const trailHeads = [];
 
   this.getAllTrails = function () {
@@ -7,40 +7,23 @@ const allTrailService = ['$http', function ($http) {
   }
 
   this.fetchAllTrails = function () {
-    return $http.get('/api/hikeNow')
-    .then(data => {
-      let result = data.data;
-      console.log(result)
-      for(let i in result){
-        if(result[i]){
-          console.log(i)
-          if(i !== 'Ualakaa Trail'){
-            trailHeads.push(result[i].coordinates)
-          }
-          let trail = {
-            'trailname': i,
-            'amenities': result[i].amenities,
-            'climate': result[i].climate,
-            'coordinates': result[i].coordinates,
-            'features': result[i].features,
-            'hazards': result[i].hazard,
-            'standard': result[i].standard,
-            'elevation': result[i].elev,
-            'length': result[i].length,
-            'weather': result[i].weatherConditions
-          }
-          allTrails.push(trail);
-        }
-      }
-      this.setTrailStatus();
-      return allTrails;
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    console.log('fyre')
+    return tempAllTrails;
+    // return $http.get('/api/hikeNow/all')
+    // .then(data => {
+    //   data.data.map(element => {
+    //     console.log(element)
+    //     tempAllTrails.push(element)
+    //   })
+    //   return tempAllTrails;
+    // })
+    // .catch(err => {
+    //   console.log(err)
+    // })
   }
 
-  this.setTrailStatus = function () {
+  this.setTrailStatus = function (allTrails) {
+    console.log(allTrails)
     allTrails.map(element => {
       let windSpeed = element.weather.wind_mph;
       if(windSpeed < 25) {
