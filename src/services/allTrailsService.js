@@ -36,7 +36,6 @@ const allTrailService = ['$http', function ($http) {
           element.status = 'DANGER';
         }
       }else{
-        console.log(element)
         element.status = 'UNKNOWN';
       }
     })
