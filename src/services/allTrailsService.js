@@ -1,39 +1,42 @@
 const allTrailService = ['$http', function ($http) {
   const trailHeads = [];
+  const allTrails = [];
 
   this.getAllTrails = function () {
     return allTrails;
   }
 
   this.fetchAllTrails = function () {
-    // return $http.get('/api/hikeNow/all')
-    // .then(data => {
-    //   data.data.map(element => {
-    //     console.log(element)
-    //     tempAllTrails.push(element)
-    //   })
-    //   return tempAllTrails;
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
+    return $http.get('/api/hikeNow/FUCK')
+    .then(data => {
+      data.data.map(element => {
+        trailHeads.push(element.coordinates);
+        allTrails.push(element);
+      })
+      this.setTrailStatus(allTrails);
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   this.setTrailStatus = function (allTrails) {
-    console.log(allTrails)
     allTrails.map(element => {
-      let windSpeed = element.weather.wind_mph;
-      if(windSpeed < 25) {
-        element.status = 'GOOD';
+      if(element.weather){
+        if(element.weather.wind_mph < 25) {
+          element.status = 'GOOD';
+        }
+        if(element.weather.wind_mph >= 25 && element.weather.wind_mph <= 46) {
+          element.status = 'CAUTION';
+        }
+        if(element.weather.wind_mph > 46) {
+          element.status = 'DANGER';
+        }
+      }else{
+        element.status = 'UNKNOWN';
       }
-      if(windSpeed >= 25 && windSpeed <= 46) {
-        element.status = 'CAUTION';
-      }
-      if(windSpeed > 46) {
-        element.status = 'DANGER';
-      }
-      return true;
     })
+    console.log(allTrails)
   }
 
   this.getTrailHeadCoordinates = function () {
