@@ -8,9 +8,17 @@ const homeService = [`$http`, function ($http) {
   this.fetchTrails = function () {
     return $http.get('/api/hikeNow/fake')
     .then(data => {
-      console.log(data.data)
-    })
-    .catch(err => {
+      return data.data
+    }).then(goodTrails => {
+      goodTrails.map(trail => {
+          let finalGoodTrail = {
+            name: trail.trailname,
+            length: trail.length_m,
+            status: 'GOOD'
+          }
+        trailsArr.push(finalGoodTrail)
+      })
+    }).catch(err => {
       console.log(err);
     })
   }
