@@ -14,7 +14,7 @@ const allTrailService = ['$http', function ($http) {
     return $http.get('/api/hikeNow/FUCK')
     .then(data => {
       data.data.map(element => {
-        trailHeads.push(element.coordinates);
+        trailHeads.push({id:element.id, trailname:element.trailname, coordinates:element.coordinates});
         allTrails.push(element);
       })
       this.setTrailStatus(allTrails);
@@ -40,7 +40,6 @@ const allTrailService = ['$http', function ($http) {
         element.status = 'UNKNOWN';
       }
     })
-    console.log(allTrails)
   }
 
   this.displayInfo = function (event,name) {
