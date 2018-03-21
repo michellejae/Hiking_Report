@@ -25,6 +25,9 @@ this.setStatus = function(trail) {
   if (trail.wind_mph > 46) {
     finalTrail.status = 'DANGER'
   }
+  if(trail.wind_mph > 73) {
+    finalTrail.status = 'HURRICANE'
+  }
   return true;
 }
 

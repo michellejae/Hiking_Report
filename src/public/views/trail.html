@@ -1,85 +1,90 @@
 <div class="main-container">
   <header>
     <div class="menu-icon">Menu lines icon goes here</div>
-    <div class="hike-name-container">trail: {{trail.name}} </div>
-    <div class="hike-length">length: {{trail.details.length}} </div>
   </header>
   
-  
-    <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
-    map-lazy-load-params="{{googleMapsUrl}}">
-    <ng-map center="{{trail.details.coordinates[1]}},{{trail.details.coordinates[0]}}" zoom="17"></ng-map>
+
+  <div class="sub-head-container">
+    <div class="sub-head">
+      <div class="is-size-4 hike-name-container">{{trail.name}} </div>
+      <div class="is-size-6 hike-length">length: {{trail.details.length}}mi </div>
+    </div>
   </div>
-  
+  <div class="{{trail.status}}">
+  <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
+    <ng-map center="{{trail.details.coordinates[1]}},{{trail.details.coordinates[0]}}" zoom="13"></ng-map>
+  </div>
 
-  <div class="hike-report-container">
+  <div class="container has-text-centered hike-report-container">
 
-    <div class="hike-status-container">
-      <div class="hike-status-data"> {{trail.status}}</div>
-    </div> <!-- closing hike status container -->
-    
-    <div class="hike-summary-container">
+    <div class="container hike-status-container">
+      <div class="{{trail.status}}"> {{trail.status}}</div>
+    </div>
+  </div>
+</div>
+    <!-- closing hike status container -->
+
+    <div class="container has-text-centered hike-summary-container">
       <div class="hike-timestamp-container">
         <div class="hike-timestamp-data">{{trail.details.weatherConditions.observation_time}}</div>
-      </div> <!-- closing timestamp container -->
-    </div> <!-- closing hiking summary container -->
+      </div>
+    </div>
 
-    <div class="hike-conditions-container">
+    <div class="has-text-centered hike-conditions-container">
+      
+        <div class="columns hike-trio-conditions-row">
+          <div class="column weather-condition">
+            <div class="block">
+              climate:{{trail.details.weatherConditions.weather}}
+            </div>
+          </div>
+          <div class="column has-text-centered wind-condition">
+            <div class="block">
+              wind:{{trail.details.weatherConditions.wind_mph}}
+            </div>
+          </div>
+          <div class="column mud-icon">
+            <div class="block">
+              rain:[Rain/Wetness/Mud]
+            </div>
+          </div>
+        </div>
+      
 
-      <div class="hike-trio-conditions-row">
-        <div class="weather-condition">
-          <div class="weather-icon"></div>
-          {{trail.details.weatherConditions.weather}}
+      <div class="columns ">
+        <div class="column temp-data">
+          <div class="block">
+            {{trail.details.weatherConditions.temp_f}} F
+          </div>
         </div>
-        <div class="wind-condition">
-          <div class="wind-icon"></div>
-          {{trail.details.weatherConditions.wind_mph}}
-        </div>
-        <div class="rain-and-mud-condition">
-          <div class="mud-icon"></div>
-          [ Rain/Wetness/Mud condition goes here ]
-        </div>
-      </div>  
-
-      <div class="hike-temp-container">
-        <div class="temp-data">
-          {{trail.details.weatherConditions.temp_f}} f
+        <div class="column sunlight-container">
+          <div class="block sunrise-row">
+            <div class="sunrise-label">Sunrise: 6:45AM, Sunset: 7:00PM</div>
+          </div>
         </div>
       </div>
-
-<!-- Sunlight -->
-      <div class="sunlight-container">
-        <div class="first-light-row">
-          <div class="first-light-label">First Light:</div>
-          <div class="first-light-time-data">[ First Light time goes here ]</div>
-        </div>
-        <div class="sunrise-row">
-          <div class="sunrise-label">Sunrise:</div>
-          <div class="sunrise-data">[ Sunrise time goes here ]</div>
-        </div>
-        <div class="sunset-row">
-          <div class="sunset-label">Sunset:</div>
-          <div class="sunset-data">[ Sunset time goes here ]</div>
-        </div>
-        <div class="last-light-row">
-          <div class="last-light-label">Last light: </div>
-          <div class="last-light-data">[ Last Light time goes here ]</div>
-        </div>
-      </div><!-- closing sunlight container --> 
-    </div><!-- closing hike conditions container -->
-  </div> <!-- closing hike report container -->
+    </div>
   
-  <div class="hike-details-container">
-    <div class="hike-detail-length">{{trail.deatils.length}}</div>
-    <div class="hike-detail-elev">elevation: {{trail.details.elev}} ft</div>
-    <div class="hike-detail-features">features: {{trail.details.features}}</div>
-    <div class="hike-detail-amenities">amenities: {{trail.details.amenities}}</div>
-    <div class="hike-detail-hazard">hazards: {{trail.details.hazard}}</div>
-    
 
-  </div> <!-- closing hike details container -->
+  <div class="container has-text-centered hike-details-container">
+    <div class="columns">
+      <div class="column">
+        <div class="block hike-detail-length">length:{{trail.details.length}}</div>      
+      </div>
+      <div class="column">
+        <div class="block hike-detail-elev">elevation: {{trail.details.elev}} ft</div>
+      </div>
+      <div class="column">
+        <div class="block hike-detail-difficulty">difficulty: {{trail.details.standard}}</div>
+      </div>
+    </div>
 
-  <footer>Footerstuff</footer>
 
-  
-</div> <!-- closing main -->
+  </div>
+  <!-- closing hike details container -->
+
+  <footer><button class="descBtn">description</button></footer>
+
+
+</div>
+<!-- closing main -->
