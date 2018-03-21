@@ -44,10 +44,9 @@ h6 {
 ul {
   list-style: none; }
 
-button,
-input,
-select,
-textarea {
+
+* {
+  font-family: 'Lato', sans-serif;
   margin: 0; }
 
 html {

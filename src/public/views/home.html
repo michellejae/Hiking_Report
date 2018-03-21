@@ -1,3 +1,16 @@
+<!-- <div class="level">
+
+  <div class="field">
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-small" type="email" placeholder="Find a trail">
+      <span class="icon is-small is-left">
+        <i class="fas fa-search"></i>
+      </span>
+    </div>
+  </div>
+</div> -->
+
+
 <div class="main-container">
 
   <section class="hero is-default is-bold is-primary">
@@ -16,23 +29,13 @@
         </div>
         <div id="navbarMenu" class="navbar-menu">
           <div class="navbar-end">
-            <div class="tabs is-right">
-              <div class="level">
-
-                <div class="field">
-                  <div class="control has-icons-left has-icons-right">
-                    <input class="input is-small" type="email" placeholder="Find a trail">
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-search"></i>
-                    </span>
-                  </div>
-                </div>
-                
-              </div>
+            <div class="tabs is-right is-medium">
               <ul>
-                <li class="is-active"><a>Home</a></li>
-                <li><a href="">All Trails</a></li>  
-                <li><a href="/settings">Settings</a></li>
+                <li class="is-active"><a><strong>Home</strong></a></li>
+                <li><a href="/alltrails"><strong>All Trails</strong></a></li>  
+                <li><a href="/settings"><strong>Settings</strong></a></li>
+                <li><a href="#"><strong></strong><i class="fas fa-search"></i></a>
+   
               </ul>
             </div>
           </div>        
@@ -41,13 +44,6 @@
     </nav>
   </div>
   </section>
-
-  <!-- <nav class="breadcrumb has-dot-separator" aria-label="breadcrumbs">
-    <ul>
-      <li><a href="/">Home</a></li>
-      
-    </ul>
-  </nav> -->
 
   <div class='carousel carousel-animated carousel-animate-slide' data-autoplay="true">
       <div class='carousel-container'>
@@ -110,10 +106,11 @@
                     <td><a class="button is-black" href="#">Hurricane!</a></td>
                   </tr>
                   <tr ng-repeat="trail in trails | filter : test">
-                    <a ng-href="/trail/{{ trail.trailname }}"></a>
-                    <td>{{trail.trailname}}</td>
-                    <td>{{trail.weather.length}} m</td>
-                    <td>{{trail.weatherStatus}}</td>
+                    <a ng-href="/trail/{{ trail.name }}">
+                      <td>{{trail.name}}</td>
+                      <td>{{trail.length}} m</td>
+                      <td>{{trail.status}}</td>
+                    </a>
                   </tr>
                 </tbody>
               </table>
@@ -122,33 +119,13 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">View All</a>
+          <a href="/alltrails" class="card-footer-item">View All</a>
         </footer>
       </div>
     </div>
   </div>
 
 </div>
-<!-- closing main -->
-<!-- 
-<div>
-  <input type="text" placeholder="search trail name" ng-model="test">
-</div>
-<ul>
-  <li ng-repeat="trail in trails | filter : test">
-    <h2><a ng-href="/trail/{{ trail.trailname }}">trail: {{trail.trailname}}</a></h2>
-    <h3>length: {{trail.weather.length}} m</h3>
-    <h3>elevation: {{trail.weather.elev}} ft</h3>
-    <h3>temperature: {{trail.weather.weatherConditions.temp_f}} f</h3>
-    <h3>wind mph: {{trail.weather.weatherConditions.wind_mph}} mph</h3>
-    <h3>condition: {{trail.weatherStatus}}</h3>
-  </li>
-</ul> -->
-
-    
-
-
-
 
 
 
