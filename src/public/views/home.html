@@ -1,6 +1,7 @@
-<!-- <h1> Home Home Home. </h1> -->
+<script type="text/javascript" src="/node_modules/bulma-extensions/bulma-carousel/dist/bulma-carousel.min.js"></script>
+
 <div class="main-container">
-  <header class="header-bar">
+  <!-- <header class="header-bar">
     <div class="menu-icon">
       <i class="fas fa-bars"></i>
     </div>
@@ -16,9 +17,9 @@
       <a href="#"><i class="fas fa-search"></i></a>
     </div> -->
     <!-- <div class="header-filler-column"></div> -->
-  </header>
 
-  <section class="section">
+
+      <!-- <section class="section">
     <div class="container">
       <h1 class="title">
         Hello World
@@ -27,12 +28,74 @@
         My first website with <strong>Bulma</strong>!
       </p>
     </div>
+  </section> -->
+
+
+
+  
+  <!-- </header> --> 
+
+  <section class="hero is-default is-bold is-primary">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="../" class="navbar-item">
+            <strong>hikeknow</strong>
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>            
+          </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <div class="tabs is-right">
+              <ul>
+                <li class="is-active"><a>Home</a></li>
+                <li><a href="">All Trails</a></li>  
+                <li><a href="">Settings</a></li>
+              </ul>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </nav>
+  </div>
   </section>
 
-  <div class="slideshow-wrapper">
+  <div class='carousel carousel-animated carousel-animate-slide' data-autoplay="true">
+      <div class='carousel-container'>
+        <div class='carousel-item has-background is-active'>
+          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2017/12-17/oahu-hike-month-kuliouou-ridge-view.jpg?ver=1511836570" alt="Kuliʻouʻou Ridge Trail" width="640" height="310" />
+          <div class="title">Kuliʻouʻou Ridge Trail</div>
+        </div>
+        <div class='carousel-item has-background'>
+          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2018/02-18/hike-we-like-kealia-trail-view.jpg?ver=1517529316" alt="Keālia Trail" width="640" height="310" />
+          <div class="title">Keālia Trail</div>
+        </div>
+        <div class='carousel-item has-background'>
+          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2017/11-17/hike-of-the-month-judd-trail-jackass-ginger-pool.jpg?ver=1509592826" alt="Judd Trail" width="640" height="310" />
+          <div class="title">Judd Trail</div>
+        </div>
+      </div>
+      <div class="carousel-navigation is-centered">
+        <div class="carousel-nav-left">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </div>
+        <div class="carousel-nav-right">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    
+
+
+  <!-- <div class="slideshow-wrapper">
     <div class="slideshow-container">
       <!-- Full-width images with number and caption text -->
-      <div class="trail-slides fade">
+      <!-- <div class="trail-slides fade">
         <div class="numbertext">1 / 3</div>
         <img src="http://honolulumagazine-images.dashdigital.com/images/2017/12-17/oahu-hike-month-kuliouou-ridge-view.jpg?ver=1511836570"
           alt="Kuliʻouʻou Ridge Trail">
@@ -62,7 +125,7 @@
         <span class="dot" onclick="currentSlide(3)"></span>
       </div>
     </div><!-- closing slideshow container -->
-  </div>
+  <!-- </div>  --> 
 
 
 
@@ -75,11 +138,6 @@
       : {{ trail.length }}
     </li>
   </ul>
-
-  <!-- <footer class="home-footer">
-    <input type="text" placeholder="Search...">
-    <a href="#"><i class="fas fa-search"></i></a>
-  </footer> -->
 
 </div>
 <!-- closing main -->

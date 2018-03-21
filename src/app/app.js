@@ -1,6 +1,8 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
 import NgMap from 'ngmap';
+// import bulmaCarousel from '../../node_modules/bulma-carousel/dist';
+
 
 import TrailCtrl from '../controller/trail.controller';
 import trailService from '../services/trailDataService';
