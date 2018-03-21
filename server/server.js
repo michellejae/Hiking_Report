@@ -35,7 +35,7 @@ return res.json(randomGoodTrails)
 })
 
 app.get('/api/hikeNow/FUCK', (req, res) =>{
- return res.json(fakeData)
+ return res.json(fakeAllData)
     
 })
 

@@ -28,7 +28,7 @@ router.get('/',(req,res) => {
         use_rest: element.properties.USE_REST,
         hazard: element.properties.HAZARD,
         trailname: element.properties.Trailname,
-        coordinates: JSON.stringify(element.geometry.coordinates)
+        coordinates: JSON.stringify(element.geometry.coordinates[0])
       }) //end of return newTrail
       .save()
       .then(finalTrails => {
