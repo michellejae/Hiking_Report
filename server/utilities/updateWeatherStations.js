@@ -95,7 +95,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Kealia Trail'}).update({weather: 'KHIWAIAN3', rain : 'Kealia Trail'})
+  knex('trails').where({trailname: 'Kealia Trail'}).update({weather: 'KHIWAIAN3', rain : 'POAH1'})
   .then(result => {
     return result
   }),
