@@ -54,7 +54,6 @@ function fireWeatherAPI (arr) {
   });
 };
 
-
 function getWeatherData(lat,long){
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
   .then(json => {
