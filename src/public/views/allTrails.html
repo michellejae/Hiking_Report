@@ -4,14 +4,21 @@
       <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true"></marker>
   </ng-map>
 </div>
+
 <br><br>
+
 <div>
-  <h1>Marker Chosen: {{selectedHike.trailname}}</h1>
+  <h1>Selected Hike: {{selectedHike.trailname}}</h1>
+  <h1>Length: {{selectedHike.length_m}} m</h1>
+  <h1>Status: {{selectedHike.status}}</h1>
 </div>
+
 <br><br>
+
 <div>
   <ul>
       <li ng-repeat="trail in trails | filter : test">
+        <br>
         <h2>trail: <a ng-href="/trail/{{ trail.trailname }}">{{trail.trailname}}</a></h2>
         <h3>length: {{trail.length_m}} m</h3>
         <h3>elevation: {{trail.elev_range}} ft</h3>
@@ -31,5 +38,5 @@
         <h3>hazards: {{trail.hazard}}</h3>
         <h3>standard: {{trail.standard}}</h3>
       </li>
-    </ul>
+  </ul>
 </div>
