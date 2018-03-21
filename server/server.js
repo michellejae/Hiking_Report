@@ -105,5 +105,5 @@ app.listen(PORT, () => {
   //timedCalls(); 
    updateWeatherStations();
    //getRainData();
-   getRainTotalData();
+  
 });
