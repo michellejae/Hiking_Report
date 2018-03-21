@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const trails = require('./routes/trails');
-const { timedCalls } = require('./utilities/helper');
+const { timedCalls, setStatus } = require('./utilities/helper');
 const { updateWeatherStations } = require('./utilities/updateWeatherStations');
 const { getRainData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
@@ -42,7 +42,8 @@ let singleTrailObj = {
 
 
 app.get('/api/hikeNow/fake', (req, res) =>{
-    
+    setStatus(fakeData)
+    return res.json(fakeData)
 })
 
 app.get('/api/hikeNow/trail/fake/:name', (req, res) => {

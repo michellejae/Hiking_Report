@@ -10,7 +10,8 @@ const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/c
 const rule = new cron.RecurrenceRule();
 
 module.exports = {
-  timedCalls: timedCalls
+  setStatus,
+  timedCalls
 };
 
 global.hikeNow = {};
@@ -82,7 +83,34 @@ function getWeatherData(lat,long){
 };
 
 function setStatus(obj) {
-  for (var key in obj) {
-    console.log(key.weatherConditions)
+  for (var key in obj){
+    if(obj.hasOwnProperty(key)){
+      let result = obj[key]
+         for (var i in result) {
+           if(result.hasOwnProperty(i)){
+             let weather = result.weatherConditions
+              for (var k in weather) {
+                if(weather.wind_gust_mph < 24.9999){
+                  obj.status = 'GOOD'
+                }
+                if(weather.wind_gust_mph > 25 && weather.wind_gust_mph < 45.999) {
+                  obj.status = 'CAUTION'
+                }
+                if(weather.wind_gust_mph > 46) {
+                  obj.status = 'DANGER'
+                }
+              }
+            }
+          }
+      } 
   }
+  console.log(obj)
+  //return obj
 }
+  
+
+
+  // let weather = result[i]
+  // for(var k in weather) {
+  //   console.log('berrp', weather[k])
+  //   console.log(k)
