@@ -24,25 +24,6 @@ app.use(bodyParser.urlencoded({extended: false }));
 app.use('/trails', trails);
 app.use(express.static('pubic'));
 
-// let allTrailsObj = {
-//   length: '',
-//   elev: '',
-//   weatherConditions: null,
-// }
-
-// let singleTrailObj = {
-//   length: '',
-//   elev: '',
-//   standard: '',
-//   climate: '',
-//   features: '',
-//   amenities: '',
-//   hazard: '',
-//   coordinates: null,
-//   weatherConditions: null
-// }
-
-
 app.get('/api/hikeNow/fake', (req, res) =>{
 let randomGoodTrails = [];
 randomGoodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
@@ -50,9 +31,7 @@ randomGoodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
 randomGoodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
 
 return res.json(randomGoodTrails)
- //return res.json(fakeGoodData[randomGoodTrail(fakeGoodData)])
-  
-    
+
 })
 
 app.get('/api/hikeNow/FUCK', (req, res) =>{
