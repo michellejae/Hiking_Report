@@ -10,8 +10,8 @@ const { getRainData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
 const fakeGoodData = require('./utilities/fakeGoodData')
 const fakeAllData = require('./utilities/fakeAllData')
-const fakeSingleTrail = require('./utilities/fakeSingleTrail')
-//const { getTrailHeads } = require('./utilities/helper')
+const fakeSingleData = require('./utilities/fakeSingleData')
+const { getTrailHeads } = require('./utilities/helper')
 
 
 //CONSTANTS
@@ -42,34 +42,24 @@ app.get('/api/hikeNow/FUCK', (req, res) =>{
 
 app.get('/api/hikeNow/trail/fake/:name', (req, res) => {
   let name = req.params.name
-  return res.json(fakeSingleTrail[name])
+  return res.json(fakeSingleData)
 })
 
-// app.get('/api/hikeNow/trail/:name', (req, res) => {
-//   let name = req.params.name
-//   return new Trail()
-//   .fetch({trailname: name})
-//   .then(singleTrail => {
-//     singleTrail = singleTrail.toJSON()
-//     return singleTrail
-//   }).then(result => {
-//     singleTrailObj.length = result.length_m,
-//     singleTrailObj.elev = result.evel_range,
-//     singleTrailObj.standard = result.standard,
-//     singleTrailObj.climate = result.climat,
-//     singleTrailObj.features = result.feature,
-//     singleTrailObj.amenities = result.amenitie,
-//     singleTrailObj.coordinates = result.coordinates[0]
-//     return result
-//   }).then(connectWeather => {
-//     if(global.hikeNow.weather[name]) {
-//       singleTrailObj.weatherConditions = global.hikeNow.weather[name]
-//     }
-//     return res.json(singleTrailObj)
-//   })
-// })
+app.get('/api/hikeNow/trail/:name', (req, res) => {
+  let name = req.params.name
+  return new Trail()
+  .fetch({trailname: name})
+  .then(singleTrail => {
+    singleTrail = singleTrail.toJSON()
+    return singleTrail
+  }).then(finalSingleTrail => {
+    const trailWeather = global.hikeNow.weather[finalSingleTrail.weather]
+    finalSingleTrail.weather = trailWeather
+    return res.json(finalSingleTrail)
+  })
+})
 
-app.get('/api/hikeNow/', (req, res) => {
+app.get('/api/hikeNow', (req, res) => {
   return new Trail()
   .fetchAll()
   .then(allTrails => {
@@ -90,10 +80,28 @@ app.get('/api/hikeNow/', (req, res) => {
   })
 })
 
+app.get('/api/hikeNow/all', (req, res) => {
+  return new Trail()
+  .fetchAll()
+  .then(allTrails => {
+    allTrails = allTrails.toJSON()
+    return allTrails
+  }).then(trails => {
+   return trails.map(trail => {
+    const trailweather = global.hikeNow.weather[trail.weather]
+    trail.weather = trailweather
+    return trail
+    })
+  }).then(allTrails => {
+    console.log(allTrails)
+    return res.json(allTrails)
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  //getTrailHeads()
+ // getTrailHeads()
   //timedCalls(); 
-  // updateWeatherStations();
+  updateWeatherStations();
   // getRainData();
 });

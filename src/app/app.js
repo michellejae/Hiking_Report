@@ -10,6 +10,9 @@ import HomeCtrl from '../controller/home.controller'
 import homeService from '../services/homeService'
 
 import '../../node_modules/bulma/css/bulma.css'
+import AllTrailCtrl from '../controller/allTrails.controller';
+import allTrailsService from '../services/allTrailsService';
+
 import '../style/app.css';
 
 class AppCtrl {
@@ -25,14 +28,20 @@ angular.module(MODULE_NAME, [ngRoute, NgMap])
   .controller('AppCtrl', AppCtrl)
   .controller('HomeCtrl', HomeCtrl)
   .controller('TrailCtrl', TrailCtrl)
+  .controller('AllTrailCtrl', AllTrailCtrl)
   .service('homeService', homeService)
   .service('trailService', trailService)
+  .service('allTrailsService', allTrailsService)
 
   .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
     $routeProvider
       .when(`/`, {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
+      })
+      .when(`/all`, {
+        templateUrl: `views/allTrails.html`,
+        controller: 'AllTrailCtrl'
       })
       .when(`/trail/:name`, {
         templateUrl: `views/trail.html`,
