@@ -5,13 +5,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const trails = require('./routes/trails');
 const { randomGoodTrail } = require('./utilities/helper');
-const { updateWeatherStations } = require('./utilities/updateWeatherStations');
+const {timedCalls, updateWeatherStations } = require('./utilities/updateWeatherStations');
 const { getRainData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
 const fakeGoodData = require('./utilities/fakeGoodData')
 const fakeAllData = require('./utilities/fakeAllData')
 const fakeSingleTrail = require('./utilities/fakeSingleTrail')
-const { getTrailHeads } = require('./utilities/helper')
+//const { getTrailHeads } = require('./utilities/helper')
 
 
 //CONSTANTS
@@ -80,10 +80,10 @@ app.get('/api/hikeNow/', (req, res) => {
     const trailweather = global.hikeNow.weather[trail.weather]
     trail.weather = trailweather
     return trail
-    // }).filter(trail => {
-    //  if(trail.weather && trail.weather.wind_gust_mph){
-    //    return trail.weather.wind_gust_mph < 25
-    //  }
+    }).filter(trail => {
+     if(trail.weather && trail.weather.wind_gust_mph){
+       return trail.weather.wind_gust_mph < 25
+     }
     })
   }).then(goodTrails => {
     console.log(goodTrails)
@@ -93,7 +93,6 @@ app.get('/api/hikeNow/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-    getTrailHeads();
   //timedCalls(); 
   // updateWeatherStations();
   // getRainData();

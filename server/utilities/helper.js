@@ -11,9 +11,7 @@ const rule = new cron.RecurrenceRule();
 let goodArray = [];
 
 module.exports = {
- // setStatus,
- // timedCalls,
-  getTrailHeads,
+  timedCalls,
   randomGoodTrail
 };
 
@@ -33,8 +31,8 @@ global.hikeNow.weather = {
   icon_url: ''
 };
 
-//function timedCalls() {
- // cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
+function timedCalls() {
+  cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
   function getTrailHeads() {   
     let trails = [];
     new Trail()
@@ -45,8 +43,8 @@ global.hikeNow.weather = {
       })      
       fireWeatherAPI(trails);
     })
-   }
- // };
+   })
+  };
 
 function fireWeatherAPI (arr) {
   arr.map(element => {
