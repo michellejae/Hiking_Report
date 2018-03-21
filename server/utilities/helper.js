@@ -90,13 +90,13 @@ function setStatus(obj) {
            if(result.hasOwnProperty(i)){
              let weather = result.weatherConditions
               for (var k in weather) {
-                if(weather.wind_gust_mph < 24.9999){
+                if(weather.wind_gust_mph <= 24.9999){
                   result.status = 'GOOD'
                 }
-                if(weather.wind_gust_mph > 25 && weather.wind_gust_mph < 45.999) {
+                if(weather.wind_gust_mph >= 25 && weather.wind_gust_mph <= 45.999) {
                   result.status = 'CAUTION'
                 }
-                if(weather.wind_gust_mph > 46) {
+                if(weather.wind_gust_mph >= 46) {
                   result.status = 'DANGER'
                 }
               }
@@ -104,6 +104,7 @@ function setStatus(obj) {
           }
       } 
   }
+ 
   filterAndRandomize(obj)
   //eturn obj
 }
@@ -114,7 +115,10 @@ function filterAndRandomize (obj) {
     if(obj.hasOwnProperty(i)){
       let result = obj[i]
         for (var key in result) {
-          console.log(i, result.status)
+         // console.log('boob', result.status, i)
+          if(result.status === undefined || !result.status) {
+            console.log('shit', i)
+          }
         }
     }
   }
