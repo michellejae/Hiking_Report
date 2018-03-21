@@ -79,8 +79,7 @@ function getWeatherData(lat,long){
     }else{
       return global.hikeNow.weather;
     }
-  })
-  .catch(err => {
+  }).catch(err => {
     console.log(err)
   });
 };
