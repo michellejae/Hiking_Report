@@ -104,12 +104,18 @@ function setStatus(obj) {
           }
       } 
   }
-  return obj
+  filterAndRandomize(obj)
+  //eturn obj
 }
   
-
-
-  // let weather = result[i]
-  // for(var k in weather) {
-  //   console.log('berrp', weather[k])
-  //   console.log(k)
+function filterAndRandomize (obj) {
+  let array = []
+  for (var i in obj) {
+    if(obj.hasOwnProperty(i)){
+      let result = obj[i]
+        for (var key in result) {
+          console.log(i, result.status)
+        }
+    }
+  }
+}
