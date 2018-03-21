@@ -7,7 +7,7 @@
   
   <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
     map-lazy-load-params="{{googleMapsUrl}}">
-    <ng-map center="{{trail.details.coordinates[1]}},{{trail.details.coordinates[0]}}" zoom="17">
+    <ng-map center="{{trail.details.coordinates[1]}},{{trail.details.coordinates[0]}}" zoom="13">
         <marker position="{{trail.details.coordinates[1]}},{{trail.details.coordinates[0]}}" animation="Animation.BOUNCE" centered="true"></marker>
     </ng-map>
   </div>

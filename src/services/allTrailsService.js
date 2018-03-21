@@ -1,16 +1,22 @@
 const allTrailService = ['$http', function ($http) {
   const allTrails = [];
+  const trailHeads = [];
 
   this.getAllTrails = function () {
     return allTrails;
   }
 
   this.fetchAllTrails = function () {
-    return $http.get('/api/hikeNow/fake')
+    return $http.get('/api/hikeNow')
     .then(data => {
       let result = data.data;
+      console.log(result)
       for(let i in result){
         if(result[i]){
+          console.log(i)
+          if(i !== 'Ualakaa Trail'){
+            trailHeads.push(result[i].coordinates)
+          }
           let trail = {
             'trailname': i,
             'amenities': result[i].amenities,
@@ -49,6 +55,14 @@ const allTrailService = ['$http', function ($http) {
       return true;
     })
   }
+
+  this.getTrailHeadCoordinates = function () {
+    return trailHeads;
+  }
+
+
+
+
 
 }];
 

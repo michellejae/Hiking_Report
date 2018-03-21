@@ -10,7 +10,7 @@ const { getRainData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
 const fakeData = require('./utilities/fakeData')
 const fakeSingleTrail = require('./utilities/fakeSingleTrail')
-
+const {getTrailHeads} = require('./utilities/helper');
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -95,6 +95,7 @@ app.get('/api/hikeNow/', (req, res) => {
          weatherConditions: global.hikeNow.weather[element.weather]
        }
       }
+      console.log(global.hikeNow.weather[element.weather])
     }) 
   }).then(result =>{
     console.log(allTrailsObj)
@@ -104,7 +105,8 @@ app.get('/api/hikeNow/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  //timedCalls(); 
+  getTrailHeads()
+  // timedCalls(); 
   // updateWeatherStations();
   // getRainData();
 });
