@@ -6,16 +6,16 @@ this.getSingleTrail = function (name) {
   return $http.get(`/api/hikeNow/trail/fake/${name}`)
   .then(singleTrail => {
     let newSingleTrail = singleTrail.data
-    console.log(newSingleTrail)
     finalTrail.name = newSingleTrail.trailname,
     finalTrail.length = newSingleTrail.length_m,
     finalTrail.elev = newSingleTrail.elev_range,
     finalTrail.coordinates = newSingleTrail.coordinates,
     finalTrail.standard = newSingleTrail.standard
-    finalTrail.icon = newSingleTrail.weather.icon_url
+    finalTrail.weather = newSingleTrail.weather
     return newSingleTrail.weather
   }).then(result =>{
     this.setStatus(result)
+    console.log(finalTrail)
     return finalTrail
   })
 }
