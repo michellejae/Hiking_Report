@@ -102,6 +102,6 @@ app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
  // getTrailHeads()
   //timedCalls(); 
-  // updateWeatherStations();
+  updateWeatherStations();
   // getRainData();
 });
