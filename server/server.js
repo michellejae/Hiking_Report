@@ -44,12 +44,12 @@ app.use(express.static('pubic'));
 
 
 app.get('/api/hikeNow/fake', (req, res) =>{
-let goodTrails = [];
-goodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
-goodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
-goodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
+let randomGoodTrails = [];
+randomGoodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
+randomGoodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
+randomGoodTrails.push(fakeGoodData[randomGoodTrail(fakeAllData)])
 
-return res.json(goodTrails)
+return res.json(randomGoodTrails)
  //return res.json(fakeGoodData[randomGoodTrail(fakeGoodData)])
   
     
@@ -113,7 +113,7 @@ app.get('/api/hikeNow/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  // getTrailHeads();
+  //getTrailHeads();
   //timedCalls(); 
   // updateWeatherStations();
   // getRainData();
