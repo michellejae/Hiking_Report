@@ -8,10 +8,12 @@ const weatherKey = require('../../config/config');
 let WEATHERAPIKEY = weatherKey.weather.apiKey2;
 const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
 const rule = new cron.RecurrenceRule();
+let goodArray = [];
 
 module.exports = {
-  setStatus,
-  timedCalls
+ // setStatus,
+ // timedCalls,
+  getTrailHeads
 };
 
 global.hikeNow = {};
@@ -30,8 +32,8 @@ global.hikeNow.weather = {
   icon_url: ''
 };
 
-function timedCalls() {
-  cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
+//function timedCalls() {
+ // cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
   function getTrailHeads() {   
     let trails = [];
     new Trail()
@@ -42,8 +44,8 @@ function timedCalls() {
       })      
      fireWeatherAPI(trails);
     })
-   })
-  };
+   }
+ // };
 
 function fireWeatherAPI (arr) {
   arr.map(element => {
@@ -61,6 +63,7 @@ function getWeatherData(lat,long){
   .then(data => {
     if (data.current_observation && data.current_observation.station_id){
       global.hikeNow.weather[data.current_observation.station_id] = {
+        station_id : data.current_observation.station_id,
         observation_time: data.current_observation.observation_time,
         weather: data.current_observation.weather,
         temp_f: data.current_observation.temp_f,
@@ -82,44 +85,47 @@ function getWeatherData(lat,long){
   });
 };
 
-function setStatus(obj) {
-  for (var key in obj){
-    if(obj.hasOwnProperty(key)){
-      let result = obj[key]
-         for (var i in result) {
-           if(result.hasOwnProperty(i)){
-             let weather = result.weatherConditions
-              for (var k in weather) {
-                if(weather.wind_gust_mph <= 24.9999){
-                  result.status = 'GOOD'
-                }
-                if(weather.wind_gust_mph >= 25 && weather.wind_gust_mph <= 45.999) {
-                  result.status = 'CAUTION'
-                }
-                if(weather.wind_gust_mph >= 46) {
-                  result.status = 'DANGER'
-                }
-              }
-            }
-          }
-      } 
-  }
- 
-  filterAndRandomize(obj)
-  //eturn obj
-}
+
+
+
+// function setStatus(obj) {
+//   for (var key in obj){
+//     if(obj.hasOwnProperty(key)){
+//       let result = obj[key]
+//          for (var i in result) {
+//            if(result.hasOwnProperty(i)){
+//              let weather = result.weatherConditions
+//               for (var k in weather) {
+//                 if(weather.wind_gust_mph <= 24.9999){
+//                   result.status = 'GOOD'
+//                 }
+//                 if(weather.wind_gust_mph >= 25 && weather.wind_gust_mph <= 45.999) {
+//                   result.status = 'CAUTION'
+//                 }
+//                 if(weather.wind_gust_mph >= 46) {
+//                   result.status = 'DANGER'
+//                 }
+//               }
+//             }
+//           }
+        
+//       } 
+//   }
+//   filterAndRandomize(obj)
+// }
   
-function filterAndRandomize (obj) {
-  let array = []
-  for (var i in obj) {
-    if(obj.hasOwnProperty(i)){
-      let result = obj[i]
-        for (var key in result) {
-         // console.log('boob', result.status, i)
-          if(result.status === undefined || !result.status) {
-            console.log('shit', i)
-          }
-        }
-    }
-  }
-}
+// function filterAndRandomize (obj) {
+//   let array = []
+//   for (var i in obj) {
+//     if(obj.hasOwnProperty(i)){
+//       let result = obj[i]
+//         for (var key in result) {
+//           if(result.hasOwnProperty(key)){
+//          //   console.log(i, result.status)
+          
+//           }
+//         }
+//     }
+//   }
+//   //console.log(array.length)
+// }
