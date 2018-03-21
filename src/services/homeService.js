@@ -24,7 +24,6 @@ const homeService = [`$http`, function ($http) {
   }
 
 
-
 }]
 
 export default homeService;

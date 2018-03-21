@@ -11,7 +11,7 @@ const Trail = require('./db/models/Trails');
 const fakeGoodData = require('./utilities/fakeGoodData')
 const fakeAllData = require('./utilities/fakeAllData')
 const fakeSingleTrail = require('./utilities/fakeSingleTrail')
-//const { getTrailHeads } = require('./utilities/helper')
+const { getTrailHeads } = require('./utilities/helper')
 
 
 //CONSTANTS
@@ -69,7 +69,7 @@ app.get('/api/hikeNow/trail/fake/:name', (req, res) => {
 //   })
 // })
 
-app.get('/api/hikeNow/', (req, res) => {
+app.get('/api/hikeNow', (req, res) => {
   return new Trail()
   .fetchAll()
   .then(allTrails => {
@@ -87,6 +87,24 @@ app.get('/api/hikeNow/', (req, res) => {
     })
   }).then(goodTrails => {
     return res.json(goodTrails)
+  })
+})
+
+app.get('/api/hikeNow/all', (req, res) => {
+  return new Trail()
+  .fetchAll()
+  .then(allTrails => {
+    allTrails = allTrails.toJSON()
+    return allTrails
+  }).then(trails => {
+   return trails.map(trail => {
+    const trailweather = global.hikeNow.weather[trail.weather]
+    trail.weather = trailweather
+    return trail
+    })
+  }).then(allTrails => {
+    console.log(allTrails)
+    return res.json(allTrails)
   })
 })
 
