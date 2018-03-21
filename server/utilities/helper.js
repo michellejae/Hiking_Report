@@ -91,21 +91,20 @@ function setStatus(obj) {
              let weather = result.weatherConditions
               for (var k in weather) {
                 if(weather.wind_gust_mph < 24.9999){
-                  obj.status = 'GOOD'
+                  result.status = 'GOOD'
                 }
                 if(weather.wind_gust_mph > 25 && weather.wind_gust_mph < 45.999) {
-                  obj.status = 'CAUTION'
+                  result.status = 'CAUTION'
                 }
                 if(weather.wind_gust_mph > 46) {
-                  obj.status = 'DANGER'
+                  result.status = 'DANGER'
                 }
               }
             }
           }
       } 
   }
-  console.log(obj)
-  //return obj
+  return obj
 }
   
 

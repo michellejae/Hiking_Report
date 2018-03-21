@@ -42,8 +42,8 @@ let singleTrailObj = {
 
 
 app.get('/api/hikeNow/fake', (req, res) =>{
-    setStatus(fakeData)
-    return res.json(fakeData)
+   return res.json(setStatus(fakeData))
+    
 })
 
 app.get('/api/hikeNow/trail/fake/:name', (req, res) => {
