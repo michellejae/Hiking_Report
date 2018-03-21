@@ -10,7 +10,7 @@ const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/c
 const rule = new cron.RecurrenceRule();
 
 module.exports = {
- // timedCalls,
+ //timedCalls,
   randomGoodTrail,
   getTrailHeads,
 };

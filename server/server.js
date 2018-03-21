@@ -25,6 +25,8 @@ app.use('/trails', trails);
 app.use(express.static('pubic'));
 
 app.get('/api/hikeNow/fake', (req, res) =>{
+  console.log(fakeAllData.length)
+  console.log(fakeGoodData.length)
 let goodRandomTrails = [];
 goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
 goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
@@ -69,11 +71,17 @@ app.get('/api/hikeNow', (req, res) => {
    return trails.map(trail => {
     const trailweather = global.hikeNow.weather[trail.weather]
     trail.weather = trailweather
+    const rainWeather = global.hikeNow.rain[trail.rain]
+    trail.rain = rainWeather
     return trail
     }).filter(trail => {
      if(trail.weather && trail.weather.wind_gust_mph){
-       return trail.weather.wind_gust_mph < 25
-     }
+       if(trail.weather.wind_gust_mph < 25) {
+         if(trail.rain && trail.rain.rainfall) {
+           return trail.rain.rainfall < .4999
+         }
+       }
+      }
     })
   }).then(goodTrails => {
     return res.json(goodTrails)
@@ -91,7 +99,7 @@ app.get('/api/hikeNow/all', (req, res) => {
     const trailweather = global.hikeNow.weather[trail.weather]
     trail.weather = trailweather
     const rainWeather = global.hikeNow.rain[trail.rain]
-    console.log(trail.trailname, rainWeather)
+    trail.rain = rainWeather
     return trail
     })
   }).then(allTrails => {
@@ -101,9 +109,10 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  getTrailHeads()
+  // getTrailHeads()
   //timedCalls(); 
    updateWeatherStations();
+    getRainTotalData();
    //getRainData();
   
 });
