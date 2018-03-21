@@ -6,6 +6,10 @@ const allTrailService = ['$http', function ($http) {
     return allTrails;
   }
 
+  this.getTrailHeadCoordinates = function () {
+    return trailHeads;
+  }
+
   this.fetchAllTrails = function () {
     return $http.get('/api/hikeNow/FUCK')
     .then(data => {
@@ -39,9 +43,11 @@ const allTrailService = ['$http', function ($http) {
     console.log(allTrails)
   }
 
-  this.getTrailHeadCoordinates = function () {
-    return trailHeads;
+  this.displayInfo = function (event,name) {
+    console.log(event)
+    console.log(name)
   }
+
 
 
 

@@ -3,6 +3,7 @@ const AllTrailsCtrl = ['$scope','allTrailsService', 'NgMap', function ($scope, a
   allTrailsService.fetchAllTrails();
   $scope.trails = allTrailsService.getAllTrails();
   $scope.trailHeads = allTrailsService.getTrailHeadCoordinates();
+  
   $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${MAPKEY.map.key}&callback=initMap`;
 }];
 

@@ -1,7 +1,7 @@
 <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
   map-lazy-load-params="{{googleMapsUrl}}">
   <ng-map center="21.4389,-158.0001" zoom="10">
-      <marker ng-repeat="trailHead in trailHeads" position="{{trailHead[1]}},{{trailHead[0]}}" animation="Animation.BOUNCE" centered="true"></marker>
+      <marker ng-repeat="trailHead in trailHeads" position="{{trailHead[1]}},{{trailHead[0]}}" on-click="displayInfo(event,name)" animation="Animation.DROP" centered="true"></marker>
   </ng-map>
 </div>
 
