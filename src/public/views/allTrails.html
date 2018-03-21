@@ -4,7 +4,11 @@
       <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true"></marker>
   </ng-map>
 </div>
-
+<br><br>
+<div>
+  <h1>Marker Chosen: {{selectedHike.trailname}}</h1>
+</div>
+<br><br>
 <div>
   <ul>
       <li ng-repeat="trail in trails | filter : test">
