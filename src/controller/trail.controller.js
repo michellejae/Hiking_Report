@@ -11,14 +11,9 @@ function ($scope, $routeParams, trailService, NgMap ) {
     //  console.log('first', updatedTrail.status)
   })
 
-  // let weatherOrDescription = () => {
-
-  // }
-
-  
-
   $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${MAPKEY.map.key}&callback=initMap`;
 
+  
 }]
 
 export default TrailCtrl
