@@ -12,7 +12,8 @@ let goodArray = [];
 
 module.exports = {
   timedCalls,
-  randomGoodTrail
+  randomGoodTrail,
+ //getTrailHeads,
 };
 
 global.hikeNow = {};
@@ -32,7 +33,7 @@ global.hikeNow.weather = {
 };
 
 function timedCalls() {
-  cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
+ cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
   function getTrailHeads() {   
     let trails = [];
     new Trail()
