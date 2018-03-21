@@ -1,5 +1,4 @@
 const allTrailService = ['$http', function ($http) {
-  const tempAllTrails = [];
   const trailHeads = [];
 
   this.getAllTrails = function () {
@@ -7,8 +6,6 @@ const allTrailService = ['$http', function ($http) {
   }
 
   this.fetchAllTrails = function () {
-    console.log('fyre')
-    return tempAllTrails;
     // return $http.get('/api/hikeNow/all')
     // .then(data => {
     //   data.data.map(element => {

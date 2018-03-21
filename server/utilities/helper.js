@@ -8,10 +8,12 @@ const weatherKey = require('../../config/config');
 let WEATHERAPIKEY = weatherKey.weather.apiKey2;
 const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
 const rule = new cron.RecurrenceRule();
+let goodArray = [];
 
 module.exports = {
-  // timedCalls: timedCalls
-  getTrailHeads: getTrailHeads
+  // timedCalls,
+  randomGoodTrail,
+  getTrailHeads
 };
 
 global.hikeNow = {};
@@ -38,10 +40,8 @@ global.hikeNow.weather = {
     .fetchAll()
     .then(result => {
       result.map(element => {
-        if(element.attributes.trailname !== 'Ualakaa Trail'){
-          trails.push(element.attributes.coordinates[0]);
-        }
-      })
+          trails.push(element.attributes.coordinates);
+      })      
       fireWeatherAPI(trails);
     })
    }
@@ -65,6 +65,7 @@ function getWeatherData(lat,long){
   .then(data => {
     if (data.current_observation && data.current_observation.station_id){
       global.hikeNow.weather[data.current_observation.station_id] = {
+        station_id : data.current_observation.station_id,
         observation_time: data.current_observation.observation_time,
         weather: data.current_observation.weather,
         temp_f: data.current_observation.temp_f,
@@ -85,3 +86,9 @@ function getWeatherData(lat,long){
     console.log(err)
   });
 };
+
+function randomGoodTrail (arr) {
+  let randomNumber = Math.floor(Math.random() * arr.length)
+  return randomNumber
+}
+
