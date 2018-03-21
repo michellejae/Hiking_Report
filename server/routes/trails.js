@@ -13,7 +13,8 @@ router.get('/',(req,res) => {
     trails = JSON.parse(trails)
     return trails.features
   }).then(newTrails => {
-    newTrails.map(element => {
+   newTrails.map(element => {
+     if(element.properties.Trailname === 'Ualakaa Trail'){
       return new Trail ({
         district: element.properties.DISTRICT,
         length_m: element.properties.LENGTH_M,
@@ -28,21 +29,39 @@ router.get('/',(req,res) => {
         use_rest: element.properties.USE_REST,
         hazard: element.properties.HAZARD,
         trailname: element.properties.Trailname,
-        coordinates: JSON.stringify(element.geometry.coordinates)
-      }) //end of return newTrail
+        coordinates: JSON.stringify(element.geometry.coordinates[0][0])
+      }) 
       .save()
-      .then(finalTrails => {
-        finalTrails = finalTrails.toJSON()
-      })
-    })
-  }).then(newResult => {
+     } else {
+      return new Trail ({
+        district: element.properties.DISTRICT,
+        length_m: element.properties.LENGTH_M,
+        elev_range: element.properties.ELEV_RANGE,
+        start_pt: element.properties.START_PT,
+        end_pt: element.properties.END_PT,
+        standard: element.properties.STANDARD,
+        climat: element.properties.CLIMAT,
+        tspt_type: element.properties.TSPT_TYPE,
+        feature: element.properties.FEATURE,
+        amenitie: element.properties.AMENITIE,
+        use_rest: element.properties.USE_REST,
+        hazard: element.properties.HAZARD,
+        trailname: element.properties.Trailname,
+        coordinates: JSON.stringify(element.geometry.coordinates[0])
+      }) 
+      .save()
+    }
+    return element
+  })
+}).then(newResult => {
     return res.json({message: 'succesfully saved to database'})
   })
   .catch(err => {
     console.log(err)
     return res.json({message: err.message}) 
   })
-});
+})
+
 
 router.get('/all',(req,res) => {
   console.log('here')

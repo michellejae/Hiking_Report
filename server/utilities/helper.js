@@ -8,9 +8,11 @@ const weatherKey = require('../../config/config');
 let WEATHERAPIKEY = weatherKey.weather.apiKey2;
 const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
 const rule = new cron.RecurrenceRule();
+let goodArray = [];
 
 module.exports = {
-  timedCalls: timedCalls
+  timedCalls,
+  randomGoodTrail
 };
 
 global.hikeNow = {};
@@ -37,9 +39,9 @@ function timedCalls() {
     .fetchAll()
     .then(result => {
       result.map(element => {
-        trails.push(element.attributes.coordinates[0]);
+          trails.push(element.attributes.coordinates);
       })      
-     fireWeatherAPI(trails);
+      fireWeatherAPI(trails);
     })
    })
   };
@@ -52,6 +54,7 @@ function fireWeatherAPI (arr) {
   });
 };
 
+
 function getWeatherData(lat,long){
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
   .then(json => {
@@ -60,6 +63,7 @@ function getWeatherData(lat,long){
   .then(data => {
     if (data.current_observation && data.current_observation.station_id){
       global.hikeNow.weather[data.current_observation.station_id] = {
+        station_id : data.current_observation.station_id,
         observation_time: data.current_observation.observation_time,
         weather: data.current_observation.weather,
         temp_f: data.current_observation.temp_f,
@@ -81,6 +85,8 @@ function getWeatherData(lat,long){
   });
 };
 
-function setStatus(obj) {
-  
+function randomGoodTrail (arr) {
+  let randomNumber = Math.floor(Math.random() * arr.length)
+  return randomNumber
 }
+
