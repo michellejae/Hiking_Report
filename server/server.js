@@ -86,7 +86,7 @@ app.get('/api/hikeNow/', (req, res) => {
      }
     })
   }).then(goodTrails => {
-    console.log(goodTrails)
+  
     return res.json(goodTrails)
   })
 })
