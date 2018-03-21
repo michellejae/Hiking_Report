@@ -41,9 +41,9 @@ global.hikeNow.weather = {
     .fetchAll()
     .then(result => {
       result.map(element => {
-        trails.push(element.attributes.coordinates[0]);
+          trails.push(element.attributes.coordinates);
       })      
-     fireWeatherAPI(trails);
+      fireWeatherAPI(trails);
     })
    }
  // };
@@ -55,6 +55,7 @@ function fireWeatherAPI (arr) {
     getWeatherData(latitude,longitude);
   });
 };
+
 
 function getWeatherData(lat,long){
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
@@ -91,46 +92,3 @@ function randomGoodTrail (arr) {
   return randomNumber
 }
 
-
-
-// function setStatus(obj) {
-//   for (var key in obj){
-//     if(obj.hasOwnProperty(key)){
-//       let result = obj[key]
-//          for (var i in result) {
-//            if(result.hasOwnProperty(i)){
-//              let weather = result.weatherConditions
-//               for (var k in weather) {
-//                 if(weather.wind_gust_mph <= 24.9999){
-//                   result.status = 'GOOD'
-//                 }
-//                 if(weather.wind_gust_mph >= 25 && weather.wind_gust_mph <= 45.999) {
-//                   result.status = 'CAUTION'
-//                 }
-//                 if(weather.wind_gust_mph >= 46) {
-//                   result.status = 'DANGER'
-//                 }
-//               }
-//             }
-//           }
-        
-//       } 
-//   }
-//   filterAndRandomize(obj)
-// }
-  
-// function filterAndRandomize (obj) {
-//   let array = []
-//   for (var i in obj) {
-//     if(obj.hasOwnProperty(i)){
-//       let result = obj[i]
-//         for (var key in result) {
-//           if(result.hasOwnProperty(key)){
-//          //   console.log(i, result.status)
-          
-//           }
-//         }
-//     }
-//   }
-//   //console.log(array.length)
-// }

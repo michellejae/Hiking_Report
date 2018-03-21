@@ -80,19 +80,20 @@ app.get('/api/hikeNow/', (req, res) => {
     const trailweather = global.hikeNow.weather[trail.weather]
     trail.weather = trailweather
     return trail
-    }).filter(trail => {
-     if(trail.weather && trail.weather.wind_gust_mph){
-       return trail.weather.wind_gust_mph < 25
-     }
+    // }).filter(trail => {
+    //  if(trail.weather && trail.weather.wind_gust_mph){
+    //    return trail.weather.wind_gust_mph < 25
+    //  }
     })
   }).then(goodTrails => {
+    console.log(goodTrails)
     return res.json(goodTrails)
   })
 })
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  //getTrailHeads();
+    getTrailHeads();
   //timedCalls(); 
   // updateWeatherStations();
   // getRainData();
