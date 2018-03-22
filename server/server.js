@@ -13,7 +13,7 @@ const fakeAllData = require('./utilities/fakeAllData')
 const fakeSingleData = require('./utilities/fakeSingleData')
 const { getTrailHeads } = require('./utilities/helper')
 const { timedWeather, timedRain } = require('./utilities/nodeSchedule')
-
+const { getTrails } = require('./routes/trails')
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -22,7 +22,7 @@ const PORT = process.env.PORT  || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false }));
 
-app.use('/trails', trails);
+
 app.use(express.static('pubic'));
 
 app.get('/api/hikeNow/fake', (req, res) =>{
@@ -118,8 +118,9 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  getTrailHeads();
-  getRainTotalData();
+ // getTrails();
+ // getTrailHeads();
+ // getRainTotalData();
   timedRain();
   timedWeather();
   //getRainData();
