@@ -21,6 +21,7 @@ const allTrailService = ['$http', function ($http) {
   }
 
   this.setTrailStatus = function (allTrails) {
+    console.log(allTrails)
     allTrails.map(element => {
       if(element.weather){
         if(element.weather.wind_mph < 25) {
