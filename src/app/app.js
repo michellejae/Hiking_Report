@@ -1,9 +1,9 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
 import NgMap from 'ngmap';
+
 import bulma from '../../node_modules/bulma/css/bulma.css';
-
-
+import bulmaCarousel from '../../node_modules/bulma-carousel/dist/bulma-carousel.min.js'
 import TrailCtrl from '../controller/trail.controller';
 import trailService from '../services/trailDataService';
 import HomeCtrl from '../controller/home.controller'
@@ -13,9 +13,15 @@ import allTrailsService from '../services/allTrailsService';
 
 import '../style/app.css';
 
+class AppCtrl {
+  constructor() {
+    this.url = 'https://github.com/preboot/angular-webpack';
+  }
+}
+
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [ngRoute, NgMap, bulma])
+angular.module(MODULE_NAME, [ngRoute, NgMap])
   .controller('AppCtrl', AppCtrl)
   .controller('HomeCtrl', HomeCtrl)
   .controller('TrailCtrl', TrailCtrl)
