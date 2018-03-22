@@ -39,8 +39,7 @@ const allTrailService = ['$http', function ($http) {
         element.status = 'UNKNOWN';
       }
     })
-    // console.log(allTrails)
-    setTrailHeads()
+    this.setTrailHeads(arr);
   }
 
   this.setTrailHeads = function (arr) {
