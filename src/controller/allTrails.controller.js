@@ -22,7 +22,7 @@ const AllTrailsCtrl = ['$scope','allTrailsService', 'NgMap', function ($scope, a
       return c.trailname === name;
     })[0];
     b = true;
-    $scope.selected()
+    $scope.selected();
   };
 
   //Google Map
