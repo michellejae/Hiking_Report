@@ -60,7 +60,6 @@ function getRainData () {
           rainfall: result.rainfall
         }
       })
-       console.log('global', global.hikeNow.rain)
     })
     .catch(err => {
       console.log(err)
