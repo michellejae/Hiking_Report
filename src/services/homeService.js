@@ -11,18 +11,20 @@ const homeService = [`$http`, function ($http) {
       return data.data
     }).then(goodTrails => {
       goodTrails.map(trail => {
+        let km = (trail.length_m * 1.60934).toFixed(2);
           let finalGoodTrail = {
             name: trail.trailname,
             length: trail.length_m,
+            length_km: km,
             status: 'GOOD'
           }
         trailsArr.push(finalGoodTrail)
       })
+      console.log(trailsArr)
     }).catch(err => {
       console.log(err);
     })
   }
-
 
 }]
 
