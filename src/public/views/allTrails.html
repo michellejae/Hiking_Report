@@ -5,15 +5,13 @@
   </ng-map>
 </div>
 
-<br><br>
+  <div ng-if="selected()">
+      <h1>trail: {{selectedHike.trailname}}</h1>
+      <h1>length: {{selectedHike.length_m}} m</h1>
+      <h1>status: {{selectedHike.status}}</h1>
+  </div>
 
-<div>
-  <h1>{{selectedHike.trailname}}</h1>
-  <h1>{{selectedHike.length_m}}</h1>
-  <h1>{{selectedHike.status}}</h1>
-</div>
-
-<br><br>
+<br>
 
 <div>
   <ul>
