@@ -9,7 +9,7 @@ const AllTrailsCtrl = ['$scope','allTrailsService', 'NgMap', function ($scope, a
 
   //Set trailHeads to scope var to plot markers
   $scope.trailHeads = allTrailsService.getTrailHeadCoordinates();
-
+  
   //Display or not to display
   let b = false;
   $scope.selected = function () {

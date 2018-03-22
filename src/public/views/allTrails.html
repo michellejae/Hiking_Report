@@ -36,7 +36,14 @@
     <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
       map-lazy-load-params="{{googleMapsUrl}}">
       <ng-map center="21.4389,-158.0001" zoom="10">
-          <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true"></marker>      </ng-map>
+          <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true" draggable="true" optimized="false" icon="{
+            url:'http://www.free-icons-download.net/images/green-map-marker-icon-50710.png',
+            scaledSize:[100,100],
+            origin: [10,10],
+            anchor: [50,50]
+          }"
+          ></marker>      
+      </ng-map>
     </div>
   </div>
 
