@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 /*! bulma.io v0.6.2 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -45,9 +44,10 @@ h6 {
 ul {
   list-style: none; }
 
-
-* {
-  font-family: 'Lato', sans-serif;
+button,
+input,
+select,
+textarea {
   margin: 0; }
 
 html {
@@ -6832,42 +6832,30 @@ img {
 
 .sun-rise-container {
   display: flex;
-  justify-content: space-around;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
   padding: 0; }
   .sun-rise-container .sunrise-row {
     display: flex;
-    justify-content: center; }
+    border-bottom: 1px solid grey; }
+    .sun-rise-container .sunrise-row .sunrise {
+      display: flex;
+      justify-content: space-around; }
+    .sun-rise-container .sunrise-row .sunset {
+      display: flex;
+      justify-content: space-around; }
 
 .hike-details-container {
   display: flex;
-  justify-content: space-around;
   flex-direction: row;
   margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding: 0; }
+  margin-bottom: 1rem; }
   .hike-details-container .hike-details-row {
     display: flex;
-    justify-content: space-around; }
-
-footer {
-  margin: 0 auto;
-  border-top: 1px solid grey;
-  width: 95%;
-  text-align: center; }
-  footer z
-button {
-    border: none;
-    background: none;
-    color: grey;
-    transform: to-upper-case; }
-    footer z
-button:hover {
-      color: black;
-      font-size: 1rem;
-      transition: 0.4s; }
+    justify-content: center; }
 
 a {
   display: none; }

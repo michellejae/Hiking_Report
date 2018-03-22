@@ -9,68 +9,64 @@
       <div class="is-size-4 hike-name-container">{{trail.name}} </div>
       <div class="is-size-6 hike-length">{{trail.weather.temp_f}} F </div>
     </div>
-
-  <div class="{{trail.status}}">
-    <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
-      <ng-map center="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" zoom="13">
-        <marker position="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" animation="Animation.DROP" centered="true"></marker>
-      </ng-map>
-    </div>
-
-    <div class="container has-text-centered hike-report-container">
-
-      <div class="container hike-status-container">
-        <div class="{{trail.status}}"> {{trail.status}}</div>
-      </div>
-    </div>
   </div>
-
-
-  <div class="hike-timestamp-container">
-    <div class="hike-timestamp-data">{{trail.weather.observation_time}}</div>
-  </div>
-
-
-  <div class="has-text-centered hike-conditions-container">
-
-    <div class="columns hike-trio-conditions-row">
-      <div class="column weather-condition">
-        <div class="block">
-          <img class="icon" src="{{trail.weather.icon_url}}"></img>
-          {{trail.weather.weather}}
-        </div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <div class="{{trail.status}}">
+      <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
+        <ng-map center="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" zoom="13">
+          <marker position="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" animation="Animation.DROP" centered="true"></marker>
+        </ng-map>
       </div>
-      <div class="column has-text-centered wind-condition">
-        <div class="block">
-          <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}}mph
-        </div>
-      </div>
-      <div class="column mud-icon">
-        <div class="block">
-          <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">[Rain/Wetness/Mud]
+      <div class="container has-text-centered hike-report-container">
+        <div class="container hike-status-container">
+          <div class="{{trail.status}}"> {{trail.status}}</div>
         </div>
       </div>
     </div>
-
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+    <div class="hike-timestamp-container">
+      <div class="hike-timestamp-data">{{trail.weather.observation_time}}</div>
+    </div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+    <div class="has-text-centered hike-conditions-container">
+      <div class="columns hike-trio-conditions-row">
+        <div class="column weather-condition">
+          <div class="block">
+            <img class="icon" src="{{trail.weather.icon_url}}"></img>
+            {{trail.weather.weather}}
+          </div>
+        </div>
+        <div class="column has-text-centered wind-condition">
+          <div class="block">
+            <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}}mph
+          </div>
+        </div>
+        <div class="column mud-icon">
+          <div class="block">
+            <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
     <div class="sun-rise-container">
-        <div class="sunrise-row">
-          <div class="sunrise">
-            <img src="https://png.icons8.com/office/30/000000/sunrise.png"><br />6:45AM </div>
-          <div class="sunset">
-            <img src="https://png.icons8.com/office/30/000000/sunset.png"><br />7:00PM</div>
-        </div>
+      <div class="sunrise-row">
+        <div class="sunrise">
+          <!-- <img src="https://png.icons8.com/office/30/000000/sunrise.png"> -->
+          <br />6:45AM </div>
+        <div class="sunset">
+          <!-- <img src="https://png.icons8.com/office/30/000000/sunset.png"> -->
+          <br />7:00PM</div>
       </div>
-    
-    
-    
-    
-      <div class=" hike-details-container">
-        <div class="hike-details-row">
-          <div class="temp-data">{{trail.length}}mi</div>
-          <div class="hike-detail-elev">{{trail.elev}} ft</div>
-          <div class="hike-detail-difficulty">{{trail.standard}}</div>
-        </div>
-      </div>
-      <!-- <footer><button class="descBtn">description</button></footer> -->
-      <a href="https://icons8.com">Icon pack by Icons8</a>
     </div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+  <div class=" hike-details-container">
+    <div class="hike-details-row">
+      <div class="temp-data">{{trail.length}}mi</div>
+      <div class="hike-detail-elev">{{trail.elev}} ft</div>
+      <div class="hike-detail-difficulty">{{trail.standard}}</div>
+    </div>
+  </div>
+  <!-- <footer><button class="descBtn">description</button></footer> -->
+  <a href="https://icons8.com">Icon pack by Icons8</a>
+</div>
