@@ -20,7 +20,6 @@ const homeService = [`$http`, function ($http) {
           }
         trailsArr.push(finalGoodTrail)
       })
-      console.log(trailsArr)
     }).catch(err => {
       console.log(err);
     })
