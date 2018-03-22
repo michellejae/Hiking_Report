@@ -1,38 +1,124 @@
-<!-- <h1> Home Home Home. </h1> -->
 <div class="main-container">
-  <header class="header-bar">
-    <div class="menu-icon">
-      <i class="fas fa-bars"></i>
-    </div>
-    <h1 class="title"> Hike<i class="fas fa-tree"></i>Now </h1>
-    <div class="search-wrapper">
-        <form action="" autocomplete="on">
-        <input id="search" name="search" type="text" placeholder="What're we looking for ?"><input id="search_submit" value="Rechercher" type="submit">
-        </form>
-      </div>
-    <!-- <div id="wrap">
-      <form action="" autocomplete="on">
-      <input type="text" name="search" placeholder="?">
-      <a href="#"><i class="fas fa-search"></i></a>
-    </div> -->
-    <!-- <div class="header-filler-column"></div> -->
-  </header>
 
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
-      </p>
+  <section class="hero is-default is-bold is-primary">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a href="../" class="navbar-item">
+              <h1 class="title">hike<i class="fas fa-tree"></i>know</h1>
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenu">
+              <span></span>
+              <span></span>
+              <span></span>            
+            </span>
+          </div>
+          <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+              <div class="tabs is-right is-medium">
+                <ul>
+                  <li class="is-active"><a><strong>Home</strong></a></li>
+                  <li><a href="/alltrails"><strong>All Trails</strong></a></li>  
+                  <li><a href="/settings"><strong>Settings</strong></a></li>
+                  <li><a href="#"><strong></strong><i class="fas fa-search"></i></a>
+                </ul>
+              </div>
+            </div>        
+          </div>
+        </div>
+      </nav>
     </div>
   </section>
 
-  <div class="slideshow-wrapper">
+  <div class='carousel carousel-animated carousel-animate-slide' data-autoplay="true">
+      <div class='carousel-container'>
+        <div class='carousel-item has-background is-active'>
+          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2017/12-17/oahu-hike-month-kuliouou-ridge-view.jpg?ver=1511836570" alt="Kuliʻouʻou Ridge Trail" width="640" height="310" />
+          <div class="title">Kuliʻouʻou Ridge Trail</div>
+        </div>
+        <div class='carousel-item has-background'>
+          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2018/02-18/hike-we-like-kealia-trail-view.jpg?ver=1517529316" alt="Keālia Trail" width="640" height="310" />
+          <div class="title">Keālia Trail</div>
+        </div>
+        <div class='carousel-item has-background'>
+          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2017/11-17/hike-of-the-month-judd-trail-jackass-ginger-pool.jpg?ver=1509592826" alt="Judd Trail" width="640" height="310" />
+          <div class="title">Judd Trail</div>
+        </div>
+      </div>
+      <div class="carousel-navigation is-centered">
+        <div class="carousel-nav-left">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </div>
+        <div class="carousel-nav-right">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+
+  <div class="columns is-centered">
+    <div class="column is-6">
+      <div class="card">
+        <header class="card-header">
+          <h1 class="card-header-title is-1 is-centered">Take a Hike!</h1>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </a>
+        </header>
+          <div class="card-table">
+            <div class="content">
+              <table class="table is-fullwidth is striped">
+                <tbody>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-success" href="#">Good!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-warning" href="#">Caution!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-danger" href="#">Danger!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-black" href="#">Hurricane!</a></td>
+                  </tr>
+                  <tr ng-repeat="trail in trails | filter : test">
+                    <a ng-href="/trail/{{ trail.name }}">
+                      <td>{{trail.name}}</td>
+                      <td>{{trail.length}} m</td>
+                      <td>{{trail.status}}</td>
+                    </a>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="/alltrails" class="card-footer-item">View All</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Backup slideshow carousel : Cindy still working on this! -->
+  <!-- <div class="slideshow-wrapper">
     <div class="slideshow-container">
       <!-- Full-width images with number and caption text -->
-      <div class="trail-slides fade">
+      <!-- <div class="trail-slides fade">
         <div class="numbertext">1 / 3</div>
         <img src="http://honolulumagazine-images.dashdigital.com/images/2017/12-17/oahu-hike-month-kuliouou-ridge-view.jpg?ver=1511836570"
           alt="Kuliʻouʻou Ridge Trail">
@@ -62,38 +148,4 @@
         <span class="dot" onclick="currentSlide(3)"></span>
       </div>
     </div><!-- closing slideshow container -->
-  </div>
-
-
-
-
-
-  <ul class="good-condition-trails">
-    <li ng-repeat="trails in trails">
-      <a href="/trails/good">{{ trail.name }}</a>
-      <!--change this later !-->
-      : {{ trail.length }}
-    </li>
-  </ul>
-
-  <!-- <footer class="home-footer">
-    <input type="text" placeholder="Search...">
-    <a href="#"><i class="fas fa-search"></i></a>
-  </footer> -->
-
-</div>
-<!-- closing main -->
-<h1> Home Home Home. </h1>
-<div>
-  <input type="text" placeholder="search trail name" ng-model="test">
-</div>
-<ul>
-  <li ng-repeat="trail in trails | filter : test">
-    <h2><a ng-href="/trail/{{ trail.trailname }}">trail: {{trail.trailname}}</a></h2>
-    <h3>length: {{trail.weather.length}} m</h3>
-    <h3>elevation: {{trail.weather.elev}} ft</h3>
-    <h3>temperature: {{trail.weather.weatherConditions.temp_f}} f</h3>
-    <h3>wind mph: {{trail.weather.weatherConditions.wind_mph}} mph</h3>
-    <h3>condition: {{trail.weatherStatus}}</h3>
-  </li>
-</ul>
+  <!-- </div>  --> 

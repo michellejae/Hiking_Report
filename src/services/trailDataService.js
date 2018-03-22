@@ -12,7 +12,8 @@ this.getSingleTrail = function (name) {
     finalTrail.coordinates = newSingleTrail.coordinates,
     finalTrail.standard = newSingleTrail.standard
     finalTrail.weather = newSingleTrail.weather
-    return newSingleTrail.weather
+    finalTrail.rain = newSingleTrail.rain
+    return newSingleTrail
   }).then(result =>{
     this.setStatus(result)
     console.log('final',finalTrail.weather)
@@ -21,18 +22,22 @@ this.getSingleTrail = function (name) {
 }
 
 this.setStatus = function(trail) {
-  if (trail.wind_mph < 24.9999) {
+  if(trail.weather && trail.rain) {
+  if (trail.weather.wind_mph < 24.9999 && trail.rain.rainfall < .4999) {
     finalTrail.status = 'GOOD'
   } 
-  if (trail.wind_mph > 25 && trail.wind_mph < 45.999) {
+  if (trail.weather.wind_mph >= 25 && trail.weather.wind_mph <= 46 && trail.rain.rainfall >= .5 && trail.rain.rainfall <= 1) {
     finalTrail.status = 'CAUTION'
   }
-  if (trail.wind_mph > 46) {
+  if (trail.weather.wind_mph > 46 && trail.rain.rainfall > 1) {
     finalTrail.status = 'DANGER'
   }
   if(trail.wind_mph > 73) {
     finalTrail.status = 'HURRICANE'
   }
+} else {
+  finalTrail.status = 'UNKOWN'
+}
   return true;
 }
 

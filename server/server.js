@@ -6,7 +6,7 @@ const path = require('path');
 const trails = require('./routes/trails');
 const { randomGoodTrail } = require('./utilities/helper');
 const {timedCalls, updateWeatherStations } = require('./utilities/updateWeatherStations');
-const { getRainData } = require ('./utilities/rainData.js')
+const { getRainData, getRainTotalData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
 const fakeGoodData = require('./utilities/fakeGoodData')
 const fakeAllData = require('./utilities/fakeAllData')
@@ -55,7 +55,11 @@ app.get('/api/hikeNow/trail/:name', (req, res) => {
   }).then(finalSingleTrail => {
     const trailWeather = global.hikeNow.weather[finalSingleTrail.weather]
     finalSingleTrail.weather = trailWeather
+    const rainWeather = global.hikeNow.rain[finalSingleTrail.rain]
+    finalSingleTrail.rain = rainWeather
     return res.json(finalSingleTrail)
+  }).catch(err =>{
+    console.log(err)
   })
 })
 
@@ -69,14 +73,22 @@ app.get('/api/hikeNow', (req, res) => {
    return trails.map(trail => {
     const trailweather = global.hikeNow.weather[trail.weather]
     trail.weather = trailweather
+    const rainWeather = global.hikeNow.rain[trail.rain]
+    trail.rain = rainWeather
     return trail
     }).filter(trail => {
      if(trail.weather && trail.weather.wind_gust_mph){
-       return trail.weather.wind_gust_mph < 25
-     }
+       if(trail.weather.wind_gust_mph < 25) {
+         if(trail.rain && trail.rain.rainfall) {
+           return trail.rain.rainfall < .4999
+         }
+       }
+      }
     })
   }).then(goodTrails => {
     return res.json(goodTrails)
+  }).catch(err =>{
+    console.log(err)
   })
 })
 
@@ -90,18 +102,23 @@ app.get('/api/hikeNow/all', (req, res) => {
    return trails.map(trail => {
     const trailweather = global.hikeNow.weather[trail.weather]
     trail.weather = trailweather
+    const rainWeather = global.hikeNow.rain[trail.rain]
+    trail.rain = rainWeather
     return trail
     })
   }).then(allTrails => {
-    console.log(allTrails)
-    return res.json(allTrails)
+      return res.json(allTrails)
+  }).catch(err =>{
+    console.log(err)
   })
 })
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
- // getTrailHeads()
+   //getTrailHeads()
   //timedCalls(); 
-  // updateWeatherStations();
-  // getRainData();
+   //updateWeatherStations();
+    getRainTotalData();
+   //getRainData();
+  
 });

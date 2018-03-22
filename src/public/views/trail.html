@@ -9,11 +9,11 @@
       <div class="is-size-4 hike-name-container">{{trail.name}} </div>
       <div class="is-size-6 hike-length">{{trail.weather.temp_f}} F </div>
     </div>
-  </div>
+
   <div class="{{trail.status}}">
     <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
       <ng-map center="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" zoom="13">
-        <marker position="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" animation="Animation.BOUNCE" centered="true"></marker>
+        <marker position="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" animation="Animation.DROP" centered="true"></marker>
       </ng-map>
     </div>
 
