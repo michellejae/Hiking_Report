@@ -8,6 +8,7 @@ const allTrailService = ['$http', function ($http) {
 
   this.fetchAllTrails = function () {
     return $http.get('/api/hikeNow/FUCK')
+    console.log('here')
     .then(data => {
       data.data.map(element => {
         trailHeads.push(element.coordinates);
