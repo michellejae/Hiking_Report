@@ -25,7 +25,6 @@ app.use('/trails', trails);
 app.use(express.static('pubic'));
 
 app.get('/api/hikeNow/fake', (req, res) =>{
-  console.log('here????')
 let goodRandomTrails = [];
 goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
 goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
