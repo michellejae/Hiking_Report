@@ -36,43 +36,42 @@
     <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
       map-lazy-load-params="{{googleMapsUrl}}">
       <ng-map center="21.4389,-158.0001" zoom="10">
-        <marker ng-repeat="trailHead in trailHeads" position="{{trailHead[1]}},{{trailHead[0]}}" animation="Animation.BOUNCE" centered="true"></marker>
-      </ng-map>
+          <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true"></marker>      </ng-map>
     </div>
-
   </div>
-
-
-
 
   <div ng-if="selected()">
-      <h1>trail: {{selectedHike.trailname}}</h1>
-      <h1>length: {{selectedHike.length_m}} miles</h1>
-      <h1>status: {{selectedHike.status}}</h1>
+        <h1>trail: {{selectedHike.trailname}}</h1>
+        <h1>length: {{selectedHike.length_m}} miles</h1>
+        <h1>status: {{selectedHike.status}}</h1>
   </div>
 
-<div>
-  <ul>
-      <li ng-repeat="trail in trails | filter : test">
-        <br>
-        <h2>trail: <a ng-href="/trail/{{ trail.trailname }}">{{trail.trailname}}</a></h2>
-        <h3>length: {{trail.length_m}} m</h3>
-        <h3>elevation: {{trail.elev_range}} ft</h3>
-        <h3>temperature: {{trail.weather.temp_f}} f</h3>
-        <h3>wind mph: {{trail.weather.wind_mph}} mph</h3>
-        <h3>condition: {{trail.status}}</h3>
-        <h3>feelslike: {{trail.weather.feelslike_f}} f</h3>
-        <h3>observation time: {{trail.weather.observation_time}}</h3>
-        <h3>relative humidity: {{trail.weather.relative_humidity}}</h3>
-        <h3>weather: {{trail.weather.weather}}</h3>
-        <h3>wind direction: {{trail.weather.wind_dir}}</h3>
-        <h3>wind gust: {{trail.weather.wind_gust_mph}} mph</h3>
-        <h3>wind speed: {{trail.weather.wind_mph}} mph</h3>
-        <h3>amenities: {{trail.amenitie}}</h3>
-        <h3>climate: {{trail.climat}}</h3>
-        <h3>features: {{trail.feature}}</h3>
-        <h3>hazards: {{trail.hazard}}</h3>
-        <h3>standard: {{trail.standard}}</h3>
-      </li>
-  </ul>
-</div>
+  <div>
+    <p><input type="text" placeholder="search trail name" ng-model="trail"></p>
+  </div>
+
+  <div>
+    <ul>
+        <li ng-repeat="trail in trails | filter: trail">
+          <br>
+          <h2>trail: <a ng-href="/trail/{{ trail.trailname }}">{{trail.trailname}}</a></h2>
+          <h3>length: {{trail.length_m}} m</h3>
+          <h3>elevation: {{trail.elev_range}} ft</h3>
+          <h3>temperature: {{trail.weather.temp_f}} f</h3>
+          <h3>wind mph: {{trail.weather.wind_mph}} mph</h3>
+          <h3>condition: {{trail.status}}</h3>
+          <h3>feelslike: {{trail.weather.feelslike_f}} f</h3>
+          <h3>observation time: {{trail.weather.observation_time}}</h3>
+          <h3>relative humidity: {{trail.weather.relative_humidity}}</h3>
+          <h3>weather: {{trail.weather.weather}}</h3>
+          <h3>wind direction: {{trail.weather.wind_dir}}</h3>
+          <h3>wind gust: {{trail.weather.wind_gust_mph}} mph</h3>
+          <h3>wind speed: {{trail.weather.wind_mph}} mph</h3>
+          <h3>amenities: {{trail.amenitie}}</h3>
+          <h3>climate: {{trail.climat}}</h3>
+          <h3>features: {{trail.feature}}</h3>
+          <h3>hazards: {{trail.hazard}}</h3>
+          <h3>standard: {{trail.standard}}</h3>
+        </li>
+    </ul>
+  </div>
