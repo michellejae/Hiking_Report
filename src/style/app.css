@@ -189,20 +189,41 @@ img {
   margin: 0 auto;
   width: 90%; }
 
-.sunny {
-  border-bottom: 1px solid grey; }
+.sun-rise-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding: 0; }
+  .sun-rise-container .sunrise-row {
+    display: flex;
+    justify-content: center; }
+
+.hike-details-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding: 0; }
+  .hike-details-container .hike-details-row {
+    display: flex;
+    justify-content: space-around; }
 
 footer {
   margin: 0 auto;
   border-top: 1px solid grey;
   width: 95%;
   text-align: center; }
-  footer button {
+  footer z
+button {
     border: none;
     background: none;
     color: grey;
     transform: to-upper-case; }
-    footer button:hover {
+    footer z
+button:hover {
       color: black;
       font-size: 1rem;
       transition: 0.4s; }
