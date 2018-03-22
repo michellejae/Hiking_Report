@@ -47,8 +47,12 @@
   </div>
 
   <div>
+    <p><input type="text" placeholder="search trail name" ng-model="trail"></p>
+  </div>
+
+  <div>
     <ul>
-        <li ng-repeat="trail in trails | filter : test">
+        <li ng-repeat="trail in trails | filter: trail">
           <br>
           <h2>trail: <a ng-href="/trail/{{ trail.trailname }}">{{trail.trailname}}</a></h2>
           <h3>length: {{trail.length_m}} m</h3>
