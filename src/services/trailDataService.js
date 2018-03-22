@@ -5,26 +5,36 @@ const trailService = ['$http', function ($http) {
 this.getSingleTrail = function (name) {
   return $http.get(`/api/hikeNow/trail/fake/${name}`)
   .then(singleTrail => {
-    finalTrail.name = name,
-    finalTrail.details = singleTrail.data
-    finalTrail.details.coordinates = finalTrail.details.coordinates[0]
-    return singleTrail.data.weatherConditions
+    let newSingleTrail = singleTrail.data
+    finalTrail.name = newSingleTrail.trailname,
+    finalTrail.length = newSingleTrail.length_m,
+    finalTrail.elev = newSingleTrail.elev_range,
+    finalTrail.coordinates = newSingleTrail.coordinates,
+    finalTrail.standard = newSingleTrail.standard
+    finalTrail.weather = newSingleTrail.weather
+    finalTrail.rain = newSingleTrail.rain
+    return newSingleTrail
   }).then(result =>{
     this.setStatus(result)
+    console.log(finalTrail)
     return finalTrail
   })
 }
 
 this.setStatus = function(trail) {
-  if (trail.wind_mph < 24.9999) {
+  if(trail.weather && trail.rain) {
+  if (trail.weather.wind_mph < 24.9999 && trail.rain.rainfall < .4999) {
     finalTrail.status = 'GOOD'
   } 
-  if (trail.wind_mph > 25 && trail.wind_mph < 45.999) {
+  if (trail.weather.wind_mph >= 25 && trail.weather.wind_mph <= 46 && trail.rain.rainfall >= .5 && trail.rain.rainfall <= 1) {
     finalTrail.status = 'CAUTION'
   }
-  if (trail.wind_mph > 46) {
+  if (trail.weather.wind_mph > 46 && trail.rain.rainfall > 1) {
     finalTrail.status = 'DANGER'
   }
+} else {
+  finalTrail.status = 'UNKOWN'
+}
   return true;
 }
 

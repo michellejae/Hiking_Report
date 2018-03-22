@@ -8,12 +8,11 @@ const weatherKey = require('../../config/config');
 let WEATHERAPIKEY = weatherKey.weather.apiKey2;
 const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
 const rule = new cron.RecurrenceRule();
-let goodArray = [];
 
 module.exports = {
-  timedCalls,
+ //timedCalls,
   randomGoodTrail,
- //getTrailHeads,
+  getTrailHeads,
 };
 
 global.hikeNow = {};
@@ -32,8 +31,8 @@ global.hikeNow.weather = {
   icon_url: ''
 };
 
-function timedCalls() {
- cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
+//function timedCalls() {
+ //cron.scheduleJob({ rule:' 0 0 6,9,12,15 * * *'},
   function getTrailHeads() {   
     let trails = [];
     new Trail()
@@ -45,8 +44,7 @@ function timedCalls() {
       fireWeatherAPI(trails);
     })
    }
-  )
-  };
+ // };
 
 function fireWeatherAPI (arr) {
   arr.map(element => {
@@ -59,7 +57,6 @@ function fireWeatherAPI (arr) {
 function getWeatherData(lat,long){
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
   .then(json => {
-    console.log('API GOT FEUGO D')
     return JSON.parse(json);
   })
   .then(data => {
@@ -76,13 +73,13 @@ function getWeatherData(lat,long){
         wind_gust_mph: data.current_observation.wind_gust_mph,
         wind_gust_kph: data.current_observation.wind_gust_kph,
         feelslike_f: data.current_observation.feelslike_f,
-        feelslike_c: data.current_observation.feelslike_c
+        feelslike_c: data.current_observation.feelslike_c,
+        icon_url: data.current_observation.icon_url
       }
     }else{
       return global.hikeNow.weather;
     }
-  })
-  .catch(err => {
+  }).catch(err => {
     console.log(err)
   });
 };

@@ -1,13 +1,20 @@
 <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
   map-lazy-load-params="{{googleMapsUrl}}">
-  <ng-map center="21.3069,-157.8583" zoom="10">
-      <marker ng-repeat="trailHead in trailHeads" position="{{trailHead[1]}},{{trailHead[0]}}" on-click="" animation="DROP" centered="true"></marker>
+  <ng-map center="21.4389,-158.0001" zoom="10">
+      <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true"></marker>
   </ng-map>
+</div>
+
+<div ng-if="selected()">
+      <h1>trail: {{selectedHike.trailname}}</h1>
+      <h1>length: {{selectedHike.length_m}} miles</h1>
+      <h1>status: {{selectedHike.status}}</h1>
 </div>
 
 <div>
   <ul>
-      <li ng-repeat="trail in trails | filter:test">
+      <li ng-repeat="trail in trails | filter : test">
+        <br>
         <h2>trail: <a ng-href="/trail/{{ trail.trailname }}">{{trail.trailname}}</a></h2>
         <h3>length: {{trail.length_m}} m</h3>
         <h3>elevation: {{trail.elev_range}} ft</h3>
@@ -27,5 +34,5 @@
         <h3>hazards: {{trail.hazard}}</h3>
         <h3>standard: {{trail.standard}}</h3>
       </li>
-    </ul>
+  </ul>
 </div>
