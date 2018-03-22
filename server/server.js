@@ -115,10 +115,10 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-   //getTrailHeads()
+  //getTrailHeads()
   //timedCalls(); 
-   //updateWeatherStations();
-    getRainTotalData();
-   //getRainData();
+  //updateWeatherStations();
+  getRainTotalData();
+  //getRainData();
   
 });
