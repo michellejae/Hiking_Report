@@ -10,13 +10,13 @@ import AllTrailCtrl from '../controller/allTrails.controller';
 import allTrailsService from '../services/allTrailsService';
 
 import '../style/app.css';
+import '../../node_modules/bulma/css/bulma.css'
 
 class AppCtrl {
   constructor() {
     this.url = 'https://github.com/preboot/angular-webpack';
   }
 }
-
 
 const MODULE_NAME = 'app';
 
