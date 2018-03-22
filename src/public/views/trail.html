@@ -52,33 +52,25 @@
       </div>
     </div>
 
-
-    <div class="columns sunny">
-      <div class="column sunrise-row">
-        <div class="sunrise">
-          <img src="https://png.icons8.com/office/30/000000/sunrise.png"> 6:45AM </div>
+    <div class="sun-rise-container">
+        <div class="sunrise-row">
+          <div class="sunrise">
+            <img src="https://png.icons8.com/office/30/000000/sunrise.png"><br />6:45AM </div>
+          <div class="sunset">
+            <img src="https://png.icons8.com/office/30/000000/sunset.png"><br />7:00PM</div>
+        </div>
       </div>
-      <div class="column sunset-row">
-        <div class="sunset">
-          <img src="https://png.icons8.com/office/30/000000/sunset.png">7:00PM</div>
+    
+    
+    
+    
+      <div class=" hike-details-container">
+        <div class="hike-details-row">
+          <div class="temp-data">{{trail.length}}mi</div>
+          <div class="hike-detail-elev">{{trail.elev}} ft</div>
+          <div class="hike-detail-difficulty">{{trail.standard}}</div>
+        </div>
       </div>
+      <!-- <footer><button class="descBtn">description</button></footer> -->
+      <a href="https://icons8.com">Icon pack by Icons8</a>
     </div>
-  </div>
-
-
-  <div class="container has-text-centered hike-details-container">
-    <div class="columns">
-      <div class="column temp-data">
-        <div class="block">length:{{trail.length}}mi</div>
-      </div>
-      <div class="column">
-        <div class="block hike-detail-elev">elevation: {{trail.elev}} ft</div>
-      </div>
-      <div class="column">
-        <div class="block hike-detail-difficulty">difficulty: {{trail.standard}}</div>
-      </div>
-    </div>
-  </div>
-  <!-- <footer><button class="descBtn">description</button></footer> -->
-  <a href="https://icons8.com">Icon pack by Icons8</a>
-</div>
