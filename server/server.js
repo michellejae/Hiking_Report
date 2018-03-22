@@ -58,6 +58,8 @@ app.get('/api/hikeNow/trail/:name', (req, res) => {
     const rainWeather = global.hikeNow.rain[finalSingleTrail.rain]
     finalSingleTrail.rain = rainWeather
     return res.json(finalSingleTrail)
+  }).catch(err =>{
+    console.log(err)
   })
 })
 
@@ -85,6 +87,8 @@ app.get('/api/hikeNow', (req, res) => {
     })
   }).then(goodTrails => {
     return res.json(goodTrails)
+  }).catch(err =>{
+    console.log(err)
   })
 })
 
@@ -106,9 +110,9 @@ app.get('/api/hikeNow/all', (req, res) => {
     return trail
     })
   }).then(allTrails => {
-   // console.log(allTrails)
-   return res.json(global.hikeNow.weather)
-    //return res.json(allTrails)
+      return res.json(allTrails)
+  }).catch(err =>{
+    console.log(err)
   })
 })
 

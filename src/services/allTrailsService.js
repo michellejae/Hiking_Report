@@ -10,6 +10,7 @@ const allTrailService = ['$http', function ($http) {
     return $http.get('/api/hikeNow/FUCK')
     .then(data => {
       data.data.map(element => {
+        console.log('first', element)
         trailHeads.push(element.coordinates);
         allTrails.push(element);
       })
@@ -21,7 +22,7 @@ const allTrailService = ['$http', function ($http) {
   }
 
   this.setTrailStatus = function (allTrails) {
-    console.log(allTrails)
+   // console.log(allTrails)
     allTrails.map(element => {
       if(element.weather){
         if(element.weather.wind_mph < 25) {
@@ -37,7 +38,6 @@ const allTrailService = ['$http', function ($http) {
         element.status = 'UNKNOWN';
       }
     })
-    console.log(allTrails)
   }
 
   this.getTrailHeadCoordinates = function () {
