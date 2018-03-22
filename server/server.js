@@ -96,6 +96,9 @@ app.get('/api/hikeNow/all', (req, res) => {
     return allTrails
   }).then(trails => {
    return trails.map(trail => {
+     if(global.hikeNow.weather[trail.weather] === undefined || !global.hikeNow.weather[trail.weather]){
+       console.log(trail)
+     }
     const trailweather = global.hikeNow.weather[trail.weather]
     trail.weather = trailweather
     const rainWeather = global.hikeNow.rain[trail.rain]
@@ -103,13 +106,15 @@ app.get('/api/hikeNow/all', (req, res) => {
     return trail
     })
   }).then(allTrails => {
-    return res.json(allTrails)
+   // console.log(allTrails)
+   return res.json(global.hikeNow.weather)
+    //return res.json(allTrails)
   })
 })
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
- // getTrailHeads()
+   getTrailHeads()
   //timedCalls(); 
    updateWeatherStations();
     getRainTotalData();
