@@ -16,7 +16,7 @@ this.getSingleTrail = function (name) {
     return newSingleTrail
   }).then(result =>{
     this.setStatus(result)
-    console.log(finalTrail)
+    console.log('final',finalTrail.weather)
     return finalTrail
   })
 }
@@ -31,6 +31,9 @@ this.setStatus = function(trail) {
   }
   if (trail.weather.wind_mph > 46 && trail.rain.rainfall > 1) {
     finalTrail.status = 'DANGER'
+  }
+  if(trail.wind_mph > 73) {
+    finalTrail.status = 'HURRICANE'
   }
 } else {
   finalTrail.status = 'UNKOWN'
