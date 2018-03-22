@@ -47,11 +47,11 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Maunawili Ditch Trail'}).update({weather: 'KHIKAILU2', rain : 'WMLH1', region: 'East'})
+  knex('trails').where({trailname: 'Maunawili Ditch Trail'}).update({weather: 'KHIKAILU33', rain : 'WMLH1', region: 'East'})
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Kulanaahane Trail'}).update({weather: 'KHIKANEO5', rain: 'MOAH1', region: 'Central'})
+  knex('trails').where({trailname: 'Kulanaahane Trail'}).update({weather: 'KHIHONOL148', rain: 'MOAH1', region: 'Central'})
   .then(result => {
     return result
   }),
@@ -71,7 +71,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Maunawili Falls Trail'}).update({weather: 'KHIKAILU2', rain: 'MAUH1', region: 'East'})
+  knex('trails').where({trailname: 'Maunawili Falls Trail'}).update({weather: 'KHIKAILU33', rain: 'MAUH1', region: 'East'})
   .then(result => {
     return result
   }),
@@ -79,7 +79,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Kuliouou Ridge Trail'}).update({weather: 'KHIHONOL131', rain: 'NIUH1', region: 'South'})
+  knex('trails').where({trailname: 'Kuliouou Ridge Trail'}).update({weather: 'KHIHONOL135', rain: 'NIUH1', region: 'South'})
   .then(result => {
     return result
   }),
@@ -95,7 +95,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Kealia Trail'}).update({weather: 'KHIWAIAN3', rain : 'Kealia Trail', region: 'North'})
+  knex('trails').where({trailname: 'Kealia Trail'}).update({weather: 'KHIWAIAN3', rain : 'POAH1', region: 'North'})
   .then(result => {
     return result
   }),
@@ -137,7 +137,7 @@ function updateWeatherStations () {
     return result
   })
   ,
-  knex('trails').where({trailname: 'Upper Waimano Trail'}).update({weather: 'KHIKAILU7', rain: 'PACH1', region : 'Central'})
+  knex('trails').where({trailname: 'Upper Waimano Trail'}).update({weather: 'KHIAIEA7', rain: 'PACH1', region : 'Central'})
   .then(result => {
     return result
   })
@@ -188,7 +188,7 @@ function updateWeatherStations () {
   .then(result => {
     return result
   }),
-  knex('trails').where({trailname: 'Maunawili-Waimanalo Access Road'}).update({weather: 'KHIKAILU7', rain: 'WMLH1', region: 'East'})
+  knex('trails').where({trailname: 'Maunawili-Waimanalo Access Road'}).update({weather: 'KHIKAILU33', rain: 'WMLH1', region: 'East'})
   .then(result => {
     return result
   }),

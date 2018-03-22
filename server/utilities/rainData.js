@@ -5,7 +5,8 @@ const path = require(`path`);
 const rp = require(`request-promise`);
 
 module.exports = {
-  getRainData: getRainData
+  getRainData,
+  getRainTotalData
 };
 
 // URL for multiple readings (3hr, 6hr, 12hr, 24hr):
@@ -27,7 +28,11 @@ const oahuRainGauges = [
   `MNLH1`
 ]
 
-global.hikeNow.rain = {};
+global.hikeNow.rain = {
+  station_id:'',
+  rainfall: ''
+};
+
 
 function getRainData () {
   return rp(rainHourlyUrl)
@@ -55,7 +60,39 @@ function getRainData () {
           rainfall: result.rainfall
         }
       })
-    // console.log('global', global.hikeNow.rain)
+       console.log('global', global.hikeNow.rain)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    
+} //closing getRainData
+
+function getRainTotalData () {
+  let key;
+  let value;
+  return rp(rainTotalUrl)
+    .then(result => {
+      result = result.split("\n")
+      newResult = result.slice(53)     
+      newestResult = newResult.slice(0, 58)
+      newestResult = newestResult.map(element => {
+        element = element.replace(/:*:/g, "")
+        element = element.replace(/\//g, "")
+        element = element.replace(/[" "]+/g, " ")
+        element = element.split(" ")
+        return element;  
+       }).filter(element => {
+         return oahuRainGauges.includes(element[0])
+      }) .map(element => {
+            key = element.shift()
+            value = element.pop()
+            global.hikeNow.rain[key] = {
+              station_id: key,
+              rainfall: value
+          }
+      })
+//console.log(global.hikeNow.rain)
     })
     .catch(err => {
       console.log(err)
