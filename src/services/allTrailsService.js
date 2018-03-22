@@ -40,6 +40,7 @@ const allTrailService = ['$http', function ($http) {
       }
     })
     // console.log(allTrails)
+    setTrailHeads()
   }
 
   this.setTrailHeads = function (arr) {
