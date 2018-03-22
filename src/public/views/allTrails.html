@@ -36,7 +36,8 @@
     <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
       map-lazy-load-params="{{googleMapsUrl}}">
       <ng-map center="21.4389,-158.0001" zoom="10">
-          <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true"></marker>      </ng-map>
+          <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true" draggable="true"></marker>      
+      </ng-map>
     </div>
   </div>
 
