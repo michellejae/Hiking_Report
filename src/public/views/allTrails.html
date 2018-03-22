@@ -1,9 +1,49 @@
-<div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
-  map-lazy-load-params="{{googleMapsUrl}}">
-  <ng-map center="21.4389,-158.0001" zoom="10">
-      <marker ng-repeat="t in trailHeads" position="{{t.coordinates[1]}},{{t.coordinates[0]}}" title="{{t.trailname}}" id="{{t.id}}" on-click="showInfo(t.trailname)" animation="Animation.DROP" centered="true"></marker>
-  </ng-map>
-</div>
+<div class="main-container">
+
+    <section class="hero is-default is-bold is-primary">
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a href="../" class="navbar-item">
+                <h1 class="title">hike<i class="fas fa-tree"></i>know</h1>
+              </a>
+              <span class="navbar-burger burger" data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>            
+              </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+              <div class="navbar-end">
+                <div class="tabs is-right is-medium">
+                  <ul>
+                    <li class="is-active"><a><strong>Home</strong></a></li>
+                    <li><a href="/alltrails"><strong>All Trails</strong></a></li>  
+                    <li><a href="/settings"><strong>Settings</strong></a></li>
+                    <li><a href="#"><strong></strong><i class="fas fa-search"></i></a>
+                      
+                    </ul>
+                  </div>
+                </div>        
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>
+  
+  <div class="column">
+    <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js"
+      map-lazy-load-params="{{googleMapsUrl}}">
+      <ng-map center="21.4389,-158.0001" zoom="10">
+        <marker ng-repeat="trailHead in trailHeads" position="{{trailHead[1]}},{{trailHead[0]}}" animation="Animation.BOUNCE" centered="true"></marker>
+      </ng-map>
+    </div>
+
+  </div>
+
+
+
 
   <div ng-if="selected()">
       <h1>trail: {{selectedHike.trailname}}</h1>
