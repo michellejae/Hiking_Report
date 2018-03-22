@@ -49,17 +49,19 @@
 .hike-timestamp-container {
   border-bottom: 1px solid grey;
   color: grey;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 90%;
 }
 
-.tempIcon {
-  height: 10px;
-  width: 10%;
-  display: flex;
+.sunny {
+  border-bottom: 1px solid grey;
 }
 
 .block {
   // border-top: 1px solid grey;
-  padding: 0;
+  // padding: 0;
 }
 
 footer {
@@ -78,4 +80,8 @@ footer {
       transition: 0.4s;
     }
   }
+}
+
+a{
+  display:none;
 }

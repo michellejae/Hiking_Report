@@ -15,7 +15,7 @@ this.getSingleTrail = function (name) {
     return newSingleTrail.weather
   }).then(result =>{
     this.setStatus(result)
-    console.log(finalTrail)
+    console.log('final',finalTrail.weather)
     return finalTrail
   })
 }

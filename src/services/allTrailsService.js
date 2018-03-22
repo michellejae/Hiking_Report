@@ -21,6 +21,7 @@ const allTrailService = ['$http', function ($http) {
   }
 
   this.setTrailStatus = function (allTrails) {
+    console.log('allTrails', allTrails)
     allTrails.map(element => {
       if(element.weather){
         if(element.weather.wind_mph < 25) {
@@ -36,7 +37,7 @@ const allTrailService = ['$http', function ($http) {
         element.status = 'UNKNOWN';
       }
     })
-    console.log(allTrails)
+    // console.log(allTrails)
   }
 
   this.getTrailHeadCoordinates = function () {
