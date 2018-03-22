@@ -161,7 +161,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.plugins = [
     new webpack.LoaderOptionsPlugin({
-      test: /\.scss$/i,
+      test: /\.(sass|scss)$/i,
       options: {
         postcss: {
           plugins: [autoprefixer]
