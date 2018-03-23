@@ -30,7 +30,8 @@ app.use(express.static('public'));
 app.get('/api/hikeNow/trail/:name', (req, res) => {
   let name = req.params.name
   return new Trail()
-  .fetch({trailname: name})
+  .where({trailname: name})
+  .fetch()
   .then(singleTrail => {
     singleTrail = singleTrail.toJSON()
     return singleTrail
