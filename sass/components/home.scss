@@ -1,97 +1,127 @@
-@import '../partials/variables.scss';
-@import '../partials/mixins.scss';
+// @import '../partials/variables.scss';
+// @import '../partials/mixins.scss';
 
-.slideshow-wrapper {
-  display: flex;
-}
-
-.slideshow-container {
-  max-width: 600px;
-  margin: auto
-}
-  img {
-    max-width: 100%;
+.allMap {
+  ng-map {
+    height: 30rem;
+    padding: 0;
+    margin: 0;
   }
-
-.trail-slides fade {
-  display: none;
 }
 
-.prev, .next {
-  cursor: pointer; 
-  // position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  // color: white;
-  font-weight: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px;
-}
 
-.slideshow-caption-text {
-  // color: white;
-  font-size: 12px;
-  padding: 10px, 14px;
-  // position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
 
-}
+// .slideshow-wrapper {
+//   display: flex;
+// }
 
-.numbertext {
-  color: white;
-  font-size: 15px;
-  padding: 10px, 14px;
-  // position: absolute;
-  top: 0;
-}
+// .slideshow-container {
+//   max-width: 600px;
+//   margin: auto
+// }
+//   img {
+//     max-width: 100%;
+//   }
 
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+// .trail-slides fade {
+//   display: none;
+// }
 
-}
+// .prev, .next {
+//   cursor: pointer; 
+//   // position: absolute;
+//   top: 50%;
+//   width: auto;
+//   margin-top: -22px;
+//   padding: 16px;
+//   // color: white;
+//   font-weight: 18px;
+//   transition: 0.6s ease;
+//   border-radius: 0 3px 3px;
+// }
 
-.active, .dot:hover {
-  background-color: #717171;
-}
+// .slideshow-caption-text {
+//   // color: white;
+//   font-size: 12px;
+//   padding: 10px, 14px;
+//   // position: absolute;
+//   bottom: 8px;
+//   width: 100%;
+//   text-align: center;
 
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
+// }
 
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
+// .numbertext {
+//   color: white;
+//   font-size: 15px;
+//   padding: 10px, 14px;
+//   // position: absolute;
+//   top: 0;
+// }
 
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+// .dot {
+//   cursor: pointer;
+//   height: 15px;
+//   width: 15px;
+//   margin: 0 2px;
+//   background-color: #bbb;
+//   border-radius: 50%;
+//   display: inline-block;
+//   transition: background-color 0.6s ease;
 
+// }
 
 //Trail list
-
-
-
-// .home.footer {
-//   position: fixed;
-
-//   width: 100%;
-//   margin: 0 auto;
-//   background-color: $slateblue;
-//   height: 56px;
+// .active, .dot:hover {
+//   background-color: #717171;
 // }
+
+// .fade {
+//   -webkit-animation-name: fade;
+//   -webkit-animation-duration: 1.5s;
+//   animation-name: fade;
+//   animation-duration: 1.5s;
+// }
+
+// @-webkit-keyframes fade {
+//   from {opacity: .4}
+//   to {opacity: 1}
+// }
+
+// @keyframes fade {
+//   from {opacity: .4} 
+//   to {opacity: 1}
+// }
+
+
+// .confooter {
+//   footer {
+//     border-top: 1px soild grey;
+//     margin: 0 auto;
+//     width: 95%;
+//     text-align: center;
+//   }
+//   button {
+//     border: none;
+//     background: none;
+//     color: grey;
+//     transform: to-upper-case;
+//     &:hover {
+//       color: rgb(58, 56, 56);
+//       font-size: 1rem;
+//       transition: 0.4s;
+//     }
+//   }
+// }
+// //Trail list
+
+
+
+// // .home.footer {
+// //   position: fixed;
+
+// //   width: 100%;
+// //   margin: 0 auto;
+// //   background-color: $slateblue;
+// //   height: 56px;
+// // }
