@@ -56,6 +56,7 @@ function fireWeatherAPI (arr) {
 };
 
 function getWeatherData(lat,long){
+  console.log('fyre weather')
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
   .then(json => {
     return JSON.parse(json);

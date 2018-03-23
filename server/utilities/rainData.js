@@ -33,10 +33,10 @@ global.hikeNow.rain = {
   rainfall: ''
 };
 
-
 function getRainData () {
   return rp(rainHourlyUrl)
-    .then(result => {
+  .then(result => {
+    console.log('getRainData',result)
       result = result.split("\n")
       newResult = result.slice(53)      
       newestResult = newResult.slice(0, 58)
@@ -68,10 +68,12 @@ function getRainData () {
 } //closing getRainData
 
 function getRainTotalData () {
+  console.log('getRainTotalData')
   let key;
   let value;
   return rp(rainTotalUrl)
     .then(result => {
+      console.log('getRainTotalData',result)
       result = result.split("\n")
       newResult = result.slice(53)     
       newestResult = newResult.slice(0, 58)
@@ -91,7 +93,6 @@ function getRainTotalData () {
               rainfall: value
           }
       })
-//console.log(global.hikeNow.rain)
     })
     .catch(err => {
       console.log(err)

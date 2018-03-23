@@ -66,7 +66,6 @@
         </div>
       </div>
 
-
 <!-- Trail TILE will show up when selected on map -->
     <div id="selectedTile" class="tile" ng-if="selected()">
 
@@ -114,11 +113,10 @@
           <article class="tile is-child box notification is-danger">
             <h1 class="subtitle">{{selectedHike.trailname}}</h1>              
               <div class="card-footer">
-                <div class="card-footer-item">
-                  <span>
-                    {{selectedHike.length_m}} miles
-                  </span>
-                </div>
+                  <div class="card-footer-item">
+                      <span ng-if="onI()" >{{selectedHike.length_m}} mi</span>
+                      <span ng-if="onM()" >{{selectedHike.length_km}} km</span>
+                    </div>
                 <div class="card-footer-item">
                   <span>
                     {{selectedHike.status}}
@@ -183,7 +181,6 @@
                 <td><a href="/trail/{{trail.trailname}}">{{trail.trailname}}</a></td>
                 <td ng-if="onI()"><a href="/trail/{{trail.trailname}}">{{trail.length_m}} miles</a></td>
                 <td ng-if="onM()"><a href="/trail/{{trail.trailname}}">{{trail.length_km}} km</a></td>
-                
                 <td ng-if="trail.status === 'GOOD'"><a class="button is-success" href="/trail/{{trail.trailname}}">Good!</a></td>
                 <td ng-if="trail.status === 'CAUTION'"><a class="button is-warning" href="/trail/{{trail.trailname}}">Caution!</a></td>
                 <td ng-if="trail.status === 'DANGER'"><a class="button is-danger" href="/trail/{{trail.trailname}}">Danger!</a></td>
@@ -200,5 +197,5 @@
   </div>
 </div> 
   
-    
+
 </div>

@@ -4,13 +4,13 @@ import NgMap from 'ngmap';
 
 import TrailCtrl from '../controller/trail.controller';
 import trailService from '../services/trailDataService';
-import HomeCtrl from '../controller/home.controller'
-import homeService from '../services/homeService'
+import HomeCtrl from '../controller/home.controller';
+import homeService from '../services/homeService';
 import AllTrailCtrl from '../controller/allTrails.controller';
 import allTrailsService from '../services/allTrailsService';
 
 import '../style/app.css';
-import '../../node_modules/bulma/css/bulma.css'
+import '../../node_modules/bulma/css/bulma.css';
 
 class AppCtrl {
   constructor() {
