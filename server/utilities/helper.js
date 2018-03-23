@@ -5,7 +5,7 @@ const cron = require('node-schedule');
 const Trail = require('../db/models/Trails');
 const weatherKey = require('../../config/config');
 
-let WEATHERAPIKEY = weatherKey.weather.apiKey2;
+let WEATHERAPIKEY = weatherKey.weather.apiKey1;
 const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
 const rule = new cron.RecurrenceRule();
 
