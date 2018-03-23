@@ -2,7 +2,6 @@ const homeService = [`$http`, function ($http) {
   const trailsArr = [];
 
   this.getTrails = function () {
-    console.log(trailsArr)
     return trailsArr;
   }
 
@@ -11,7 +10,6 @@ const homeService = [`$http`, function ($http) {
     .then(data => {
       return data.data
     }).then(goodTrails => {
-      console.log('good', goodTrails)
       if(trailsArr.length){
         trailsArr.length = 0
       }
