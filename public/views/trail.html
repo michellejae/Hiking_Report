@@ -1,0 +1,77 @@
+<div class="main-container">
+  <header>
+    <div class="menu-icon">Menu lines icon goes here</div>
+  </header>
+
+
+  <div class="sub-head-container">
+    <div class="sub-head">
+      <div class="is-size-4.5">{{trail.name}} </div>
+      <div class="is-size-4.5" ng-if="getImperial()">{{trail.weather.temp_f}}F</div>
+      <div class="is-size-4.5" ng-if="getMetric()" >{{trail.weather.temp_c}}C</div>
+    </div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <div class="{{trail.status}}">
+    <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
+      <ng-map center="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" zoom="13">
+        <marker position="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" animation="Animation.DROP" centered="true"></marker>
+      </ng-map>
+    </div>
+    <div class="container has-text-centered hike-report-container">
+      <div class="container hike-status-container">
+        <div class="{{trail.status}}"> {{trail.status}}</div>
+      </div>
+    </div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+  <div class="hike-timestamp-container">
+    <div class="hike-timestamp-data">{{trail.weather.observation_time}}</div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+  <div class="container has-text-centered">
+
+    <div class="card">
+      <div class="weatherTrio">
+        <div>
+          <img class="icon" src="{{trail.weather.icon_url}}">{{trail.weather.weather}}
+        </div>
+        <div ng-if="getImperial()"> <img  src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}} mph</div>
+        <div ng-if="getMetric()"> <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_kph}} kph</div>
+        <div>
+          <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
+        </div>
+      </div>
+
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <img src="https://png.icons8.com/office/30/000000/sunrise.png">6:45AM
+        </div>
+        <div class="card-footer-item">
+          <img src="https://png.icons8.com/office/30/000000/sunset.png">7:00PM
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+  <div class="card">
+    <div class=" hike-details-container">
+      
+        <div ng-if="getImperial()" class="temp-data">{{trail.length_m}} mi</div>
+        <div ng-if="getMetric()" class="temp-data">{{trail.length_km}} km</div>
+        <div ng-if="getImperial()" class="hike-detail-elev">{{trail.elev}} ft</div>
+        <div ng-if="getMetric()" class="hike-detail-elev">{{trail.elev_range_m}} m</div>
+        <div class="hike-detail-difficulty">{{trail.standard}}</div>
+      
+    </div>
+  </div>
+
+  <div class="confooter">
+      <footer>
+        <button ng-click="changeMetric()" class="descBtn">metric</button>
+        <button ng-click="changeImperial()" class="descBtn">imperial</button>
+      </footer>
+  </div>
+
+</div>
+<a href="https://icons8.com">Icon pack by Icons8</a>
