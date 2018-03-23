@@ -90,7 +90,7 @@
 
       <div class="tile is-parent" ng-if="selectedHike.status === 'GOOD'">
         <article class="tile is-child box notification is-success">
-          <h1 class="subtitle is-centered"><a ng-href="/trail/{{selectedHike.trailname}}">{{selectedHike.trailname}}</a></h1>
+          <h1 class="subtitle">{{selectedHike.trailname}}</h1>
           <div class="card-footer">
             <div class="card-footer-item">
               <span>
@@ -108,7 +108,8 @@
 
       <div class="tile is-parent" ng-if="selectedHike.status === 'CAUTION'">
           <article class="tile is-child box notification is-warning">
-            <h1 class="subtitle is-centered"><a ng-href="/trail/{{selectedHike.trailname}}">{{selectedHike.trailname}}</a></h1>
+            <!-- <h1 class="subtitle is-centered"><a ng-href="/trail/{{selectedHike.trailname}}">{{selectedHike.trailname}}</a></h1> -->
+          <h1 class="subtitle">{{selectedHike.trailname}}</h1>            
             <div class="card-footer">
               <div class="card-footer-item">
                 <span>
@@ -126,7 +127,8 @@
 
         <div class="tile is-parent" ng-if="selectedHike.status === 'DANGER'">
             <article class="tile is-child box notification is-danger">
-              <h1 class="subtitle is-centered"><a ng-href="/trail/{{selectedHike.trailname}}">{{selectedHike.trailname}}</a></h1>
+              <!-- <h1 class="subtitle is-centered"><a ng-href="/trail/{{selectedHike.trailname}}">{{selectedHike.trailname}}</a></h1> -->
+          <h1 class="subtitle">{{selectedHike.trailname}}</h1>              
               <div class="card-footer">
                 <div class="card-footer-item">
                   <span>
@@ -144,7 +146,8 @@
 
           <div class="tile is-parent" ng-if="selectedHike.status === 'UNKNOWN'">
               <article class="tile is-child box notification is-outlined">
-                <h1 class="subtitle is-centered"><a ng-href="/trail/{{selectedHike.trailname}}">{{selectedHike.trailname}}</a></h1>
+                <!-- <h1 class="subtitle is-centered"><a class="subtitle is-centered" ng-href="/trail/{{selectedHike.trailname}}">{{selectedHike.trailname}}</a></h1> -->
+          <h1 class="subtitle">{{selectedHike.trailname}}</h1>                              
                 <div class="card-footer">
                   <div class="card-footer-item">
                     <span>
@@ -172,6 +175,7 @@
 <div class="card">
     <header class="card-header">
       <h1 class="card-header-title is-1 is-centered">Oahu Trails</h1>
+<!-- Toggle m/km buttons -->
       <div class="buttons has-addons">
           <span class="button is-success is-selected">m</span>
           <span class="button">km</span>
@@ -192,7 +196,7 @@
           <table class="table is-fullwidth is striped">
             <tbody>
               <tr ng-repeat="trail in trails | filter : test">
-                  <td><a ng-href="/trail/{{trail.trailname}}">{{trail.trailname}}</a></td>
+                  <td>{{trail.trailname}}<a ng-href="/trail/{{trail.trailname}}"></a></td>
                   <td>{{trail.length_m}} miles</td>
                   <td ng-if="trail.status === 'GOOD'"><a class="button is-success" href="/trail/{{trail.trailname}}">Good!</a></td>
                   <td ng-if="trail.status === 'CAUTION'"><a class="button is-warning" href="/trail/{{trail.trailname}}">Caution!</a></td>
