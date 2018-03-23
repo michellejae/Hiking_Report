@@ -77,7 +77,6 @@ app.get('/api/hikeNow', (req, res) => {
     trail.weather = trailweather
     const rainWeather = global.hikeNow.rain[trail.rain]
     trail.rain = rainWeather
-    console.log(trail)
     return trail
     }).filter(trail => {
      if(trail.weather && !(trail.weather.wind_gust_mph === undefined)){
