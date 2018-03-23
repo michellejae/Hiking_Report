@@ -76,10 +76,7 @@
         <hr>
         <div class="field has-addons">
           <p class="control is-expanded">
-            <input type="text" class="input" placeholder="Or find a hike here...">
-          </p>
-          <p class="control">
-            <button type="submit" class="button is-primary"><i class="fas fa-search"></i></button>
+            <input ng-model="test" type="text" class="input" placeholder="Or find a hike here...">
           </p>
         </div>
       </div>
@@ -177,14 +174,15 @@
       <h1 class="card-header-title is-1 is-centered">Oahu Trails</h1>
 <!-- Toggle m/km buttons -->
       <div class="buttons has-addons">
-          <span class="button is-success is-selected">m</span>
-          <span class="button">km</span>
-        </div>
-        
-        <div class="buttons has-addons">
-          <span class="button">m</span>
-          <span class="button is-info is-selected">km</span>
+          <span ng-if="onI()" class="button is-success is-selected">m</span>
+          <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
       </div>
+        
+      <div class="buttons has-addons">
+          <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
+          <span ng-if="onM()" class="button is-info is-selected">km</span>
+      </div>
+
       <a href="#" class="card-header-icon" aria-label="more options">
         <span class="icon">
           <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -197,7 +195,8 @@
             <tbody>
               <tr ng-repeat="trail in trails | filter : test">
                   <td>{{trail.trailname}}<a ng-href="/trail/{{trail.trailname}}"></a></td>
-                  <td>{{trail.length_m}} miles</td>
+                  <td ng-if="onI()">{{trail.length_m}} mi</td>
+                  <td ng-if="onM()">{{trail.length_km}} km</td>
                   <td ng-if="trail.status === 'GOOD'"><a class="button is-success" href="/trail/{{trail.trailname}}">Good!</a></td>
                   <td ng-if="trail.status === 'CAUTION'"><a class="button is-warning" href="/trail/{{trail.trailname}}">Caution!</a></td>
                   <td ng-if="trail.status === 'DANGER'"><a class="button is-danger" href="/trail/{{trail.trailname}}">Danger!</a></td>
