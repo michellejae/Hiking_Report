@@ -28,8 +28,8 @@
     <div class="hike-timestamp-data">{{trail.weather.observation_time}}</div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+  <div class="infoContainer">
   <div class="container has-text-centered">
-
     <div class="card">
       <div class="weatherTrio">
         <div>
@@ -54,15 +54,18 @@
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
-  <div class="card">
-    <div class=" hike-details-container">
-      
+  <div class="container">
+    <div class="card">
+      <div class=" hike-details-container">
         <div class="temp-data">{{trail.length}}mi</div>
         <div class="hike-detail-elev">{{trail.elev}} ft</div>
         <div class="hike-detail-difficulty">{{trail.standard}}</div>
-      
+      </div>
     </div>
   </div>
-
+  </div>  
+  <div class="confooter">
+      <footer><button class="descBtn">imperial</button></footer>
+    </div>
 </div>
 <a href="https://icons8.com">Icon pack by Icons8</a>

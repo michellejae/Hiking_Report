@@ -1,5 +1,5 @@
 body {
-  height: 100vh; }
+  height: 100%; }
 
 .sub-head-container {
   margin-left: 1%;
@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: center; }
   .mappy ng-map {
-    height: 25rem;
+    height: 31rem;
     width: 95%;
     padding: 0;
     z-index: 3; }
@@ -38,15 +38,11 @@ body {
   color: white; }
 
 .hike-timestamp-container {
-  border-bottom: 1px solid grey;
   color: grey;
   display: flex;
   justify-content: center;
   margin: 0 auto;
   width: 90%; }
-
-.card {
-  border-top: none; }
 
 .weatherTrio {
   height: 4rem;
