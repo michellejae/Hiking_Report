@@ -6826,11 +6826,11 @@ body {
   color: white; }
 
 .hike-timestamp-container {
+  border-bottom: 1px solid #e9e5e5;
   color: grey;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  width: 90%; }
+  margin: 0 auto; }
 
 .weatherTrio {
   height: 4rem;

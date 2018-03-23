@@ -29,43 +29,45 @@
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
   <div class="infoContainer">
-  <div class="container has-text-centered">
-    <div class="card">
-      <div class="weatherTrio">
-        <div>
-          <img class="icon" src="{{trail.weather.icon_url}}">{{trail.weather.weather}}
+    <div class="container has-text-centered">
+      <div class="card">
+        <div class="weatherTrio">
+          <div>
+            <img class="icon" src="{{trail.weather.icon_url}}">{{trail.weather.weather}}
+          </div>
+          <div>
+            <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}}mph
+          </div>
+          <div>
+            <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
+          </div>
         </div>
-        <div>
-          <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}}mph
-        </div>
-        <div>
-          <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
-        </div>
-      </div>
 
-      <footer class="card-footer">
-        <div class="card-footer-item">
-          <img src="https://png.icons8.com/office/30/000000/sunrise.png">6:45AM
-        </div>
-        <div class="card-footer-item">
-          <img src="https://png.icons8.com/office/30/000000/sunset.png">7:00PM
-        </div>
-      </footer>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <img src="https://png.icons8.com/office/30/000000/sunrise.png">6:45AM
+          </div>
+          <div class="card-footer-item">
+            <img src="https://png.icons8.com/office/30/000000/sunset.png">7:00PM
+          </div>
+        </footer>
+      </div>
     </div>
-  </div>
-  <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
-  <div class="container">
-    <div class="card">
-      <div class=" hike-details-container">
-        <div class="temp-data">{{trail.length}}mi</div>
-        <div class="hike-detail-elev">{{trail.elev}} ft</div>
-        <div class="hike-detail-difficulty">{{trail.standard}}</div>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+    <div class="container">
+      <div class="card">
+        <div class=" hike-details-container">
+          <div class="temp-data">{{trail.length}}mi</div>
+          <div class="hike-detail-elev">{{trail.elev}} ft</div>
+          <div class="hike-detail-difficulty">{{trail.standard}}</div>
+        </div>
       </div>
     </div>
   </div>
-  </div>  
   <div class="confooter">
-      <footer><button class="descBtn">imperial</button></footer>
-    </div>
+    <footer>
+      <button class="descBtn">imperial</button>
+    </footer>
+  </div>
 </div>
 <a href="https://icons8.com">Icon pack by Icons8</a>

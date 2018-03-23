@@ -3,7 +3,7 @@
 
 body {
   height: 100%;
-  // position: fixed;
+  
 }
 .sub-head-container {
   margin-left: 1%;
@@ -52,13 +52,16 @@ body {
 }
 
 .hike-timestamp-container {
-  // border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgb(233, 229, 229);
   color: grey;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  width: 90%;
 }
+
+// .infoContainer {
+//   margin-top:3px;
+// }
 
 .weatherTrio {
   height: 4rem;
