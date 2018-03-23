@@ -1,5 +1,5 @@
 <div class="main-container">
-<!-- Header -->
+
   <section class="hero is-default is-bold is-primary">
     <div class="hero-head">
       <nav class="navbar">
@@ -18,8 +18,8 @@
             <div class="navbar-end">
               <div class="tabs is-right is-medium">
                 <ul>
-                  <li><a href="../"><strong>Home</strong></a></li>
-                  <li class="is-active"><a href="/all"><strong>Trails</strong></a></li>  
+                  <li class="is-active"><a href="../"><strong>Home</strong></a></li>
+                  <li><a href="/all"><strong>Trails</strong></a></li>  
                 </ul>
               </div>
             </div>        
@@ -29,53 +29,31 @@
     </div>
   </section>
 
-  <div class='carousel carousel-animated carousel-animate-slide' data-autoplay="true">
-      <div class='carousel-container'>
-        <div class='carousel-item has-background is-active'>
-          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2017/12-17/oahu-hike-month-kuliouou-ridge-view.jpg?ver=1511836570" alt="Kuliʻouʻou Ridge Trail" width="640" height="310" />
-          <div class="title">Kuliʻouʻou Ridge Trail</div>
-        </div>
-        <div class='carousel-item has-background'>
-          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2018/02-18/hike-we-like-kealia-trail-view.jpg?ver=1517529316" alt="Keālia Trail" width="640" height="310" />
-          <div class="title">Keālia Trail</div>
-        </div>
-        <div class='carousel-item has-background'>
-          <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2017/11-17/hike-of-the-month-judd-trail-jackass-ginger-pool.jpg?ver=1509592826" alt="Judd Trail" width="640" height="310" />
-          <div class="title">Judd Trail</div>
-        </div>
-      </div>
-      <div class="carousel-navigation is-centered">
-        <div class="carousel-nav-left">
-          <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        </div>
-        <div class="carousel-nav-right">
-          <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        </div>
-      </div>
-    </div>
+<!-- Big ol' image -->
+<figure class="image">
+  <img src="../img/oahu-hike-month-kuliouou-ridge-view.jpg" alt="Kuli'ou'ou Ridge View">
+</figure>
 
 <!-- Title section with Buttons-->
   <h1 class="title has-text-centered">Go outside!</h1>
-  <h2 class="subtitle has-text-centered">These ones are all clear...</h2>
+  <h2 class="subtitle has-text-centered">These trails are all clear...</h2>
   
   <div class="columns is-mobile is-centered">
     <div class="column"></div>
     <div class="column">
-      <div class="buttons has-addons">
-        <span ng-if="onI()" class="button is-success is-selected">m</span>
-        <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
+          <div class="buttons has-addons is-centered">
+            <div ng-if="onI()" class="button is-success is-selected">m</div>
+            <div ng-if="onI()" ng-click="Metric()" class="button">km</div>
+            <div ng-if="onM()" ng-click="Imperial()" class="button">m</div>
+            <div ng-if="onM()" class="button is-info is-selected">km</div>
+          </div>
+          <!-- Maybe add All Trails button at top -->
+        <!-- <div class="column">
+          <a href="/all" class="button is-primary">Trails</a>
+        </div> -->
       </div>
-      <div class="buttons has-addons">
-        <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
-        <span ng-if="onM()" class="button is-info is-selected">km</span>
-      </div>
-    </div>
     <div class="column"></div>
   </div>
-
-  
-
-
 
 <!-- 3 Columns of Trails tiles -->
   <div class="columns is-centered">
@@ -83,7 +61,7 @@
       <div class="tile is-parent is-9">
         <a ng-href="/trail/{{ trail.name }}">
           <article class="tile is-child notification is-success">
-            <div class="subtitle">{{trail.name}}</div>
+            <div class="subtitle has-text-centered">{{trail.name}}</div>
             <div class="card-footer">
               <div class="card-footer-item">
                 <span>
@@ -97,73 +75,48 @@
                 </span>
               </div>
             </div>
-          </article>
-        </a>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="/all" class="card-footer-item">View All</a>
+        </footer>
       </div>
     </div>
   </div>
 
+<!-- View All Trails button -->
   <div class="container">
     <div class="content has-text-centered">
-      <a href="/all" class="button is-primary">View all trails</a>
+      <a href="/all" class="button is-primary">View All Trails</a>
     </div>
   </div>  
-  
-
-
 </div>
 
-<!-- <div class="card">
-    <header class="card-header">
-      <h1 class="card-header-title is-1 is-centered">Take a Hike!</h1>
-    </header>
-    <tr ng-repeat="trail in trails">
-      <a ng-href="/trail/{{ trail.name }}">
-        <td>{{trail.name}}</td>
-                  <td ng-if="getImperial()" ng-click="changeMetric()">{{trail.length}} m</td>
-                  <td ng-if="getMetric()" ng-click="changeImperial()" >{{trail.length_km}} km</td>
-                  <td>{{trail.status}}</td>
-                </a>
-          
-          
-        </div>
- -->
-
-<!-- <div class="card-table">
-    <div class="content">
-      <table class="table is-fullwidth is striped">
-        <tbody>
-          <tr>
-            <td>Trail Name</td>
-            <td>Trail Length m</td> 
-            <td><a class="button is-success" href="#">Good!</a></td>
-          </tr>
-          <tr>
-            <td>Trail Name</td>
-            <td>Trail Length m</td> 
-            <td><a class="button is-warning" href="#">Caution!</a></td>
-          </tr>
-          <tr>
-            <td>Trail Name</td>
-            <td>Trail Length m</td> 
-            <td><a class="button is-danger" href="#">Danger!</a></td>
-          </tr>
-          <tr>
-            <td>Trail Name</td>
-            <td>Trail Length m</td> 
-            <td><a class="button is-black" href="#">Hurricane!</a></td>
-          </tr>
-        </tr>
-      </tbody>
-    </table> -->
-
-
-
-
-
-
-
-
+<!-- Bulma Carousel - on hold! -->
+<!-- <div class='carousel carousel-animated carousel-animate-slide' data-autoplay="true">
+    <div class='carousel-container'>
+      <div class='carousel-item has-background is-active'>
+        <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2017/12-17/oahu-hike-month-kuliouou-ridge-view.jpg?ver=1511836570" alt="Kuliʻouʻou Ridge Trail" width="640" height="310" />
+        <div class="title">Kuliʻouʻou Ridge Trail</div>
+      </div>
+      <div class='carousel-item has-background'>
+        <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2018/02-18/hike-we-like-kealia-trail-view.jpg?ver=1517529316" alt="Keālia Trail" width="640" height="310" />
+        <div class="title">Keālia Trail</div>
+      </div>
+      <div class='carousel-item has-background'>
+        <img class="is-background" src="http://honolulumagazine-images.dashdigital.com/images/2017/11-17/hike-of-the-month-judd-trail-jackass-ginger-pool.jpg?ver=1509592826" alt="Judd Trail" width="640" height="310" />
+        <div class="title">Judd Trail</div>
+      </div>
+    </div>
+    <div class="carousel-navigation is-centered">
+      <div class="carousel-nav-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </div>
+      <div class="carousel-nav-right">
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div> -->
 
 
 <!-- Backup slideshow carousel : Cindy still working on this! -->

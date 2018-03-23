@@ -37,6 +37,7 @@ global.hikeNow.rain = {
 function getRainData () {
   return rp(rainHourlyUrl)
     .then(result => {
+      console.log('rain api fired')
       result = result.split("\n")
       newResult = result.slice(53)      
       newestResult = newResult.slice(0, 58)

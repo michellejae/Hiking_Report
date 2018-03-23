@@ -1,6 +1,7 @@
 //MODULES
 const express = require('express');
 const app = express();
+const rp = require('request-promise');
 const bodyParser = require('body-parser');
 const path = require('path');
 const trails = require('./routes/trails');
@@ -25,31 +26,12 @@ app.use(bodyParser.urlencoded({extended: false }));
 
 app.use(express.static('public'));
 
-app.get('/api/hikeNow/fake', (req, res) =>{
-let goodRandomTrails = [];
-goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
-goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
-goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
-
-return res.json(goodRandomTrails)
-
-})
-
-app.get('/api/hikeNow/FUCK', (req, res) =>{
- return res.json(fakeAllData)
-    
-})
-
-
-app.get('/api/hikeNow/trail/fake/:name', (req, res) => {
-  let name = req.params.name
-  return res.json(fakeSingleData)
-})
 
 app.get('/api/hikeNow/trail/:name', (req, res) => {
   let name = req.params.name
   return new Trail()
-  .fetch({trailname: name})
+  .where({trailname: name})
+  .fetch()
   .then(singleTrail => {
     singleTrail = singleTrail.toJSON()
     return singleTrail
@@ -76,10 +58,9 @@ app.get('/api/hikeNow', (req, res) => {
     trail.weather = trailweather
     const rainWeather = global.hikeNow.rain[trail.rain]
     trail.rain = rainWeather
-    console.log(trail)
     return trail
     }).filter(trail => {
-     if(trail.weather && !(trail.weather.wind_gust_mph === undefined)){
+     if(trail.weather && (trail.weather.wind_gust_mph !== undefined)){
        if(trail.weather.wind_gust_mph < 25) {
          if(trail.rain && trail.rain.rainfall) {
            return trail.rain.rainfall < .4999
@@ -88,7 +69,11 @@ app.get('/api/hikeNow', (req, res) => {
       }
     })
   }).then(goodTrails => {
-    return res.json(goodTrails)
+    let goodRandomTrails = []
+    goodRandomTrails.push(goodTrails[randomGoodTrail(goodTrails)])
+    goodRandomTrails.push(goodTrails[randomGoodTrail(goodTrails)])    
+    goodRandomTrails.push(goodTrails[randomGoodTrail(goodTrails)])
+    return res.json(goodRandomTrails)
   }).catch(err =>{
     console.log(err)
   })
@@ -117,12 +102,11 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  getTrails();
-  getTrailHeads();
-  getRainTotalData();
-  timedRain();
-  timedWeather();
+   getTrails();
+  //getTrailHeads();
+  //getRainTotalData();
+  //timedRain();
+  //timedWeather();
   //getRainData();
   //updateWeatherStations();
-  
 });
