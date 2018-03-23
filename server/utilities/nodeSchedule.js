@@ -11,13 +11,10 @@ module.exports = {
 
 
 function timedWeather(){
-  console.log('inside Node')
-  cron.scheduleJob({ rule:'0 15 0,6,9,12,15 ? * * *'})
-  console.log('inside schedule')
-  //getTrailHeads()
+  cron.scheduleJob({ rule:'0, 0, 6,9,12,15 * * *'}, getTrailHeads)
+
 }
 
 function timedRain() {
-  cron.scheduleJob({ rule: '0 0 6,7,8,9,10,11,12,13,14,15,16,17,18 * * *'})
-  getRainTotalData()
+  cron.scheduleJob({ rule: '0 0 6,7,8,9,10,11,12,13,14,15,16,17,18 * * *'}, getRainData)
 }

@@ -33,7 +33,6 @@ global.hikeNow.weather = {
 
 
   function getTrailHeads() {   
-    console.log('inside trail heads')
     let trails = [];
     new Trail()
     .fetchAll()

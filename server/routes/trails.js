@@ -11,7 +11,6 @@ module.exports = {
 function getTrails(){
   return rp(hikingAPI) 
   .then(trails => {
-    console.log('trails fired')
     trails = JSON.parse(trails)
     return trails.features
   }).then(newTrails => {

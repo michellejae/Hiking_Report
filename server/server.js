@@ -26,26 +26,6 @@ app.use(bodyParser.urlencoded({extended: false }));
 
 app.use(express.static('pubic'));
 
-app.get('/api/hikeNow/fake', (req, res) =>{
-let goodRandomTrails = [];
-goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
-goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
-goodRandomTrails.push(fakeGoodData[randomGoodTrail(fakeGoodData)])
-
-return res.json(goodRandomTrails)
-
-})
-
-app.get('/api/hikeNow/FUCK', (req, res) =>{
- return res.json(fakeAllData)
-    
-})
-
-
-app.get('/api/hikeNow/trail/fake/:name', (req, res) => {
-  let name = req.params.name
-  return res.json(fakeSingleData)
-})
 
 app.get('/api/hikeNow/trail/:name', (req, res) => {
   let name = req.params.name
@@ -117,7 +97,7 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  getTrails();
+   getTrails();
   //getTrailHeads();
  // getRainTotalData();
   timedRain();
