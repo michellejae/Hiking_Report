@@ -25,40 +25,6 @@
     </nav>
   </section>
 
-
-
-
-  <!-- <section class="hero is-default is-bold is-primary">
-        <div class="hero-head">
-          <nav class="navbar">
-            <div class="container">
-              <div class="navbar-brand">
-                <a href="../" class="navbar-item">
-                  <h1 class="title">hike<i class="fas fa-tree"></i>know</h1>
-                </a>
-                <span class="navbar-burger burger" data-target="navbarMenu">
-                  <span></span>
-                  <span></span>
-                  <span></span>            
-                </span>
-              </div>
-              <div id="navbarMenu" class="navbar-menu">
-                <div class="navbar-end">
-                  <div class="tabs is-right is-medium">
-                    <ul>
-                      <li class="is-active"><a><strong>Home</strong></a></li>
-                      <li><a href="/all"><strong>All Trails</strong></a></li>  
-                    </ul>
-                  </div>
-                </div>        
-              </div>
-            </div>
-          </nav>
-        </div>
-      </section> -->
-
-
-
   <div class="sub-head-container">
     <div class="sub-head">
       <div class="trailName">{{trail.name}} </div>
@@ -131,11 +97,9 @@
       <div class="buttons has-addons is-centered">
         <span ng-if="onI()" class="button is-success is-selected">m</span>
         <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
-        <!-- <div class="buttons has-addons is-centered"> -->
-          <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
-          <span ng-if="onM()" class="button is-info is-selected">km</span>
-        </div>
-      <!-- </div> -->
+        <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
+        <span ng-if="onM()" class="button is-info is-selected">km</span>
+      </div>
     </div>
     <div class="column"></div>
   </div>

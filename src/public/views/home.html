@@ -1,5 +1,5 @@
 <div class="main-container">
-<!-- Header -->
+
   <section class="hero is-default is-bold is-primary">
     <div class="hero-head">
       <nav class="navbar">
@@ -18,8 +18,10 @@
             <div class="navbar-end">
               <div class="tabs is-right is-medium">
                 <ul>
-                  <li><a href="../"><strong>Home</strong></a></li>
-                  <li class="is-active"><a href="/all"><strong>Trails</strong></a></li>  
+                  <li class="is-active"><a><strong>Home</strong></a></li>
+                  <li><a href="/all"><strong>All Trails</strong></a></li>  
+                  <li><a href="/settings"><strong>Settings</strong></a></li>
+                  <li><a href="#"><strong></strong><i class="fas fa-search"></i></a>
                 </ul>
               </div>
             </div>        
@@ -54,116 +56,63 @@
       </div>
     </div>
 
-<!-- Title section with Buttons-->
-  <h1 class="title has-text-centered">Go outside!</h1>
-  <h2 class="subtitle has-text-centered">These ones are all clear...</h2>
-  
-  <div class="columns is-mobile is-centered" id="conBttn">
-      <div class="column"></div>
-      <div class="column">
-        <div class="buttons has-addons is-centered">
-          <span ng-if="onI()" class="button is-success is-selected">m</span>
-          <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
-          <!-- <div class="buttons has-addons is-centered"> -->
-            <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
-            <span ng-if="onM()" class="button is-info is-selected">km</span>
-          </div>
-        <!-- </div> -->
-      </div>
-      <div class="column"></div>
-    </div>
-
-  
-
-
-
-<!-- 3 Columns of Trails tiles -->
   <div class="columns is-centered">
-    <div ng-repeat="trail in trails" class="column">
-      <div class="tile is-parent is-9">
-        <a ng-href="/trail/{{ trail.name }}">
-          <article class="tile is-child notification is-success">
-            <div class="subtitle">{{trail.name}}</div>
-            <div class="card-footer">
-              <div class="card-footer-item">
-                <span>
-                  <p ng-if="onI()">{{trail.length}} m</p>
-                  <p ng-if="onM()">{{trail.length_km}} km</p>              
-                </span>
-              </div>
-              <div class="card-footer-item">
-                <span>
-                 {{trail.status}}
-                </span>
-              </div>
+    <div class="column is-6">
+      <div class="card">
+        <header class="card-header">
+          <h1 class="card-header-title is-1 is-centered">Take a Hike!</h1>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </a>
+        </header>
+          <div class="card-table">
+            <div class="content">
+              <table class="table is-fullwidth is striped">
+                <tbody>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-success" href="#">Good!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-warning" href="#">Caution!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-danger" href="#">Danger!</a></td>
+                  </tr>
+                  <tr>
+                    <td>Trail Name</td>
+                    <td>Trail Length m</td> 
+                    <td><a class="button is-black" href="#">Hurricane!</a></td>
+                  </tr>
+                  <tr ng-repeat="trail in trails">
+                    <a ng-href="/trail/{{ trail.name }}">
+                      <td>{{trail.name}}</td>
+                      <td ng-if="getImperial()" ng-click="changeMetric()">{{trail.length}} m</td>
+                      <td ng-if="getMetric()" ng-click="changeImperial()" >{{trail.length_km}} km</td>
+                      <td>{{trail.status}}</td>
+                    </a>
+                  </tr>
+                </tbody>
+              </table>
+              
             </div>
-          </article>
-        </a>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="/all" class="card-footer-item">View All</a>
+        </footer>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="content has-text-centered">
-      <a href="/all" class="button is-primary">View all trails</a>
-    </div>
-  </div>  
-  
-
-
 </div>
-
-<!-- <div class="card">
-    <header class="card-header">
-      <h1 class="card-header-title is-1 is-centered">Take a Hike!</h1>
-    </header>
-    <tr ng-repeat="trail in trails">
-      <a ng-href="/trail/{{ trail.name }}">
-        <td>{{trail.name}}</td>
-                  <td ng-if="getImperial()" ng-click="changeMetric()">{{trail.length}} m</td>
-                  <td ng-if="getMetric()" ng-click="changeImperial()" >{{trail.length_km}} km</td>
-                  <td>{{trail.status}}</td>
-                </a>
-          
-          
-        </div>
- -->
-
-<!-- <div class="card-table">
-    <div class="content">
-      <table class="table is-fullwidth is striped">
-        <tbody>
-          <tr>
-            <td>Trail Name</td>
-            <td>Trail Length m</td> 
-            <td><a class="button is-success" href="#">Good!</a></td>
-          </tr>
-          <tr>
-            <td>Trail Name</td>
-            <td>Trail Length m</td> 
-            <td><a class="button is-warning" href="#">Caution!</a></td>
-          </tr>
-          <tr>
-            <td>Trail Name</td>
-            <td>Trail Length m</td> 
-            <td><a class="button is-danger" href="#">Danger!</a></td>
-          </tr>
-          <tr>
-            <td>Trail Name</td>
-            <td>Trail Length m</td> 
-            <td><a class="button is-black" href="#">Hurricane!</a></td>
-          </tr>
-        </tr>
-      </tbody>
-    </table> -->
-
-
-
-
-
-
-
-
 
 
 <!-- Backup slideshow carousel : Cindy still working on this! -->
