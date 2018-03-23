@@ -61,7 +61,6 @@ function getWeatherData(lat,long){
     return JSON.parse(json);
   })
   .then(data => {
-    console.log('asdfasdfasd',data.current_observation.wind_kph)
     if (data.current_observation && data.current_observation.station_id){
       global.hikeNow.weather[data.current_observation.station_id] = {
         station_id : data.current_observation.station_id,
