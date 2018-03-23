@@ -9,12 +9,16 @@ const AllTrailsCtrl = ['$scope','allTrailsService', 'NgMap', function ($scope, a
   
   //Set trailHeads to scope var to plot markers
   $scope.trailHeads = allTrailsService.getTrailHeadCoordinates();
+
+
   
   //Display or not to display
   let b = false;
   $scope.selected = function () {
     return b;
   }
+
+  
 
   //Set selectedHike to scope to display selected marker
   $scope.showInfo = function (event,name) {
@@ -24,6 +28,7 @@ const AllTrailsCtrl = ['$scope','allTrailsService', 'NgMap', function ($scope, a
     b = true;
     $scope.selected();
   };
+
 
   //Google Map
   $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${MAPKEY.map.key}&callback=initMap`;

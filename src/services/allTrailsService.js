@@ -25,14 +25,14 @@ const allTrailService = ['$http', function ($http) {
 
   this.setTrailStatus = function (arr) {
     arr.map(element => {
-      if(element.weather && element.rain){
+      if(element.weather && element.rain ){
         if(element.weather.wind_mph < 25 && element.rain.rainfall < .4999) {
           element.status = 'GOOD';
         }
-        if(element.weather.wind_mph >= 25 && element.weather.wind_mph <= 46 && element.rain.rainfall >= .5 && element.rain.rainfall <= 1) {
+        if(element.weather.wind_mph >= 25 && element.weather.wind_mph <= 46 || element.rain.rainfall >= .5 && element.rain.rainfall <= 1) {
           element.status = 'CAUTION';
         }
-        if(element.weather.wind_mph > 46 && element.rain.rain > 1) {
+        if(element.weather.wind_mph > 46 && element.rain.rainfall > 1) {
           element.status = 'DANGER';
         }
       }else{
