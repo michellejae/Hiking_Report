@@ -1,10 +1,9 @@
 @import '../partials/variables.scss';
 @import '../partials/mixins.scss';
-
 body {
   height: 100%;
-  
 }
+
 .sub-head-container {
   margin-left: 1%;
   margin-right: 1%;
@@ -59,16 +58,11 @@ body {
   margin: 0 auto;
 }
 
-// .infoContainer {
-//   margin-top:3px;
-// }
-
 .weatherTrio {
   height: 4rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  // position: relative;
 }
 
 .hike-details-container {
@@ -77,7 +71,6 @@ body {
   justify-content: space-around;
   align-items: center;
   padding: 0;
-  // position: relative;
 }
 
 .confooter {
@@ -85,7 +78,6 @@ body {
     margin: 0 auto;
     width: 95%;
     text-align: center;
-    // position: relative;
   }
   button {
     border: none;
