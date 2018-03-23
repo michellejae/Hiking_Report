@@ -5,19 +5,24 @@ const trailService = ['$http', function ($http) {
 this.getSingleTrail = function (name) {
   return $http.get(`/api/hikeNow/trail/fake/${name}`)
   .then(singleTrail => {
-    let newSingleTrail = singleTrail.data
+    let newSingleTrail = singleTrail.data;
+    let kph = (newSingleTrail.weather.wind_mph * 1.60934).toFixed(2);
+    let km = (newSingleTrail.length_m * 1.60934).toFixed(2);
+    let elev_range_m = (newSingleTrail.elev_range * 0.3048).toFixed(2);
     finalTrail.name = newSingleTrail.trailname,
-    finalTrail.length = newSingleTrail.length_m,
+    finalTrail.length_m = newSingleTrail.length_m,
     finalTrail.elev = newSingleTrail.elev_range,
     finalTrail.coordinates = newSingleTrail.coordinates,
-    finalTrail.standard = newSingleTrail.standard
-    finalTrail.weather = newSingleTrail.weather
-    finalTrail.rain = newSingleTrail.rain
-    return newSingleTrail
+    finalTrail.standard = newSingleTrail.standard,
+    finalTrail.weather = newSingleTrail.weather,
+    finalTrail.rain = newSingleTrail.rain,
+    finalTrail.weather.wind_kph = kph,
+    finalTrail.length_km = km,
+    finalTrail.elev_range_m = elev_range_m
+    return newSingleTrail;
   }).then(result =>{
-    this.setStatus(result)
-    console.log('final',finalTrail.weather)
-    return finalTrail
+    this.setStatus(result);
+    return finalTrail;
   })
 }
 

@@ -16,7 +16,7 @@
                   <div class="tabs is-right is-medium">
                     <ul>
                       <li class="is-active">
-                        <a>
+                        <a href="../">
                           <strong>Home</strong>
                         </a>
                       </li>
@@ -25,15 +25,6 @@
                           <strong>All Trails</strong>
                         </a>
                       </li>
-                      <li>
-                        <a href="/settings">
-                          <strong>Settings</strong>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fas fa-search"></i>
-                        </a>
                     </ul>
                   </div>
                 </div>
@@ -47,8 +38,9 @@
 
   <div class="sub-head-container">
     <div class="sub-head">
-      <div class="is-size-4.5">{{trail.name}} </div>
-      <div class="is-size-4.5">{{trail.weather.temp_f}}F</div>
+      <div>{{trail.name}} </div>
+      <div ng-if="getImperial()">{{trail.weather.temp_f}}F</div>
+      <div ng-if="getMetric()" >{{trail.weather.temp_c}}C</div>
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -69,20 +61,19 @@
     <div class="hike-timestamp-data">{{trail.weather.observation_time}}</div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
-  <div class="infoContainer">
-    <div class="container has-text-centered">
-      <div class="card">
-        <div class="weatherTrio">
-          <div>
-            <img class="icon" src="{{trail.weather.icon_url}}">{{trail.weather.weather}}
-          </div>
-          <div>
-            <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}}mph
-          </div>
-          <div>
-            <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
-          </div>
+<div class="infoContainer">
+  <div class="container has-text-centered">
+    <div class="card">
+      <div class="weatherTrio">
+        <div>
+          <img class="icon" src="{{trail.weather.icon_url}}">{{trail.weather.weather}}
         </div>
+        <div ng-if="getImperial()"> <img  src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}} mph</div>
+        <div ng-if="getMetric()"> <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_kph}} kph</div>
+        <div>
+          <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
+        </div>
+      </div>
 
         <footer class="card-footer">
           <div class="card-footer-item">
@@ -94,21 +85,27 @@
         </footer>
       </div>
     </div>
-    <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
-    <div class="container">
-      <div class="card">
-        <div class=" hike-details-container">
-          <div class="temp-data">{{trail.length}}mi</div>
-          <div class="hike-detail-elev">{{trail.elev}} ft</div>
-          <div class="hike-detail-difficulty">{{trail.standard}}</div>
-        </div>
+
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
+  <div class="container">
+    <div class="card">
+      <div class=" hike-details-container">
+        <div ng-if="getImperial()" class="temp-data">{{trail.length_m}} mi</div>
+        <div ng-if="getMetric()" class="temp-data">{{trail.length_km}} km</div>
+        <div ng-if="getImperial()" class="hike-detail-elev">{{trail.elev}} ft</div>
+        <div ng-if="getMetric()" class="hike-detail-elev">{{trail.elev_range_m}} m</div>
+        <div class="hike-detail-difficulty">{{trail.standard}}</div>
+        
       </div>
     </div>
   </div>
+
   <div class="confooter">
-    <footer>
-      <button class="descBtn">imperial</button>
-    </footer>
+      <footer>
+        <button ng-click="changeMetric()" class="descBtn">metric</button>
+        <button ng-click="changeImperial()" class="descBtn">imperial</button>
+      </footer>
   </div>
+
 </div>
-<a href="https://icons8.com">Icon pack by Icons8</a>
+<!-- <a class="urlIcon" href="https://icons8.com">Icon pack by Icons8</a> -->
