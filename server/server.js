@@ -1,6 +1,7 @@
 //MODULES
 const express = require('express');
 const app = express();
+const rp = require('request-promise');
 const bodyParser = require('body-parser');
 const path = require('path');
 const trails = require('./routes/trails');
@@ -117,7 +118,7 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  //getTrails();
+  getTrails();
   //getTrailHeads();
  // getRainTotalData();
   timedRain();

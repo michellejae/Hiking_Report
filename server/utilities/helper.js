@@ -33,6 +33,7 @@ global.hikeNow.weather = {
 
 
   function getTrailHeads() {   
+    console.log('inside trail heads')
     let trails = [];
     new Trail()
     .fetchAll()
@@ -58,6 +59,7 @@ function fireWeatherAPI (arr) {
 function getWeatherData(lat,long){
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
   .then(json => {
+    console.log('weather api hit')
     return JSON.parse(json);
   })
   .then(data => {

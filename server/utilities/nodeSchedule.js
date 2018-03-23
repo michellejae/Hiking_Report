@@ -1,6 +1,8 @@
 const cron = require('node-schedule')
 const { getTrailHeads } = require('./helper')
 const { getRainData, getRainTotalData } = require ('./rainData.js')
+const rule = new cron.RecurrenceRule();
+
 
 module.exports = {
   timedRain,
@@ -9,8 +11,10 @@ module.exports = {
 
 
 function timedWeather(){
-  cron.scheduleJob({ rule:' 0 15 6,9,12,15 * * *'})
-  getTrailHeads()
+  console.log('inside Node')
+  cron.scheduleJob({ rule:'0 15 0,6,9,12,15 ? * * *'})
+  console.log('inside schedule')
+  //getTrailHeads()
 }
 
 function timedRain() {
