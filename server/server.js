@@ -88,7 +88,6 @@ app.get('/api/hikeNow', (req, res) => {
       }
     })
   }).then(goodTrails => {
-    console.log(goodTrails)
     return res.json(goodTrails)
   }).catch(err =>{
     console.log(err)
@@ -118,9 +117,9 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
- // getTrails();
- // getTrailHeads();
- // getRainTotalData();
+  getTrails();
+  getTrailHeads();
+  getRainTotalData();
   timedRain();
   timedWeather();
   //getRainData();
