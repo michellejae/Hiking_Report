@@ -6809,8 +6809,7 @@ body {
   .mappy ng-map {
     height: 31rem;
     width: 95%;
-    padding: 0;
-    z-index: 3; }
+    padding: 0; }
 
 .GOOD {
   background-color: #53b653; }
@@ -6863,3 +6862,78 @@ body {
     font-size: 1rem;
     transition: 0.4s;
     cursor: pointer; }
+
+.navBar {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between; }
+  .navBar a {
+    text-decoration: none;
+    color: #232323;
+    transition: color 0.3s ease; }
+  .navBar a:hover {
+    color: tomato; }
+  .navBar #menuToggle {
+    display: block;
+    position: relative;
+    left: -17px;
+    top: -13px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none; }
+  .navBar #menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    top: 7px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 4000;
+    -webkit-touch-callout: none; }
+  .navBar #menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 3000;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease; }
+  .navBar #menuToggle span:first-child {
+    transform-origin: 0% 0%; }
+  .navBar #menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%; }
+  .navBar #menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323; }
+  .navBar #menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2); }
+  .navBar #menuToggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px); }
+  .navBar #menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 250px;
+    margin: -80px -40px 0 -230px;
+    padding: 0;
+    padding-top: 125px;
+    background: #ededed;
+    list-style-type: none;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(0, -800%);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1); }
+  .navBar #menu li {
+    padding: 0;
+    margin: 0;
+    font-size: 22px; }
+  .navBar #menuToggle input:checked ~ ul {
+    transform: none; }
+
+/*Style for the first level menu bar*/
