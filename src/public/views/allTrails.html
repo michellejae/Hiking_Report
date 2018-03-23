@@ -90,9 +90,8 @@
           <h1 class="subtitle">{{selectedHike.trailname}}</h1>
           <div class="card-footer">
             <div class="card-footer-item">
-              <span>
-                  {{selectedHike.length_m}} miles
-              </span>
+              <span ng-if="onI()" >{{selectedHike.length_m}} mi</span>
+              <span ng-if="onM()" >{{selectedHike.length_km}} km</span>
             </div>
             <div class="card-footer-item">
               <span>
@@ -109,9 +108,8 @@
           <h1 class="subtitle">{{selectedHike.trailname}}</h1>            
             <div class="card-footer">
               <div class="card-footer-item">
-                <span>
-                    {{selectedHike.length_m}} miles
-                </span>
+                <span ng-if="onI()" >{{selectedHike.length_m}} mi</span>
+                <span ng-if="onM()" >{{selectedHike.length_km}} km</span>
               </div>
               <div class="card-footer-item">
                 <span>
@@ -128,9 +126,8 @@
           <h1 class="subtitle">{{selectedHike.trailname}}</h1>              
               <div class="card-footer">
                 <div class="card-footer-item">
-                  <span>
-                      {{selectedHike.length_m}} miles
-                  </span>
+                  <span ng-if="onI()" >{{selectedHike.length_m}} mi</span>
+                  <span ng-if="onM()" >{{selectedHike.length_m}} km</span>
                 </div>
                 <div class="card-footer-item">
                   <span>
@@ -147,9 +144,8 @@
           <h1 class="subtitle">{{selectedHike.trailname}}</h1>                              
                 <div class="card-footer">
                   <div class="card-footer-item">
-                    <span>
-                        {{selectedHike.length_m}} miles
-                    </span>
+                    <span ng-if="onI()" >{{selectedHike.length_m}} mi</span>
+                    <span ng-if="onM()" >{{selectedHike.length_m}} km</span>
                   </div>
                   <div class="card-footer-item">
                     <span>

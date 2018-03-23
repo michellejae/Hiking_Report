@@ -51,6 +51,7 @@ const allTrailService = ['$http', function ($http) {
         trailname: element.trailname,
         status: element.status,
         length_m: element.length_m,
+        length_km: element.length_km,
         coordinates: element.coordinates
       });
     });
