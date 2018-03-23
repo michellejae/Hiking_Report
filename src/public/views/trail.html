@@ -1,67 +1,35 @@
 <div class="main-container">
 
 
-    <section class="hero is-default is-bold is-primary">
-  <nav class="navBar" role="navigation">
+  <section class="hero is-default is-bold is-primary">
+    <nav class="navBar" role="navigation">
       <a href="../" class="navbar-item">
-        <h1 class="title">hike<i class="fas fa-tree"></i>know</h1>
+        <h1 class="title">hike
+          <i class="fas fa-tree"></i>know</h1>
       </a>
-    <div id="menuToggle">
-      <input type="checkbox" />
-      <span></span>
-      <span></span>
-      <span></span>
-      <ul id="menu">
-        <a href="#">
-          <li class="homeLink">Home</li>
-        </a><br />
-        <a href="#">
-          <li class="allTrailLink">All Trail</li>
-        </a>
-      </ul>
-    </div>
-  </nav>
+      <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+          <a href="/">
+            <li>Home</li>
+          </a>
+          <br />
+          <a href="/all">
+            <li>All Trail</li>
+          </a>
+        </ul>
+      </div>
+    </nav>
   </section>
-
-
-
-
-  <!-- <section class="hero is-default is-bold is-primary">
-        <div class="hero-head">
-          <nav class="navbar">
-            <div class="container">
-              <div class="navbar-brand">
-                <a href="../" class="navbar-item">
-                  <h1 class="title">hike<i class="fas fa-tree"></i>know</h1>
-                </a>
-                <span class="navbar-burger burger" data-target="navbarMenu">
-                  <span></span>
-                  <span></span>
-                  <span></span>            
-                </span>
-              </div>
-              <div id="navbarMenu" class="navbar-menu">
-                <div class="navbar-end">
-                  <div class="tabs is-right is-medium">
-                    <ul>
-                      <li class="is-active"><a><strong>Home</strong></a></li>
-                      <li><a href="/all"><strong>All Trails</strong></a></li>  
-                    </ul>
-                  </div>
-                </div>        
-              </div>
-            </div>
-          </nav>
-        </div>
-      </section> -->
-
-
 
   <div class="sub-head-container">
     <div class="sub-head">
       <div class="trailName">{{trail.name}} </div>
-      <div ng-if="getImperial()">{{trail.weather.temp_f}}F</div>
-      <div ng-if="getMetric()">{{trail.weather.temp_c}}C</div>
+      <div ng-if="onI()">{{trail.weather.temp_f}}F</div>
+      <div ng-if="onM()">{{trail.weather.temp_c}}C</div>
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -89,9 +57,9 @@
           <div>
             <img class="icon" src="{{trail.weather.icon_url}}">{{trail.weather.weather}}
           </div>
-          <div ng-if="getImperial()">
+          <div ng-if="onI()">
             <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}} mph</div>
-          <div ng-if="getMetric()">
+          <div ng-if="onM()">
             <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_kph}} kph</div>
           <div>
             <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
@@ -113,49 +81,27 @@
     <div class="container">
       <div class="card">
         <div class=" hike-details-container">
-          <div ng-if="getImperial()" class="temp-data">{{trail.length_m}} mi</div>
-          <div ng-if="getMetric()" class="temp-data">{{trail.length_km}} km</div>
-          <div ng-if="getImperial()" class="hike-detail-elev">{{trail.elev}} ft</div>
-          <div ng-if="getMetric()" class="hike-detail-elev">{{trail.elev_range_m}} m</div>
+          <div ng-if="onI()" class="temp-data">{{trail.length_m}} mi</div>
+          <div ng-if="onM()" class="temp-data">{{trail.length_km}} km</div>
+          <div ng-if="onI()" class="hike-detail-elev">{{trail.elev}} ft</div>
+          <div ng-if="onM()" class="hike-detail-elev">{{trail.elev_range_m}} m</div>
           <div class="hike-detail-difficulty">{{trail.standard}}</div>
-
         </div>
       </div>
     </div>
-
-    <div class="confooter">
-      <footer>
-        <button ng-click="changeMetric()" class="descBtn">metric</button>
-        <button ng-click="changeImperial()" class="descBtn">imperial</button>
-      </footer>
-    </div>
-
   </div>
-  <!-- <a class="urlIcon" href="https://icons8.com">Icon pack by Icons8</a> -->
 
-
-  <!-- <section class="hero is-default is-bold is-primary">
-    <div class="hero-head">
-      <nav class="navbar">
-        <div class="container">
-          <div class="navbar-brand">
-            <a href="../" class="navbar-item"><h1 class="title">hike<i class="fas fa-tree"></i>know</h1></a>
-            <ul id="menu">
-              <li>
-                <input id="drop" type="checkbox" name="menu" />
-                <label for="drop">Test</label>
-                <ul class="submenu">
-                  <li>
-                    <a href="../">home</a>
-                  </li>
-                  <li>
-                    <a href="/all">all trails</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <div class="columns is-mobile is-centered" id="conBttn">
+    <div class="column"></div>
+    <div class="column">
+      <div class="buttons has-addons is-centered">
+        <span ng-if="onI()" class="button is-success is-selected">m</span>
+        <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
+        <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
+        <span ng-if="onM()" class="button is-info is-selected">km</span>
+      </div>
     </div>
-  </section> -->
+    <div class="column"></div>
+  </div>
+
+  <!-- <a class="urlIcon" href="https://icons8.com">Icon pack by Icons8</a> -->
