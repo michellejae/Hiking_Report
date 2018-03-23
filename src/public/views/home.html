@@ -91,10 +91,11 @@
                     <td>Trail Length m</td> 
                     <td><a class="button is-black" href="#">Hurricane!</a></td>
                   </tr>
-                  <tr ng-repeat="trail in trails | filter : test">
+                  <tr ng-repeat="trail in trails">
                     <a ng-href="/trail/{{ trail.name }}">
                       <td>{{trail.name}}</td>
-                      <td>{{trail.length}} m</td>
+                      <td ng-if="getImperial()" ng-click="changeMetric()">{{trail.length}} m</td>
+                      <td ng-if="getMetric()" ng-click="changeImperial()" >{{trail.length_km}} km</td>
                       <td>{{trail.status}}</td>
                     </a>
                   </tr>
