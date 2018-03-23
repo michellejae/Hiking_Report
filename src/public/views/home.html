@@ -58,20 +58,20 @@
   <h1 class="title has-text-centered">Go outside!</h1>
   <h2 class="subtitle has-text-centered">These ones are all clear...</h2>
   
-  <div class="columns is-mobile is-centered">
-    <div class="column"></div>
-    <div class="column">
-      <div class="buttons has-addons">
-        <span ng-if="onI()" class="button is-success is-selected">m</span>
-        <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
+  <div class="columns is-mobile is-centered" id="conBttn">
+      <div class="column"></div>
+      <div class="column">
+        <div class="buttons has-addons is-centered">
+          <span ng-if="onI()" class="button is-success is-selected">m</span>
+          <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
+          <!-- <div class="buttons has-addons is-centered"> -->
+            <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
+            <span ng-if="onM()" class="button is-info is-selected">km</span>
+          </div>
+        <!-- </div> -->
       </div>
-      <div class="buttons has-addons">
-        <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
-        <span ng-if="onM()" class="button is-info is-selected">km</span>
-      </div>
+      <div class="column"></div>
     </div>
-    <div class="column"></div>
-  </div>
 
   
 
