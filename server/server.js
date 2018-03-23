@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false }));
 
 
-app.use(express.static('../pubic'));
+app.use(express.static(path.join(__dirname, '..', 'pubic')));
 
 
 app.get('/api/hikeNow/trail/:name', (req, res) => {
@@ -102,7 +102,7 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.get('/*', (req, res)=>{
   let options = {
-    root: __dirname + '../pubic'
+    root: path.join(__dirname, '..', 'pubic')
   };
   res.sendFile('index.html', options);
 })
