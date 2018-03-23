@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false }));
 
 
-app.use(express.static('public'));
+app.use(express.static('../pubic'));
 
 
 app.get('/api/hikeNow/trail/:name', (req, res) => {
@@ -100,13 +100,20 @@ app.get('/api/hikeNow/all', (req, res) => {
   })
 })
 
+app.get('/*', (req, res)=>{
+  let options = {
+    root: __dirname + '../pubic'
+  };
+  res.sendFile('index.html', options);
+})
+
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-   getTrails();
-  //getTrailHeads();
-  //getRainTotalData();
-  //timedRain();
-  //timedWeather();
+  // getTrails();
+  getTrailHeads();
+  getRainTotalData();
+  timedRain();
+  timedWeather();
   //getRainData();
   //updateWeatherStations();
 });
