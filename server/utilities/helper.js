@@ -71,6 +71,7 @@ function getWeatherData(lat,long){
         relative_humidity: data.current_observation.relative_humidity,
         wind_dir: data.current_observation.wind_dir,
         wind_mph: data.current_observation.wind_mph,
+        wind_kph: data.current_observation.wind_kph,
         wind_gust_mph: data.current_observation.wind_gust_mph,
         wind_gust_kph: data.current_observation.wind_gust_kph,
         feelslike_f: data.current_observation.feelslike_f,
