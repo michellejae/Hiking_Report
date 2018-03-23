@@ -61,10 +61,7 @@
         <hr>
         <div class="field has-addons">
           <p class="control is-expanded">
-            <input type="text" class="input" placeholder="Or find a hike here...">
-          </p>
-          <p class="control">
-            <button type="submit" class="button is-primary"><i class="fas fa-search"></i></button>
+            <input ng-model="test" type="text" class="input" placeholder="Or find a hike here...">
           </p>
         </div>
       </div>
@@ -100,9 +97,8 @@
           <h1 class="subtitle">{{selectedHike.trailname}}</h1>            
             <div class="card-footer">
               <div class="card-footer-item">
-                <span>
-                    {{selectedHike.length_m}} miles
-                </span>
+                <span ng-if="onI()" >{{selectedHike.length_m}} mi</span>
+                <span ng-if="onM()" >{{selectedHike.length_km}} km</span>
               </div>
               <div class="card-footer-item">
                 <span>
@@ -140,9 +136,8 @@
               <h1 class="subtitle">{{selectedHike.trailname}}</h1>                              
                 <div class="card-footer">
                   <div class="card-footer-item">
-                    <span>
-                        {{selectedHike.length_m}} miles
-                    </span>
+                    <span ng-if="onI()" >{{selectedHike.length_m}} mi</span>
+                    <span ng-if="onM()" >{{selectedHike.length_m}} km</span>
                   </div>
                   <div class="card-footer-item">
                     <span>
@@ -166,14 +161,15 @@
       <h1 class="card-header-title is-1 is-centered">Oahu Trails</h1>
 <!-- Toggle m/km buttons -->
       <div class="buttons has-addons">
-          <span class="button is-success is-selected">m</span>
-          <span class="button">km</span>
-        </div>
-        
-        <div class="buttons has-addons">
-          <span class="button">m</span>
-          <span class="button is-info is-selected">km</span>
+          <span ng-if="onI()" class="button is-success is-selected">m</span>
+          <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
       </div>
+        
+      <div class="buttons has-addons">
+          <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
+          <span ng-if="onM()" class="button is-info is-selected">km</span>
+      </div>
+
       <a href="#" class="card-header-icon" aria-label="more options">
         <span class="icon">
           <i class="fa fa-angle-down" aria-hidden="true"></i>
