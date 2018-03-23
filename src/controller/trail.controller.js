@@ -3,7 +3,8 @@ const TrailCtrl = [`$scope`,`$routeParams`, `trailService`, `NgMap`,
 function ($scope, $routeParams, trailService, NgMap ) {
   let metric = false;
   let imperial = true;
-  let nameParams = $routeParams.name
+  let nameParams = $routeParams.name;
+  let navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
   
   $scope.changeMetric = function () {
     metric = true;
@@ -23,6 +24,20 @@ function ($scope, $routeParams, trailService, NgMap ) {
 
   $scope.getMetric = function () {
     return metric;
+  }
+
+  $scope.burgerDrop = function () {
+    let navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    if(navbarBurgers.length > 0) {
+      navbarBurgers.forEach(element => {
+        element.addEventListener('click', function() {
+          let target = element.dataset.target;
+          let $target = document.getElementById(target);
+          element.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        })
+      });
+    }
   }
 
   trailService.getSingleTrail(nameParams)
