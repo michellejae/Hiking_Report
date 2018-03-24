@@ -1,0 +1,6 @@
+.cardFooter {
+  text-decoration: none !important;
+  display: flex;
+  justify-content: center; }
+  .cardFooter:hover {
+    cursor: pointer; }

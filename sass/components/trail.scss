@@ -23,21 +23,24 @@ body {
   justify-content: center;
   ng-map {
     height: 31rem;
-    width: 95%;
+    width: 100%;
     padding: 0;
   }
 }
 
+
+
 .GOOD {
-  background-color: rgb(83, 182, 83);
+  background-color: #00E363;
 }
 
 .CAUTION {
-  background-color: rgb(238, 121, 43);
+  background-color:#FFE63B;
+  color: black;
 }
 
 .DANGER {
-  background-color: red;
+  background-color: #FF0053;
 }
 
 .HURRICANE {
@@ -136,7 +139,7 @@ body {
     background: #faf7f7;
     list-style-type: none;
     color: #5e5c5c;
-    box-shadow: 10px 10px 2px 1px rgba(103, 103, 248, 0.151);
+    box-shadow: 10px 10px 2px 1px rgba(154, 154, 245, 0.151);
     z-index:40;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;

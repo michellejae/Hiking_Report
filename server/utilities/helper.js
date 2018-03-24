@@ -53,13 +53,12 @@ function fireWeatherAPI (arr) {
     long = element[0];
     getWeatherData(lat,long);
   });
- 
- 
 };
 
 function getWeatherData(lat,long){
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
   .then(json => {
+    console.log(json)
     console.log('weahter api fired')
     return JSON.parse(json);
   })
