@@ -29,7 +29,6 @@ const AllTrailsCtrl = ['$scope','allTrailsService', 'NgMap', function ($scope, a
 
   //Set Trails To Scope
   $scope.trails = allTrailsService.getAllTrails();
-  console.log($scope.trails)
   //Set trailHeads to scope var to plot markers
   $scope.trailHeads = allTrailsService.getTrailHeadCoordinates();
 
