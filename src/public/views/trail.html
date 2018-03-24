@@ -33,18 +33,28 @@
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <div class="{{trail.status}}">
-    <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
-      <ng-map center="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" zoom="13">
-        <marker position="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" animation="Animation.DROP" centered="true"></marker>
-      </ng-map>
-    </div>
+  <div class="mappy" map-lazy-load="https://maps.googleapis.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
+    <ng-map center="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" zoom="13">
+      <marker position="{{trail.coordinates[1]}},{{trail.coordinates[0]}}" animation="Animation.DROP" centered="true"></marker>
+    </ng-map>
+  </div>
+  <!--///////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- <div class="{{trail.status}}"> -->
     <div class="container has-text-centered hike-report-container">
       <div class="container hike-status-container">
-        <div class="{{trail.status}}"> {{trail.status}}</div>
-      </div>
+        <div ng-if="trail.status === 'GOOD'" class="{{trail.status}}"> Good!</div>
+        <div ng-if="trail.status === 'CAUTION'" class="{{trail.status}}"> Caution!</div>
+        <div ng-if="trail.status === 'DANGER'" class="{{trail.status}}"> Danger!</div>
+      <!-- </div> -->
     </div>
   </div>
+  <!-- <div class="{{trail.status}}">
+      <div class="container has-text-centered hike-report-container">
+        <div class="container hike-status-container">
+          <div class="{{trail.status}}"> {{trail.status}}</div>
+        </div>
+      </div>
+    </div> -->
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////-->
   <div class="hike-timestamp-container">
     <div class="hike-timestamp-data">{{trail.weather.observation_time}}</div>
@@ -62,7 +72,7 @@
           <div ng-if="onM()">
             <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_kph}} kph</div>
           <div>
-            <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
+            <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}} in
           </div>
         </div>
 
@@ -95,9 +105,9 @@
     <div class="column"></div>
     <div class="column">
       <div class="buttons has-addons is-centered">
-        <span ng-if="onI()" class="button is-success is-selected">m</span>
+        <span ng-if="onI()" class="button is-success is-selected">mi</span>
         <span ng-if="onI()" ng-click="Metric()" class="button">km</span>
-        <span ng-if="onM()" ng-click="Imperial()" class="button">m</span>
+        <span ng-if="onM()" ng-click="Imperial()" class="button">mi</span>
         <span ng-if="onM()" class="button is-info is-selected">km</span>
       </div>
     </div>
