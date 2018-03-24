@@ -10,6 +10,7 @@ const homeService = [`$http`, function ($http) {
     .then(data => {
       return data.data
     }).then(goodTrails => {
+      console.log(goodTrails)
       if(trailsArr.length){
         trailsArr.length = 0
       }

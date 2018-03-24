@@ -49,9 +49,9 @@
   <!-- 3 Columns of Trails tiles -->
   <div class="columns is-centered">
     <div ng-repeat="trail in trails" class="column">
-      <div class="tile is-parent is-9">
+      <div class="card is-parent is-9">
         <a ng-href="/trail/{{ trail.name }}">
-          <article class="tile is-child notification is-success">
+          <article class="card is-child notification is-success">
             <div class="subtitle has-text-centered">{{trail.name}}</div>
             <div class="card-footer">
               <div class="card-footer-item">
