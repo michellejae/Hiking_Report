@@ -8,7 +8,7 @@ const weatherKey = require('../../config/config');
 let WEATHERAPIKEY = weatherKey.weather.apiKey2;
 const WEATHER_API_ENDPOINT = `http://api.wunderground.com/api/${WEATHERAPIKEY}/conditions/q/`;
 const rule = new cron.RecurrenceRule();
-let count = 0;
+
 
 module.exports = {
 
@@ -54,15 +54,12 @@ function fireWeatherAPI (arr) {
     long = element[0];
     getWeatherData(lat,long);
   });
- 
- 
 };
 
 function getWeatherData(lat,long){
   return rp(`${WEATHER_API_ENDPOINT}${lat},${long}.json`)
   .then(json => {
-    //console.log(json)
-   // console.log('weahter api fired', count++)
+    console.log('weahter api fired')
     return JSON.parse(json);
   })
   .then(data => {
