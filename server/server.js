@@ -109,9 +109,9 @@ app.get('/*', (req, res)=>{
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-   //getTrails();
-  getTrailHeads();
-  getRainTotalData();
+   getTrails();
+  // getTrailHeads();
+  // getRainTotalData();
   // timedRain();
   // timedWeather();
   //getRainData();
