@@ -25,6 +25,7 @@ const allTrailService = ['$http', function ($http) {
 
   this.setTrailStatus = function (arr) {
     arr.map(element => {
+   
       let km = (element.length_m * 1.60934).toFixed(2);
       element.length_km = km;
       if(element.weather && element.rain ){
@@ -36,6 +37,12 @@ const allTrailService = ['$http', function ($http) {
         }
         if(element.weather.wind_mph > 46 && element.rain.rainfall > 1) {
           element.status = 'DANGER';
+        }
+        if(element.weather.wind_mph < 25 && element.rain.rainfall >1){
+          element.status = 'CAUTION'
+        }
+        if(element.weather.wind_mph > 46 && element.rain.rainfall <.4999){
+          element.status = 'DANGER'
         }
       }else{
         element.status = 'UNKNOWN';
