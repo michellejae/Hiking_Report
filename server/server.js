@@ -60,7 +60,8 @@ app.get('/api/hikeNow', (req, res) => {
     trail.rain = rainWeather
     return trail
     }).filter(trail => {
-     if(trail.weather && (trail.weather.wind_gust_mph !== undefined)){
+
+     if (trail.weather && (trail.weather.wind_gust_mph !== undefined)){
        if(trail.weather.wind_gust_mph < 25) {
          if(trail.rain && trail.rain.rainfall) {
            return trail.rain.rainfall < .4999
@@ -102,11 +103,11 @@ app.get('/api/hikeNow/all', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  //  getTrails();
-   getTrailHeads();
-   getRainTotalData();
-  //timedRain();
-  //timedWeather();
+   //getTrails();
+  getTrailHeads();
+  getRainTotalData();
+  timedRain();
+  timedWeather();
   //getRainData();
   // updateWeatherStations();
 });
