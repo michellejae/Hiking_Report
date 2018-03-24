@@ -25,6 +25,7 @@ const allTrailService = ['$http', function ($http) {
 
   this.setTrailStatus = function (arr) {
     arr.map(element => {
+   
       let km = (element.length_m * 1.60934).toFixed(2);
       element.length_km = km;
       if(element.weather && element.rain ){
