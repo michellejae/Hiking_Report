@@ -93,8 +93,11 @@
             <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}} mph</div>
           <div ng-if="getMetric()">
             <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_kph}} kph</div>
-          <div>
-            <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}}
+          <div ng-if="getImperial()">
+            <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.rain.rainfall}} in
+          </div>
+          <div ng-if="getMetric()">
+            <img src="https://png.icons8.com/ultraviolet/30/000000/rain.png">{{trail.weather.rain_cm}} cm
           </div>
         </div>
 
