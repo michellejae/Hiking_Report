@@ -27,3 +27,11 @@
     key: 'your api key'
   }
 }
+
+
+#MY STUFF TO DO
+-run knex
+-figure out all api keys
+-run the functions at the bottom of server.js to get data once you have everything up for db
+-button on top right is not working
+
