@@ -15,6 +15,7 @@ const fakeSingleData = require('./utilities/fakeSingleData')
 const { getTrailHeads } = require('./utilities/helper')
 const { timedWeather, timedRain } = require('./utilities/nodeSchedule')
 const { getTrails } = require('./routes/trails')
+const { newWeatherData } = require('./utilities/newWeatherData')
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -107,10 +108,12 @@ app.get('/*', (req, res)=>{
   res.sendFile('index.html', options);
 })
 
+
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
+  newWeatherData();
   //  getTrails();
-   getTrailHeads();
+  //  getTrailHeads();
   // getRainTotalData();
   // timedRain();
   // timedWeather();
