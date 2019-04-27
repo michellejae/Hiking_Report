@@ -4,7 +4,7 @@ const app = express();
 const rp = require('request-promise');
 const bodyParser = require('body-parser');
 const path = require('path');
-const trails = require('./routes/trails');
+// const trails = require('./routes/trails');
 const { randomGoodTrail } = require('./utilities/helper');
 const {timedCalls, updateWeatherStations } = require('./utilities/updateWeatherStations');
 const { getRainData, getRainTotalData } = require ('./utilities/rainData.js')
@@ -109,11 +109,11 @@ app.get('/*', (req, res)=>{
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-   //getTrails();
-  getTrailHeads();
-  getRainTotalData();
-  timedRain();
-  timedWeather();
+  //  getTrails();
+   getTrailHeads();
+  // getRainTotalData();
+  // timedRain();
+  // timedWeather();
   //getRainData();
   //updateWeatherStations();
 });

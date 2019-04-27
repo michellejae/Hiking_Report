@@ -20,9 +20,6 @@ function getTrails(){
         district: element.properties.DISTRICT,
         length_m: element.properties.LENGTH_M,
         elev_range: element.properties.ELEV_RANGE,
-        start_pt: element.properties.START_PT,
-        end_pt: element.properties.END_PT,
-        standard: element.properties.STANDARD,
         climat: element.properties.CLIMAT,
         tspt_type: element.properties.TSPT_TYPE,
         feature: element.properties.FEATURE,
@@ -38,9 +35,6 @@ function getTrails(){
         district: element.properties.DISTRICT,
         length_m: element.properties.LENGTH_M,
         elev_range: element.properties.ELEV_RANGE,
-        start_pt: element.properties.START_PT,
-        end_pt: element.properties.END_PT,
-        standard: element.properties.STANDARD,
         climat: element.properties.CLIMAT,
         tspt_type: element.properties.TSPT_TYPE,
         feature: element.properties.FEATURE,
@@ -57,6 +51,7 @@ function getTrails(){
 }).catch(err => {
     console.log(err)
   })
+  console.log('wtf is this here')
 }
 
 
