@@ -54,7 +54,6 @@ app.get('/api/hikeNow/fakeData/trail/:name', (req, res) => {
   })
 
 app.get('/api/hikeNow/fakeData', (req, res) => {
-  res.send('hello')
   return res.json(fakeGoodData)
 })
 
