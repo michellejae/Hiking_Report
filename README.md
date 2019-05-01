@@ -42,5 +42,4 @@
 
 
 - need to update file that updates table with weather, rain, region categories. remove weather. 
-- need to update the global variable to match the new weather api. 
 - credit weather api somewhere on app

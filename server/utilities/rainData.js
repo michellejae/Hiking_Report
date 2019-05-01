@@ -30,8 +30,7 @@ const oahuRainGauges = [
 
 global.hikeNow = {};
 global.hikeNow.rain = {
-  station_id:'',
-  rainfall: ''
+  
 };
 
 
