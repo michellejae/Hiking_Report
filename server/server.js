@@ -44,6 +44,23 @@ app.get('/api/hikeNow/trail/:name', (req, res) => {
   })
 })
 
+app.get('/api/hikeNow/fakeData/trail/:name', (req, res) => {
+  let name = req.params.name
+  return res.json(fakeSingleData)
+  })
+
+  app.get('/api/hikeNow/fakeData/all', (req, res) => {
+    return res.json(fakeAllData)
+  })
+
+app.get('/api/hikeNow/fakeData', (req, res) => {
+  res.send('hello')
+  return res.json(fakeGoodData)
+})
+
+
+
+
 app.get('/api/hikeNow', (req, res) => {
   return new Trail()
   .fetchAll()
@@ -76,6 +93,8 @@ app.get('/api/hikeNow', (req, res) => {
     console.log(err)
   })
 })
+
+
 
 app.get('/api/hikeNow/all', (req, res) => {
   return new Trail()
@@ -116,7 +135,6 @@ app.listen(PORT, () => {
   // updateWeatherStations();
 
   // fire off rain api and save to global variable
-  // getRainData();
 
   // fire off weather api and save to global variable
   // getTrailHeads();
