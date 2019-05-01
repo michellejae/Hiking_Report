@@ -43,9 +43,8 @@ function ($scope, $routeParams, trailService, NgMap ) {
 
   trailService.getSingleTrail(nameParams)
   .then(updatedTrail => {
+    console.log(updatedTrail)
     $scope.trail = updatedTrail
-    //  console.log('first', updatedTrail)
-    //  console.log('icon', updatedTrail.weather.icon_url)
   })
 
   $scope.googleMapsUrl=`https://maps.googleapis.com/maps/api/js?key=${MAPKEY.map.key}&callback=initMap`;
