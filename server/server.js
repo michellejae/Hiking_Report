@@ -58,8 +58,8 @@ app.get('/api/hikeNow', (req, res) => {
     trail.rain = rainWeather
     return trail
     }).filter(trail => {
-     if (trail.weather && (trail.weather.wind_gust_mph !== undefined)){
-       if(trail.weather.wind_gust_mph < 25) {
+     if (trail.weather){
+       if(trail.weather.windGust < 25) {
          if(trail.rain && trail.rain.rainfall) {
            return trail.rain.rainfall < .4999
          }
