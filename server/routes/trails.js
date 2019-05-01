@@ -9,12 +9,14 @@ module.exports = {
 }
 
 function getTrails(){
+  let coords;
   return rp(hikingAPI) 
   .then(trails => {
     trails = JSON.parse(trails)
     return trails.features
   }).then(newTrails => {
    newTrails.map(element => {
+     coords = element.geometry.coordinates[0][0]
      if(element.properties.Trailname === 'Ualakaa Trail'){
       return new Trail ({
         district: element.properties.DISTRICT,
@@ -27,7 +29,8 @@ function getTrails(){
         use_rest: element.properties.USE_REST,
         hazard: element.properties.HAZARD,
         trailname: element.properties.Trailname,
-        coordinates: JSON.stringify(element.geometry.coordinates[0][0])
+        coordinates: JSON.stringify(element.geometry.coordinates[0][0]),
+        weather: JSON.stringify(element.geometry.coordinates[0][0][0])
       }) 
       .save()
      } else {
@@ -42,7 +45,8 @@ function getTrails(){
         use_rest: element.properties.USE_REST,
         hazard: element.properties.HAZARD,
         trailname: element.properties.Trailname,
-        coordinates: JSON.stringify(element.geometry.coordinates[0])
+        coordinates: JSON.stringify(element.geometry.coordinates[0]),
+        weather: JSON.stringify(element.geometry.coordinates[0][0])
       }) 
       .save()
     }
@@ -51,7 +55,7 @@ function getTrails(){
 }).catch(err => {
     console.log(err)
   })
-  console.log('wtf is this here')
+  console.log('cool')
 }
 
 

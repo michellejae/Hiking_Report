@@ -40,5 +40,7 @@
     - latitude will now replace weather station id on table and global. when front end calls route, instead of connecting weather via station id it will be via latitude. 
   - i think rain is okay? 
 
--have to create new table categories to match the new data you get back from new weather api
+
+- need to update file that updates table with weather, rain, region categories. remove weather. 
+- need to update the global variable to match the new weather api. 
 - credit weather api somewhere on app
