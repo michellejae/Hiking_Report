@@ -35,3 +35,6 @@
 -update global variable api to include latitude in the global.hikeNow.weather[latitude] = latitude, summary, etc
 - credit weather api somewhere on app
 - got revisit node schedule to confirm the timing
+- create functions to change the wind bearing to directions before sending to front end?
+- create function for updating time stamp from api
+-figure out how to host and where lolz. 
