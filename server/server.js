@@ -10,7 +10,7 @@ const Trail = require('./db/models/Trails');
 const fakeGoodData = require('./utilities/fakeGoodData')
 const fakeAllData = require('./utilities/fakeAllData')
 const fakeSingleData = require('./utilities/fakeSingleData')
-const { getTrailHeads} = require('./utilities/helper')
+const { getTrailHeads, randomGoodTrail} = require('./utilities/helper')
 const { timedWeather, timedRain } = require('./utilities/nodeSchedule')
 const { getTrails } = require('./routes/trails')
 
@@ -127,7 +127,4 @@ app.listen(PORT, () => {
 
   // additional function for the total rain data per station over 24 hours
    // getRainTotalData();
-  
-   console.log('server', global.hikeNow.weather)
-   console.log('server', global.hikeNow.rain)
 });

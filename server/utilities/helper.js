@@ -44,9 +44,9 @@ function fireWeatherAPI (arr) {
   arr.map(element => {
     lat = element[1];
     long = element[0];
-    
+    getWeatherData(lat, long);
+
   });
-  getWeatherData(21.3331170420384, -157.800745570437);
 };
 
 function getWeatherData(lat,long){
@@ -72,7 +72,6 @@ function getWeatherData(lat,long){
     } else {
       return global.hikeNow.weather;
     }
-    console.log(global.hikeNow.weather)
   }).catch(err => {
     console.log(err)
   });
