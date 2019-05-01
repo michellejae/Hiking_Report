@@ -30,11 +30,15 @@
 
 
 #MY STUFF TO DO
--run knex
--figure out all api keys
 -run the functions at the bottom of server.js to get data once you have everything up for db
 -button on top right is not working
 - weather underground api is dead 
   - have to go and find new weather api and rewrite function to get weather data 
-  - confirm connecting trails by having weather id already associated to it. 
-  - confirm you can find weather for each lat / long of trails
+  - double check your saving the global variable correctly, do i need to save all the weather categories first? aren't those 'siblings' now to each station?
+  - no station id for weather so want to connect them by lat or long coordinate. 
+    - need to update table so it saves latitude only on weather category
+    - latitude will now replace weather station id on table and global. when front end calls route, instead of connecting weather via station id it will be via latitude. 
+  - i think rain is okay? 
+
+-have to create new table categories to match the new data you get back from new weather api
+- credit weather api somewhere on app

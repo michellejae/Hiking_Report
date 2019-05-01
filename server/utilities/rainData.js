@@ -28,6 +28,7 @@ const oahuRainGauges = [
   `MNLH1`
 ]
 
+global.hikeNow = {};
 global.hikeNow.rain = {
   station_id:'',
   rainfall: ''
@@ -61,12 +62,14 @@ function getRainData () {
           rainfall: result.rainfall
         }
       })
+      console.log(global.hikeNow.rain)
     })
     .catch(err => {
       console.log(err)
     })
     
 } //closing getRainData
+
 
 function getRainTotalData () {
   let key;
@@ -92,6 +95,7 @@ function getRainTotalData () {
               rainfall: value
           }
       })
+      console.log(global.hikeNow.rain)
     })
     .catch(err => {
       console.log(err)

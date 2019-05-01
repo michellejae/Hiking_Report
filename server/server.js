@@ -4,18 +4,15 @@ const app = express();
 const rp = require('request-promise');
 const bodyParser = require('body-parser');
 const path = require('path');
-// const trails = require('./routes/trails');
-const { randomGoodTrail } = require('./utilities/helper');
 const {timedCalls, updateWeatherStations } = require('./utilities/updateWeatherStations');
 const { getRainData, getRainTotalData } = require ('./utilities/rainData.js')
 const Trail = require('./db/models/Trails');
 const fakeGoodData = require('./utilities/fakeGoodData')
 const fakeAllData = require('./utilities/fakeAllData')
 const fakeSingleData = require('./utilities/fakeSingleData')
-const { getTrailHeads } = require('./utilities/helper')
+const { getTrailHeads} = require('./utilities/helper')
 const { timedWeather, timedRain } = require('./utilities/nodeSchedule')
 const { getTrails } = require('./routes/trails')
-const { newWeatherData } = require('./utilities/newWeatherData')
 
 //CONSTANTS
 const PORT = process.env.PORT  || 3000;
@@ -111,12 +108,11 @@ app.get('/*', (req, res)=>{
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
-  newWeatherData();
-  //  getTrails();
-  //  getTrailHeads();
+  // getTrails();
+  // getTrailHeads();
   // getRainTotalData();
   // timedRain();
   // timedWeather();
-  //getRainData();
+  // getRainData();
   //updateWeatherStations();
 });
