@@ -41,3 +41,4 @@
   - i think rain is okay? 
 
 - credit weather api somewhere on app
+- got revisit node schedule to confirm the timing
