@@ -41,4 +41,4 @@
 -if you hve time work out how km/m function is workiung in angular (get lost at controller)
 - possibly change the look of home page good trail cards. what does good mean? put someting else there about trail. maybe weather icon? 
 -need to add standard to trails. crapola. 
--icons ooooof
+-icons ooooof WHY DO YOU NO WORK?
