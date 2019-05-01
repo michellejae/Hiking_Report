@@ -108,6 +108,7 @@ app.get('/*', (req, res)=>{
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
+ 
   // put trails in db
   // getTrails();
 
@@ -127,4 +128,6 @@ app.listen(PORT, () => {
   // additional function for the total rain data per station over 24 hours
    // getRainTotalData();
   
+   console.log('server', global.hikeNow.weather)
+   console.log('server', global.hikeNow.rain)
 });

@@ -44,12 +44,13 @@ function fireWeatherAPI (arr) {
   arr.map(element => {
     lat = element[1];
     long = element[0];
-    getWeatherData(lat,long);
+    
   });
+  getWeatherData(21.3331170420384, -157.800745570437);
 };
 
 function getWeatherData(lat,long){
-  const newWeatherAPIEndpoint = `${weatherAPI}${lat},${long}`
+  const newWeatherAPIEndpoint = `${weatherAPI}${lat},${long}?exclude=minutely,hourly`
   return rp(`${newWeatherAPIEndpoint}`)
   .then(json => {
     console.log('weahter api fired')
@@ -57,7 +58,7 @@ function getWeatherData(lat,long){
   })
   .then(data => {
     if (data.currently.time) {
-      global.hikeNow.weather[data.latitude] = {
+      global.hikeNow.weather[data.longitude] = {
         observationTime: data.currently.time,
         summary: data.currently.summary,
         weatherIcon: data.currently.icon,
@@ -71,6 +72,7 @@ function getWeatherData(lat,long){
     } else {
       return global.hikeNow.weather;
     }
+    console.log(global.hikeNow.weather)
   }).catch(err => {
     console.log(err)
   });

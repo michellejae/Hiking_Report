@@ -61,7 +61,6 @@ function getRainData () {
           rainfall: result.rainfall
         }
       })
-      console.log(global.hikeNow.rain)
     })
     .catch(err => {
       console.log(err)
@@ -94,7 +93,6 @@ function getRainTotalData () {
               rainfall: value
           }
       })
-      console.log(global.hikeNow.rain)
     })
     .catch(err => {
       console.log(err)
