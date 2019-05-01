@@ -44,7 +44,7 @@ function fireWeatherAPI (arr) {
   arr.map(element => {
     lat = element[1];
     long = element[0];
-    // getWeatherData(lat,long);
+    getWeatherData(lat,long);
   });
 };
 

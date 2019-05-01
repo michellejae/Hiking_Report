@@ -108,11 +108,23 @@ app.get('/*', (req, res)=>{
 
 app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
+  // put trails in db
   // getTrails();
+
+  // add rain stations to trails db
+  // updateWeatherStations();
+
+  // fire off rain api and save to global variable
+  // getRainData();
+
+  // fire off weather api and save to global variable
   // getTrailHeads();
-  // getRainTotalData();
+ 
+  // functions used when app is deployed to have set times to fire off weather and rain api's
   // timedRain();
   // timedWeather();
-  // getRainData();
-  updateWeatherStations();
+
+  // additional function for the total rain data per station over 24 hours
+   // getRainTotalData();
+  
 });
