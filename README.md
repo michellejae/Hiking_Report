@@ -32,13 +32,6 @@
 #MY STUFF TO DO
 -run the functions at the bottom of server.js to get data once you have everything up for db
 -button on top right is not working
-- weather underground api is dead 
-  - have to go and find new weather api and rewrite function to get weather data 
-  - double check your saving the global variable correctly, do i need to save all the weather categories first? aren't those 'siblings' now to each station?
-  - no station id for weather so want to connect them by lat or long coordinate. 
-    - need to update table so it saves latitude only on weather category
-    - latitude will now replace weather station id on table and global. when front end calls route, instead of connecting weather via station id it will be via latitude. 
-  - i think rain is okay? 
-
+-update global variable api to include latitude in the global.hikeNow.weather[latitude] = latitude, summary, etc
 - credit weather api somewhere on app
 - got revisit node schedule to confirm the timing
