@@ -43,7 +43,7 @@ function ($scope, $routeParams, trailService, NgMap ) {
 
   trailService.getSingleTrail(nameParams)
   .then(updatedTrail => {
-    console.log(updatedTrail)
+    console.log('here yeah?', updatedTrail)
     $scope.trail = updatedTrail
   })
 
