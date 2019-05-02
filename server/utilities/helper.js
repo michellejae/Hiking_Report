@@ -1,6 +1,8 @@
 // const express = require('express');
 const rp = require('request-promise');
 const cron = require('node-schedule');
+const moment = require('moment');
+
 
 const Trail = require('../db/models/Trails');
 const weatherKey = require('../../config/config');
@@ -45,7 +47,6 @@ function fireWeatherAPI (arr) {
     lat = element[1];
     long = element[0];
     getWeatherData(lat, long);
-
   });
 };
 
@@ -59,7 +60,8 @@ function getWeatherData(lat,long){
   .then(data => {
     if (data.currently.time) {
       global.hikeNow.weather[data.longitude] = {
-        observationTime: data.currently.time,
+        longitude: data.longitude,
+        observationTime: moment.unix(data.currently.time).format("h:mm:ss a"),
         summary: data.currently.summary,
         weatherIcon: data.currently.icon,
         temp: data.currently.temperature,

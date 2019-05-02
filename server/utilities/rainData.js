@@ -28,7 +28,7 @@ const oahuRainGauges = [
   `MNLH1`
 ]
 
-global.hikeNow = {};
+global.hikeNow = {}
 global.hikeNow.rain = {
   
 };

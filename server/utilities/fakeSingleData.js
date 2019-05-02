@@ -1,5 +1,5 @@
 module.exports = {
-    "id": 220,
+    "id": 4,
     "district": "Honolulu",
     "length_m": "0.80",
     "elev_range": 800,
@@ -18,18 +18,19 @@ module.exports = {
     "trail_num": null,
     "rain": {
         "station_id": "MNLH1",
-        "rainfall": "0.09"
+        "rainfall": "0.00"
     },
     "weather": {
-        "observationTime": 1556734811,
-        "summary": "Mostly Cloudy",
-        "weatherIcon": "partly-cloudy-day",
-        "temp": 70.05,
-        "realFeel": 70.91,
-        "humidity": 0.89,
-        "windSpeed": 6.57,
-        "windGust": 7.59,
-        "windDirection": 48
+        "longitude": -157.800745570437,
+        "observationTime": "10:35:07 pm",
+        "summary": "Drizzle",
+        "weatherIcon": "rain",
+        "temp": 77.29,
+        "realFeel": 77.96,
+        "humidity": 0.69,
+        "windSpeed": 9.57,
+        "windGust": 16.42,
+        "windDirection": 50
     },
     "region": "South"
 }
