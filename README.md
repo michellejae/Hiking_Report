@@ -36,9 +36,5 @@
 - credit weather api somewhere on app
 - got revisit node schedule to confirm the timing
 - create functions to change the wind bearing to directions before sending to front end?
-- create function for updating time stamp from api
+
 -figure out how to host and where lolz. 
--if you hve time work out how km/m function is workiung in angular (get lost at controller)
-- possibly change the look of home page good trail cards. what does good mean? put someting else there about trail. maybe weather icon? 
--need to add standard to trails. crapola. 
--cannot load any icons for weather very easily with old ass angular. just need to update what the frontend looks like without icons and have weather description instead

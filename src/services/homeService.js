@@ -14,7 +14,6 @@ const homeService = [`$http`, function ($http) {
         trailsArr.length = 0
       }
       goodTrails.map(trail => {
-        console.log('here', trail)
         let km = (trail.length_m * 1.60934).toFixed(2);
           let finalGoodTrail = {
             name: trail.trailname,
