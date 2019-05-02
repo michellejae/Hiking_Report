@@ -2,6 +2,7 @@ import angular from 'angular';
 import ngRoute from 'angular-route';
 import NgMap from 'ngmap';
 
+
 import TrailCtrl from '../controller/trail.controller';
 import trailService from '../services/trailDataService';
 import HomeCtrl from '../controller/home.controller'
