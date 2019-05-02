@@ -16,6 +16,7 @@ function getTrails(){
     return trails.features
   }).then(newTrails => {
    newTrails.map(element => {
+     console.log()
      coords = element.geometry.coordinates[0][0]
      if(element.properties.Trailname === 'Ualakaa Trail'){
       return new Trail ({
@@ -31,7 +32,7 @@ function getTrails(){
         trailname: element.properties.Trailname,
         coordinates: JSON.stringify(element.geometry.coordinates[0][0]),
         weather: JSON.stringify(element.geometry.coordinates[0][0][0]),
-        standard: element.properties.standard
+        standard: element.properties.STANDARD
       }) 
       .save()
      } else {
@@ -48,7 +49,7 @@ function getTrails(){
         trailname: element.properties.Trailname,
         coordinates: JSON.stringify(element.geometry.coordinates[0]),
         weather: JSON.stringify(element.geometry.coordinates[0][0]),
-        standard: element.properties.standard
+        standard: element.properties.STANDARD
       }) 
       .save()
     }

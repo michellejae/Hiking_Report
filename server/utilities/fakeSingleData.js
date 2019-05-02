@@ -11,6 +11,7 @@ module.exports = {
     "hazard": "Footing, floods",
     "trailname": "Manoa Falls Trail",
     "trail_url": null,
+    "standard" : "easy",
     "coordinates": [
         -157.800745570437,
         21.3331170420384
