@@ -1,5 +1,7 @@
+
 const trailService = ['$http', function ($http) {
 
+  // let icons = new Skycons({"color": "orange"})
   let finalTrail = {}
 
 this.getSingleTrail = function (name) {
