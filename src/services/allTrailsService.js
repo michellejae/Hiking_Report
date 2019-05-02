@@ -25,23 +25,23 @@ const allTrailService = ['$http', function ($http) {
 
   this.setTrailStatus = function (arr) {
     arr.map(element => {
-   
+      console.log(element)
       let km = (element.length_m * 1.60934).toFixed(2);
       element.length_km = km;
       if(element.weather && element.rain ){
-        if(element.weather.wind_mph < 25 && element.rain.rainfall < .4999) {
+        if(element.weather.windSpeed < 25 && element.rain.rainfall < .4999) {
           element.status = 'GOOD';
         }
-        if(element.weather.wind_mph >= 25 && element.weather.wind_mph <= 46 || element.rain.rainfall >= .5 && element.rain.rainfall <= 1) {
+        if(element.weather.windSpeed >= 25 && element.weather.windSpeed <= 46 || element.rain.rainfall >= .5 && element.rain.rainfall <= 1) {
           element.status = 'CAUTION';
         }
-        if(element.weather.wind_mph > 46 && element.rain.rainfall > 1) {
+        if(element.weather.windSpeed > 46 && element.rain.rainfall > 1) {
           element.status = 'DANGER';
         }
-        if(element.weather.wind_mph < 25 && element.rain.rainfall >1){
+        if(element.weather.windSpeed < 25 && element.rain.rainfall >1){
           element.status = 'CAUTION'
         }
-        if(element.weather.wind_mph > 46 && element.rain.rainfall <.4999){
+        if(element.weather.windSpeed > 46 && element.rain.rainfall <.4999){
           element.status = 'DANGER'
         }
       }else{
