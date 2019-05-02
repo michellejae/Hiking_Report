@@ -30,7 +30,8 @@ function getTrails(){
         hazard: element.properties.HAZARD,
         trailname: element.properties.Trailname,
         coordinates: JSON.stringify(element.geometry.coordinates[0][0]),
-        weather: JSON.stringify(element.geometry.coordinates[0][0][0])
+        weather: JSON.stringify(element.geometry.coordinates[0][0][0]),
+        standard: element.properties.standard
       }) 
       .save()
      } else {
@@ -46,7 +47,8 @@ function getTrails(){
         hazard: element.properties.HAZARD,
         trailname: element.properties.Trailname,
         coordinates: JSON.stringify(element.geometry.coordinates[0]),
-        weather: JSON.stringify(element.geometry.coordinates[0][0])
+        weather: JSON.stringify(element.geometry.coordinates[0][0]),
+        standard: element.properties.standard
       }) 
       .save()
     }

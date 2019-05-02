@@ -1,5 +1,4 @@
 
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('trails', table => {
     table.increments();
@@ -19,6 +18,7 @@ exports.up = function(knex, Promise) {
     table.string('rain');
     table.string('weather');
     table.string('region');
+    table.string('standard')
   })
 };
 
