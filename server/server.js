@@ -28,7 +28,6 @@ app.use(express.static(path.join(__dirname, '..', 'pubic')));
 
 app.get('/api/hikeNow/trail/:name', (req, res) => {
   let name = req.params.name
-  console.log('mother can you hear me? ')
   return new Trail()
   .where({trailname: name})
   .fetch()
@@ -40,7 +39,6 @@ app.get('/api/hikeNow/trail/:name', (req, res) => {
     finalSingleTrail.weather = trailWeather
     const rainWeather = global.hikeNow.rain[finalSingleTrail.rain]
     finalSingleTrail.rain = rainWeather
-    console.log('what up b?', finalSingleTrail)
     return res.json(finalSingleTrail)
   }).catch(err =>{
     console.log(err)
@@ -137,10 +135,10 @@ app.listen(PORT, () => {
   // updateWeatherStations();
 
   // fire off rain api and save to global variable
-  getRainData();
+  // getRainData();
 
   // fire off weather api and save to global variable
-  getTrailHeads();
+  // getTrailHeads();
  
   // functions used when app is deployed to have set times to fire off weather and rain api's
   // timedRain();

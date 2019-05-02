@@ -1,106 +1,109 @@
 module.exports = [
     {
-        "id": 231,
-        "district": "Koolaupoko",
-        "length_m": "0.58",
-        "elev_range": 300,
-        "climat": "Mild, Wet",
-        "tspt_type": "Foot ",
-        "feature": "Hike, Nature, Stream, Waterfall",
-        "amenitie": "None",
-        "use_rest": "No open fires. No camping.",
-        "hazard": "Footing",
-        "trailname": "Maunawili Falls Trail",
-        "trail_url": null,
-        "coordinates": [
-            -157.768544655984,
-            21.3528361050913
-        ],
-        "trail_num": null,
-        "rain": {
-            "station_id": "MAUH1",
-            "rainfall": "0.12"
-        },
-        "weather": {
-            "observationTime": 1556735465,
-            "summary": "Mostly Cloudy",
-            "weatherIcon": "partly-cloudy-day",
-            "temp": 71.04,
-            "realFeel": 71.84,
-            "humidity": 0.85,
-            "windSpeed": 6.88,
-            "windGust": 8,
-            "windDirection": 49
-        },
-        "region": "East"
-    },
-    {
-        "id": 242,
+        "id": 30,
         "district": "Honolulu",
-        "length_m": "0.75",
-        "elev_range": 500,
-        "climat": "Mild, Wet",
-        "tspt_type": "Foot, Bicycle",
+        "length_m": "0.19",
+        "elev_range": 100,
+        "climat": "Wet",
+        "tspt_type": "Foot",
         "feature": "Hike, Nature Study",
         "amenitie": "None",
-        "use_rest": "None",
+        "use_rest": "No Biking.  No Camping.",
         "hazard": "None",
-        "trailname": "Pauoa Flats Trail",
+        "trailname": "Tantalus Arboretum and Sculpture Trail",
         "trail_url": null,
         "coordinates": [
-            -157.812105971846,
-            21.3379992110099
+            -157.826512314244,
+            21.326394317421
         ],
         "trail_num": null,
         "rain": {
             "station_id": "MNLH1",
-            "rainfall": "0.24"
+            "rainfall": "0.00"
         },
         "weather": {
-            "observationTime": 1556735465,
-            "summary": "Mostly Cloudy",
+            "longitude": -157.826512314244,
+            "observationTime": "10:36:06 pm",
+            "summary": "Partly Cloudy",
             "weatherIcon": "partly-cloudy-day",
-            "temp": 67.41,
-            "realFeel": 68.39,
-            "humidity": 0.97,
-            "windSpeed": 6.66,
-            "windGust": 7.74,
-            "windDirection": 49
+            "temp": 76.21,
+            "realFeel": 76.86,
+            "humidity": 0.71,
+            "windSpeed": 9.44,
+            "windGust": 16.2,
+            "windDirection": 51
         },
         "region": "South"
     },
     {
-        "id": 219,
-        "district": "Waialua, Wahiawa",
-        "length_m": "0.95",
-        "elev_range": 800,
+        "id": 1,
+        "district": "Waialua",
+        "length_m": "6.00",
+        "elev_range": 500,
         "climat": "Mild",
-        "tspt_type": "4WD, Bicycle",
+        "tspt_type": "4WD, Foot, Bicycle",
         "feature": "Hike, Nature Study, Hunt",
-        "amenitie": "Camping",
-        "use_rest": "Private access, time, permit",
-        "hazard": "Hunters, Footing",
-        "trailname": "Poamoho Access Road",
+        "amenitie": "None",
+        "use_rest": "Permit",
+        "hazard": "Footing, Hunters",
+        "trailname": "Mokuleia-Kuaokala Firebreak Access Road",
         "trail_url": null,
         "coordinates": [
-            -157.965500330536,
-            21.5309673174778
+            -158.237758592625,
+            21.5633764486087
         ],
         "trail_num": null,
         "rain": {
-            "station_id": "OFRH1",
+            "station_id": "POAH1",
             "rainfall": "0.00"
         },
         "weather": {
-            "observationTime": 1556735465,
-            "summary": "Drizzle",
-            "weatherIcon": "rain",
-            "temp": 65.61,
-            "realFeel": 66.41,
-            "humidity": 0.97,
-            "windSpeed": 4.18,
-            "windGust": 7.22,
-            "windDirection": 56
+            "longitude": -158.237758592625,
+            "observationTime": "10:36:06 pm",
+            "summary": "Partly Cloudy",
+            "weatherIcon": "partly-cloudy-day",
+            "temp": 75.82,
+            "realFeel": 76.44,
+            "humidity": 0.71,
+            "windSpeed": 9.47,
+            "windGust": 16.96,
+            "windDirection": 53
+        },
+        "region": "North"
+    },
+    {
+        "id": 18,
+        "district": "Waialua",
+        "length_m": "3.50",
+        "elev_range": 1200,
+        "climat": "Mild",
+        "tspt_type": "Foot",
+        "feature": "Hike, Nature Study, Hunt, Bio Sens.",
+        "amenitie": "Camping",
+        "use_rest": "New access road open",
+        "hazard": "Footing, Hunters",
+        "trailname": "Mokuleia Trail",
+        "trail_url": null,
+        "coordinates": [
+            -158.182193450745,
+            21.5411070791922
+        ],
+        "trail_num": null,
+        "rain": {
+            "station_id": "POAH1",
+            "rainfall": "0.00"
+        },
+        "weather": {
+            "longitude": -158.182193450745,
+            "observationTime": "10:36:06 pm",
+            "summary": "Partly Cloudy",
+            "weatherIcon": "partly-cloudy-day",
+            "temp": 72.77,
+            "realFeel": 73.38,
+            "humidity": 0.77,
+            "windSpeed": 8.73,
+            "windGust": 16.19,
+            "windDirection": 54
         },
         "region": "North"
     }
