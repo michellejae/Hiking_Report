@@ -3,7 +3,6 @@ const rp = require('request-promise');
 const cron = require('node-schedule');
 const moment = require('moment');
 
-
 const Trail = require('../db/models/Trails');
 const weatherKey = require('../../config/config');
 // const weatherApiKey = require('../../config/config');
