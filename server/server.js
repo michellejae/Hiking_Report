@@ -134,10 +134,10 @@ app.listen(PORT, () => {
   // updateWeatherStations();
 
   // fire off rain api and save to global variable
-  // getRainData();
+  getRainData();
 
   // fire off weather api and save to global variable
-  // getTrailHeads();
+  getTrailHeads();
  
   // functions used when app is deployed to have set times to fire off weather and rain api's
   timedRain();
