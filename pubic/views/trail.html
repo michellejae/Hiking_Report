@@ -27,8 +27,8 @@
   <div class="sub-head-container">
     <div class="sub-head">
       <div class="trailName">{{trail.name}} </div>
-      <div ng-if="onI()">{{trail.weather.temp_f}}F</div>
-      <div ng-if="onM()">{{trail.weather.temp_c}}C</div>
+      <div ng-if="onI()">{{trail.weather.temp}}° F</div>
+      <div ng-if="onM()">{{trail.weather.temp_c}}° C</div>
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -64,10 +64,11 @@
       <div class="card">
         <div class="weatherTrio">
           <div>
-            <img class="icon" src="{{trail.weather.icon_url}}">{{trail.weather.weather}}
+            <div class="weather-summary">{{trail.weather.summary}}</div>
+
           </div>
           <div ng-if="onI()">
-            <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_mph}} mph</div>
+            <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.windSpeed}} mph</div>
           <div ng-if="onM()">
             <img src="https://png.icons8.com/ultraviolet/30/000000/windy-weather.png">{{trail.weather.wind_kph}} kph</div>
           <div>

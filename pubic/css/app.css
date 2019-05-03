@@ -3555,7 +3555,7 @@ a.tag:hover {
       pointer-events: none; }
     .breadcrumb li + li::before {
       color: #4a4a4a;
-      content: "/"; }
+      content: "\0002f"; }
   .breadcrumb ul, .breadcrumb ol {
     -ms-flex-align: center;
         align-items: center;
@@ -3584,13 +3584,13 @@ a.tag:hover {
   .breadcrumb.is-large {
     font-size: 1.5rem; }
   .breadcrumb.has-arrow-separator li + li::before {
-    content: "\2192"; }
+    content: "\02192"; }
   .breadcrumb.has-bullet-separator li + li::before {
-    content: "\2022"; }
+    content: "\02022"; }
   .breadcrumb.has-dot-separator li + li::before {
-    content: "\B7"; }
+    content: "\000b7"; }
   .breadcrumb.has-succeeds-separator li + li::before {
-    content: "\227B"; }
+    content: "\0227B"; }
 
 .card {
   background-color: white;
@@ -12625,7 +12625,7 @@ a.tag:hover {
 
 .breadcrumb li + li::before {
   color: #4a4a4a;
-  content: "/";
+  content: "\0002f";
 }
 
 .breadcrumb ul, .breadcrumb ol {
@@ -12672,19 +12672,19 @@ a.tag:hover {
 }
 
 .breadcrumb.has-arrow-separator li + li::before {
-  content: "\2192";
+  content: "\02192";
 }
 
 .breadcrumb.has-bullet-separator li + li::before {
-  content: "\2022";
+  content: "\02022";
 }
 
 .breadcrumb.has-dot-separator li + li::before {
-  content: "\B7";
+  content: "\000b7";
 }
 
 .breadcrumb.has-succeeds-separator li + li::before {
-  content: "\227B";
+  content: "\0227B";
 }
 
 .card {
