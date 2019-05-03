@@ -129,9 +129,9 @@ app.listen(PORT, () => {
   console.log(`SERVER IS LISTENING ON ${PORT}`);
  
   // put trails in db
-  getTrails();
+  // getTrails();
   // add rain stations to trails db
-  // updateWeatherStations();
+  updateWeatherStations();
 
   // fire off rain api and save to global variable
   // getRainData();
