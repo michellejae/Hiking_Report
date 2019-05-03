@@ -12,11 +12,11 @@ function getTrails(){
   let coords;
   return rp(hikingAPI) 
   .then(trails => {
+    console.log('fired trails api')
     trails = JSON.parse(trails)
     return trails.features
   }).then(newTrails => {
    newTrails.map(element => {
-     console.log()
      coords = element.geometry.coordinates[0][0]
      if(element.properties.Trailname === 'Ualakaa Trail'){
       return new Trail ({
