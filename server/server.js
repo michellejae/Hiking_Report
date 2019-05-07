@@ -131,17 +131,17 @@ app.listen(PORT, () => {
   // put trails in db
   // getTrails();
   // add rain stations to trails db
-  updateWeatherStations();
+  // updateWeatherStations();
 
   // fire off rain api and save to global variable
-  // getRainData();
+  getRainData();
 
   // fire off weather api and save to global variable
-  // getTrailHeads();
+  getTrailHeads();
  
   // functions used when app is deployed to have set times to fire off weather and rain api's
-  // timedRain();
-  // timedWeather();
+  timedRain();
+  timedWeather();
 
   // additional function for the total rain data per station over 24 hours
    // getRainTotalData();
